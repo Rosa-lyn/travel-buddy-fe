@@ -4,6 +4,7 @@ import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 
 class MapContainer extends Component {
   state = {
+    currentUser: "roz",
     center: [0, 0],
     zoom: 2,
     experiences: [
@@ -27,10 +28,30 @@ class MapContainer extends Component {
   closePopup = () => {
     this.setState({ zoom: 14 });
   };
+  addExperience = (event) => {
+    const { currentUser, experiences } = this.state; // this will probably actually be passed down from App as a prop once backend is implemented
+    const { lat, lng } = event.latlng;
+    experiences.push({
+      title: "",
+      body: "",
+      username: currentUser,
+      created_at: Date.now(),
+      location_lat: lat,
+      location_long: lng,
+      likes: 0,
+      belongs_to_tag_text: [],
+    });
+    this.setState({ experiences });
+  };
   render() {
     const { center, zoom, experiences } = this.state;
     return (
-      <Map className="Map" center={center} zoom={zoom}>
+      <Map
+        className="Map"
+        center={center}
+        zoom={zoom}
+        onclick={this.addExperience}
+      >
         <TileLayer
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
