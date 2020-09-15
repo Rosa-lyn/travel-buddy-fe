@@ -21,6 +21,22 @@ class MapContainer extends Component {
       },
     ],
   };
+  componentDidMount() {
+    navigator.geolocation.getCurrentPosition(
+      ({ coords }) => {
+        const lat = coords.latitude;
+        const lng = coords.longitude;
+        console.log("getCurrentPosition Success " + lat + lng);
+        this.setState({
+          center: [lat, lng],
+          zoom: 13,
+        });
+      },
+      (err) => {
+        console.error(JSON.stringify(err));
+      }
+    );
+  }
   zoomToExperience = (event) => {
     const { lat, lng } = event.latlng;
     this.setState({ center: [lat, lng], zoom: 18 });
