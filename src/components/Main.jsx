@@ -1,12 +1,12 @@
 import React from "react";
 import Header from "./Header.jsx";
-import Map from "./Map.jsx";
+import MapContainer from "./MapContainer.jsx";
 
 const Main = () => {
   return (
     <section>
       <Header />
-      <Map />
+      <MapContainer />
     </section>
   );
 };
