@@ -1,12 +1,8 @@
 import React from "react";
+import { Link } from "@reach/router";
 
 const LoginButton = () => {
-  return (
-    <section>
-      {/*  opens login page */}
-      <button>login</button>
-    </section>
-  );
+  return <Link to="/login">login</Link>;
 };
 
 export default LoginButton;
