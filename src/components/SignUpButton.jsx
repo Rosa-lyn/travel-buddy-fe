@@ -1,7 +1,8 @@
 import React from "react";
+import { Link } from "@reach/router";
 
 const SignUpButton = () => {
-  return <p>sign up</p>; // this will be a link to signup component
+  return <Link to="/signup">sign up</Link>;
 };
 
 export default SignUpButton;
