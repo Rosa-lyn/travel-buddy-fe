@@ -5,6 +5,8 @@ import Main from "./components/Main.jsx";
 import SignUpForm from "./components/SignUpForm.jsx";
 import SignUpSuccess from "./components/SignUpSuccess.jsx";
 import LoginForm from "./components/LoginForm.jsx";
+import ExperienceScreen from "./components/ExperienceScreen";
+import AddExperience from "./components/AddExperience";
 
 function App() {
   return (
@@ -14,6 +16,8 @@ function App() {
         <SignUpForm path="/signup" />
         <SignUpSuccess path="/signupsuccess" />
         <LoginForm path="/login" />
+        <ExperienceScreen path="/experience" />
+        <AddExperience path="/addexperience" />
       </Router>
     </div>
   );
