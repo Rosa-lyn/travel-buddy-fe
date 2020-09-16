@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Link } from "@reach/router";
-import { Map, TileLayer, Marker, Popup } from "react-leaflet";
+
+import ExperienceMap from "./ExperienceMap";
 
 class MapContainer extends Component {
   state = {
@@ -62,39 +62,16 @@ class MapContainer extends Component {
   render() {
     const { center, zoom, experiences } = this.state;
     return (
-      <Map
-        className="Map"
-        center={center}
-        zoom={zoom}
-        onclick={this.addExperience}
-      >
-        <TileLayer
-          attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+      <section>
+        <ExperienceMap
+          center={center}
+          zoom={zoom}
+          experiences={experiences}
+          zoomToExperience={this.zoomToExperience}
+          closePopup={this.closePopup}
+          addExperience={this.addExperience}
         />
-        {experiences.map((experience) => {
-          console.log(experience);
-          const {
-            title,
-            username,
-            location_lat,
-            location_long,
-            created_at,
-          } = experience;
-          const markerPosition = [location_lat, location_long];
-          return (
-            <Marker position={markerPosition} onClick={this.zoomToExperience}>
-              <Popup onClose={this.closePopup}>
-                <h1>{title}</h1>
-                <p>
-                  {username} on {created_at}
-                </p>
-                <Link to="/experience">...read more</Link>
-              </Popup>
-            </Marker>
-          );
-        })}
-      </Map>
+      </section>
     );
   }
 }
