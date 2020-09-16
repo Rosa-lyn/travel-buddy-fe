@@ -9,6 +9,7 @@ class MapContainer extends Component {
     zoom: 2,
     experiences: [
       {
+        experience_id: 123456789,
         title: "Fab place to watch street performers.",
         body:
           "Saw some great acts here on saturday lunchtime, look out for the guy with the pogo stick, he will blow your mind.",

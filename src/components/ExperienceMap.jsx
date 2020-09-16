@@ -18,8 +18,8 @@ const ExperienceMap = (props) => {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       {experiences.map((experience) => {
-        console.log(experience);
         const {
+          experience_id,
           title,
           username,
           location_lat,
@@ -28,7 +28,11 @@ const ExperienceMap = (props) => {
         } = experience;
         const markerPosition = [location_lat, location_long];
         return (
-          <Marker position={markerPosition} onClick={zoomToExperience}>
+          <Marker
+            key={experience_id}
+            position={markerPosition}
+            onClick={zoomToExperience}
+          >
             <Popup onClose={closePopup}>
               <h1>{title}</h1>
               <p>
