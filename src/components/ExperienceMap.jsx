@@ -40,6 +40,7 @@ const ExperienceMap = (props) => {
           </Marker>
         );
       })}
+      {/* this marker will only show when the map is clicked */}
       {newExperience !== null && (
         <Marker
           key={newExperience.experience_id}
