@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-
 import ExperienceMap from "./ExperienceMap";
+import AddExperience from "./AddExperience";
 
 class MapContainer extends Component {
   state = {
@@ -21,6 +21,7 @@ class MapContainer extends Component {
         belongs_to_tag_text: ["#streetPerformers", "#outdoorExperience"],
       },
     ],
+    newExperience: null,
   };
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(
@@ -46,32 +47,35 @@ class MapContainer extends Component {
     this.setState({ zoom: 14 });
   };
   addExperience = (event) => {
-    const { currentUser, experiences } = this.state; // this will probably actually be passed down from App as a prop once backend is implemented
+    const { currentUser } = this.state; // this will probably actually be passed down from App as a prop once backend is implemented
     const { lat, lng } = event.latlng;
-    experiences.push({
-      title: "",
-      body: "",
+    const newExperience = {
+      experience_id: "temp_id",
+      title: null,
+      body: null,
       username: currentUser,
       created_at: Date.now(),
       location_lat: lat,
       location_long: lng,
       likes: 0,
       belongs_to_tag_text: [],
-    });
-    this.setState({ experiences });
+    };
+    this.setState({ newExperience, center: [lat, lng], zoom: 18 });
   };
   render() {
-    const { center, zoom, experiences } = this.state;
+    const { center, zoom, experiences, newExperience } = this.state;
     return (
       <section>
         <ExperienceMap
           center={center}
           zoom={zoom}
           experiences={experiences}
+          newExperience={newExperience}
           zoomToExperience={this.zoomToExperience}
           closePopup={this.closePopup}
           addExperience={this.addExperience}
         />
+        <AddExperience />
       </section>
     );
   }

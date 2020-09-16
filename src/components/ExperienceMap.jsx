@@ -10,6 +10,7 @@ const ExperienceMap = (props) => {
     zoomToExperience,
     closePopup,
     addExperience,
+    newExperience,
   } = props;
   return (
     <Map className="Map" center={center} zoom={zoom} onclick={addExperience}>
@@ -28,11 +29,7 @@ const ExperienceMap = (props) => {
         } = experience;
         const markerPosition = [location_lat, location_long];
         return (
-          <Marker
-            key={experience_id}
-            position={markerPosition}
-            onClick={zoomToExperience}
-          >
+          <Marker key={experience_id} position={markerPosition}>
             <Popup onClose={closePopup}>
               <h1>{title}</h1>
               <p>
@@ -43,6 +40,18 @@ const ExperienceMap = (props) => {
           </Marker>
         );
       })}
+      {newExperience !== null && (
+        <Marker
+          key={newExperience.experience_id}
+          position={[newExperience.location_lat, newExperience.location_long]}
+          onClick={zoomToExperience}
+        >
+          <Popup>
+            <p>Do you want to add your experience here?</p>
+            <Link to="/addexperience">yes</Link>
+          </Popup>
+        </Marker>
+      )}
     </Map>
   );
 };
