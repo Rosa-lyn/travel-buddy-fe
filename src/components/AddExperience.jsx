@@ -1,12 +1,28 @@
-import React from 'react';
-import { FormContainer, FormInput, FormTitle, FormTextarea, Button, ButtonContainer, FormLabel, FormInnnerContainer } from '../styles/AddExperienceStyles'
+import React, { Component } from "react";
+import { Link } from '@reach/router';
+// import ErrorHandler from "./ErrorHandler";
+// import Loader from "./Loader";
+// import * as api from "../utils/api";
+import {
+  FormContainer,
+  FormInput,
+  FormTitle,
+  FormTextarea,
+  Button,
+  ButtonContainer,
+  FormLabel,
+  FormInnnerContainer,
+  CloseButton
+} from '../styles/AddExperienceStyles'
 
 class AddExperience extends React.Component {
 
   state = {
     title: "",
-    username: "tillRitzy",
     body: "",
+    // experience_id= "",
+    err: "",
+    isLoading: true,
   }
 
   handleTitleChange = (e) => {
@@ -20,9 +36,20 @@ class AddExperience extends React.Component {
   handleSubmit = async (e) => {
     e.preventDefault()
     this.setState({ body: "", title: "" })
+    const { title } = this.state;
     const { body } = this.state;
-    // this.state.body.length && await api.addExperience(this.props.id, body)
-    // need separate file with api calls
+    const { username } = this.props;
+    const { experience_id } = this.state;
+    // this.state.body.length &&
+    //   api
+    //     .postExperience(title, body, username, experience_id)
+    //     .then((postedExperience) => {
+    //       this.props.addExperienceToState(postedExperience);
+    //       this.setState({ title: "", body: "", experience_id: "", username: "" })
+    //     })
+    //     .catch((err) => {
+    //       this.setState({ err: err.response.data.msg, isLoading: false });
+    //     });
   }
 
   render() {
@@ -31,11 +58,12 @@ class AddExperience extends React.Component {
       <FormContainer>
         <FormInnnerContainer>
           <FormTitle>add your experience</FormTitle>
+          <CloseButton to="/">x</CloseButton>
           <form onSubmit={this.handleSubmit}>
             <FormLabel htmlFor="addTitle">add experience title</FormLabel>
-            <FormInput id="1" onChange={this.handleTitleChange} type="text" value={this.state.title} placeholder="add your title"></FormInput>
+            <FormInput experience_id="1" onChange={this.handleTitleChange} type="text" value={this.state.title} placeholder="add your title"></FormInput>
             <FormLabel htmlFor="addExperience">describe your experience</FormLabel>
-            <FormTextarea id="2" onChange={this.handleBodyChange} type="textarea" value={this.state.body}
+            <FormTextarea experience_id="2" onChange={this.handleBodyChange} type="textarea" value={this.state.body}
               id="addExperience" name="addExperience" placeholder="add your experience"
               rows="6" cols="40" />
             <ButtonContainer>

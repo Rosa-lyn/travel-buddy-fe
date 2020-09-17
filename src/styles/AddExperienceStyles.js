@@ -110,3 +110,9 @@ export const ButtonContainer = styled.div`
   justify-content: space-between;
   margin: 1rem 0 1.5rem 0;
 `
+export const CloseButton = styled.link`
+font-family: helvetica;
+font-size: .6rem;
+font-weight: 200;
+color: #C5C5C5;
+`
