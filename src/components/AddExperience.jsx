@@ -35,12 +35,7 @@ class AddExperience extends Component {
 
   handleBodyChange = (e) => {
     const { value } = e.target;
-    this.setState({ tags: { value } })
-  }
-
-  handleTagChange = (e) => {
-    const { value } = e.target;
-    this.setState({ tags: { value } })
+    this.setState({ body: { value } })
   }
 
   handleSubmit = (e) => {
