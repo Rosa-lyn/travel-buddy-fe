@@ -7,7 +7,7 @@ class AddComment extends Component {
   state = {
     body: "",
     err: "",
-    isLoading: true,
+    isLoading: false,
   };
 
   handleInputChange = (event) => {
