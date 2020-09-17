@@ -47,6 +47,10 @@ font-weight: 200;
 color: rgb(63, 63, 63);
 `;
 
+export const FormFont = styled.form`
+  font-family: helvetica;
+`
+
 export const FormInput = styled.input`
 background-color: #C5C5C5;
 height: 1.5rem;
@@ -55,15 +59,15 @@ border-style: none;
 border-radius: 0.3rem;
 
 :: placeholder,
-:: -webkit-textarea-placeholder {
-  font-family: helvetica;
+:: -webkit-input-placeholder {
+  font-family: inherit;
   font-size: .8rem;
   font-weight: 200;
   color: white;
   padding: 0 0 0 .2rem;
 }
-: -ms-textarea-placeholder {
-  font-family: helvetica;
+: -ms-input-placeholder {
+  font-family: inherit;
   font-size: .8rem;
   font-weight: 200;
   color: white;
@@ -96,46 +100,49 @@ border-radius: 0.3rem;
 `;
 
 export const Button = styled.input`
-background-color: #BB6BD9;
-font-family: helvetica;
-font-size: .7rem;
-font-weight: 200;
-color: white;
-border: none;
-border-radius: .2rem;
-height: 1.2rem;
-width: 4.5rem; 
+  background-color: #BB6BD9;
+  font-family: helvetica;
+  font-size: .7rem;
+  font-weight: 200;
+  color: white;
+  border: none;
+  border-radius: .2rem;
+  height: 1.2rem;
+  width: 4.5rem; 
   `;
 
 export const ButtonContainer = styled.div`
-display: flex;
-justify-content: space-between;
-margin-top: 1rem;
-margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
 `
 
 export const CloseButton = styled(Link)`
-font-family: helvetica;
-font-size: .8rem;
-font-weight: 200;
-text-decoration: none;
-text-align: right;
-margin: .6rem 0 0 0;
-color: rgb(63, 63, 63)
+  font-family: helvetica;
+  font-size: .8rem;
+  font-weight: 200;
+  text-decoration: none;
+  text-align: right;
+  margin: .6rem 0 0 0;
+  color: rgb(63, 63, 63)
 `
 
 export const AddImageButton = styled(Link)`
-background-color: #BB6BD9;
-font-family: helvetica;
-font-size: .7rem;
-font-weight: 200;
-color: white;
-border: none;
-border-radius: .2rem;
-height: 1.2rem;
-line-height: 1.2rem;
-width: 4.5rem;
-text-decoration: none;
-text-align: center;
-justify-content: center;
+  background-color: #BB6BD9;
+  font-family: helvetica;
+  font-size: .7rem;
+  font-weight: 200;
+  color: white;
+  border: none;
+  border-radius: .2rem;
+  height: 1.2rem;
+  line-height: 1.2rem;
+  width: 4.5rem;
+  text-decoration: none;
+  text-align: center;
+  justify-content: center;
 `
+// export const FormText = styled(input[type=text])`
+
+// `

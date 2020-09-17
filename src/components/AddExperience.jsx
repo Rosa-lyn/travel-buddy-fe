@@ -13,7 +13,8 @@ import {
   FormLabel,
   FormInnnerContainer,
   CloseButton,
-  AddImageButton
+  AddImageButton,
+  FormFont
 } from '../styles/AddExperienceStyles'
 
 class AddExperience extends Component {
@@ -35,8 +36,7 @@ class AddExperience extends Component {
   // out hastags iand save them on a separate key
 
   handleBodyChange = (e) => {
-    const { value } = e.target;
-    this.setState({ body: { value } })
+    this.setState({ body: e.target.value })
   }
 
   handleSubmit = (e) => {
@@ -48,10 +48,10 @@ class AddExperience extends Component {
     const { username } = this.props;
     this.state.body &&
       api
-        .postExperience(title, body, tag, username)
+        .postExperience(title, body, username)
         .then((postedExperience) => {
           this.props.addExperienceToState(postedExperience);
-          this.setState({ title: "", body: "", tag: "" })
+          this.setState({ title: "", body: "" })
         })
         .catch((err) => {
           this.setState({ err: err.response.data.msg, isLoading: false });
@@ -69,18 +69,18 @@ class AddExperience extends Component {
         <FormInnnerContainer>
           <CloseButton to="/">x</CloseButton>
           <FormTitle>add your experience</FormTitle>
-          <form onSubmit={this.handleSubmit}>
+          <FormFont onSubmit={this.handleSubmit}>
             <FormLabel htmlFor="addTitle">add experience title</FormLabel>
             <FormInput onChange={this.handleTitleChange} type="text" value={this.state.title} placeholder="add your title"></FormInput>
             <FormLabel htmlFor="addExperience">describe your experience</FormLabel>
             <FormTextarea onChange={this.handleBodyChange} type="textarea" value={this.state.body}
-              id="addExperience" name="addExperience" placeholder="add your experience"
+              name="addExperience" placeholder="add your experience"
               rows="6" cols="40" />
             <ButtonContainer>
               <AddImageButton to="/addimage">add image</AddImageButton>
               <Button onClick={this.handleSubmit} type="submit" value="post" />
             </ButtonContainer>
-          </form>
+          </FormFont>
         </FormInnnerContainer>
       </FormContainer>
     );
