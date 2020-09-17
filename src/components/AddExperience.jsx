@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { Link } from "@reach/router";
 import ErrorHandler from "./ErrorHandler";
 import Loader from "./Loader";
 import * as api from "../utils/api";
+
 import {
   FormContainer,
   FormInput,
@@ -20,7 +20,7 @@ class AddExperience extends Component {
   state = {
     title: "",
     body: "",
-    tag: "",
+    tags: [],
     err: "",
     isLoading: true,
   }
@@ -29,12 +29,18 @@ class AddExperience extends Component {
     this.setState({ title: e.target.value })
   }
 
+  // re: hashtags - body is set in state, then a 
+  // function is needed in the backend to filter 
+  // out hastags iand save them on a separate key
+
   handleBodyChange = (e) => {
-    this.setState({ body: e.target.value })
+    const { value } = e.target;
+    this.setState({ tags: { value } })
   }
 
   handleTagChange = (e) => {
-    this.setState({ tag: e.target.value })
+    const { value } = e.target;
+    this.setState({ tags: { value } })
   }
 
   handleSubmit = (e) => {
@@ -58,15 +64,15 @@ class AddExperience extends Component {
 
   render() {
 
-    const { err, isLoading } = this.state;
-    if (isLoading) return <Loader />;
-    if (err) return <ErrorHandler msg={err} />;
+    // const { err, isLoading } = this.state;
+    // if (isLoading) return <Loader />;
+    // if (err) return <ErrorHandler msg={err} />;
 
     return (
       <FormContainer>
         <FormInnnerContainer>
+          <CloseButton to="/">x</CloseButton>
           <FormTitle>add your experience</FormTitle>
-          <CloseButton><Link to="/">x</Link></CloseButton>
           <form onSubmit={this.handleSubmit}>
             <FormLabel htmlFor="addTitle">add experience title</FormLabel>
             <FormInput onChange={this.handleTitleChange} type="text" value={this.state.title} placeholder="add your title"></FormInput>
@@ -74,8 +80,6 @@ class AddExperience extends Component {
             <FormTextarea experience_id="2" onChange={this.handleBodyChange} type="textarea" value={this.state.body}
               id="addExperience" name="addExperience" placeholder="add your experience"
               rows="6" cols="40" />
-            <FormLabel htmlFor="addTag">add a custom tag</FormLabel>
-            <FormInput onChange={this.handleTagChange} type="text" value={this.state.tag} placeholder="add your tags"></FormInput>
             <ButtonContainer>
               <Button type="submit" value="add image" />
               <Button type="submit" value="post" />
