@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Link } from "@reach/router";
 
 
-export const FormContainer = styled.form`
+export const FormContainer = styled.div`
 justify-content: center;
 width: 90vw;
 display: flex;
@@ -50,7 +50,7 @@ color: rgb(63, 63, 63);
 export const FormInput = styled.input`
 background-color: #C5C5C5;
 height: 1.5rem;
-width: 80vw;
+width: 79vw;
 border-style: none;
 border-radius: 0.3rem;
 
@@ -60,21 +60,21 @@ border-radius: 0.3rem;
   font-size: .8rem;
   font-weight: 200;
   color: white;
-  padding-left: .2rem;
+  padding: 0 0 0 .2rem;
 }
 : -ms-textarea-placeholder {
   font-family: helvetica;
   font-size: .8rem;
   font-weight: 200;
   color: white;
-  padding-left: .2rem;
+  padding: 0 0 0 .2rem;
 }
 `;
 
 export const FormTextarea = styled.textarea`
 background-color: #C5C5C5;
 height: 8rem;
-width: 80vw;
+width: 79vw;
 border-style: none;
 border-radius: 0.3rem;
 
@@ -84,14 +84,14 @@ border-radius: 0.3rem;
   font-size: .8rem;
   font-weight: 200;
   color: white;
-  padding-left: .2rem;
+  padding: .2rem .1rem 0 .2rem;
 }
   : -ms-textarea-placeholder {
   font-family: helvetica;
   font-size: .8rem;
   font-weight: 200;
   color: white;
-  padding-left: .2rem;
+  padding: 0 0 0 .2rem;
 }
 `;
 
@@ -109,14 +109,17 @@ width: 4.5rem; s
 
 export const ButtonContainer = styled.div`
 display: flex;
-width: 80vw;
 justify-content: space-between;
-margin: 1rem 0 1.5rem 0;
+margin-top: 1rem;
+margin-bottom: 1.5rem;
 `
 
 export const CloseButton = styled(Link)`
 font-family: helvetica;
-font-size: .6rem;
+font-size: .8rem;
 font-weight: 200;
-color: #C5C5C5;
+text-decoration: none;
+text-align: right;
+margin: .6rem 0 0 0;
+color: rgb(63, 63, 63)
 `
