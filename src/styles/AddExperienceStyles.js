@@ -104,7 +104,7 @@ color: white;
 border: none;
 border-radius: .2rem;
 height: 1.2rem;
-width: 4.5rem; s
+width: 4.5rem; 
   `;
 
 export const ButtonContainer = styled.div`
@@ -122,4 +122,20 @@ text-decoration: none;
 text-align: right;
 margin: .6rem 0 0 0;
 color: rgb(63, 63, 63)
+`
+
+export const AddImageButton = styled(Link)`
+background-color: #BB6BD9;
+font-family: helvetica;
+font-size: .7rem;
+font-weight: 200;
+color: white;
+border: none;
+border-radius: .2rem;
+height: 1.2rem;
+line-height: 1.2rem;
+width: 4.5rem;
+text-decoration: none;
+text-align: center;
+justify-content: center;
 `
