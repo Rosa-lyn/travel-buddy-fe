@@ -143,6 +143,3 @@ export const AddImageButton = styled(Link)`
   text-align: center;
   justify-content: center;
 `
-// export const FormText = styled(input[type=text])`
-
-// `

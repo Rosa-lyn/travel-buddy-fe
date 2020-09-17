@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import ErrorHandler from "./ErrorHandler";
-import Loader from "./Loader";
 import * as api from "../utils/api";
 
 import {
