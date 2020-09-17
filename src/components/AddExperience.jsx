@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "@reach/router";
-// import ErrorHandler from "./ErrorHandler";
-// import Loader from "./Loader";
-// import * as api from "../utils/api";
+import ErrorHandler from "./ErrorHandler";
+import Loader from "./Loader";
+import * as api from "../utils/api";
 import {
   FormContainer,
   FormInput,
@@ -38,16 +38,16 @@ class AddExperience extends React.Component {
     const { title } = this.state;
     const { body } = this.state;
     const { username } = this.props;
-    // this.state.body.length &&
-    //   api
-    //     .postExperience(title, body, username, experience_id)
-    //     .then((postedExperience) => {
-    //       this.props.addExperienceToState(postedExperience);
-    //       this.setState({ title: "", body: "", experience_id: "", username: "" })
-    //     })
-    //     .catch((err) => {
-    //       this.setState({ err: err.response.data.msg, isLoading: false });
-    //     });
+    this.state.body &&
+      api
+        .postExperience(title, body, username)
+        .then((postedExperience) => {
+          this.props.addExperienceToState(postedExperience);
+          this.setState({ title: "", body: "" })
+        })
+        .catch((err) => {
+          this.setState({ err: err.response.data.msg, isLoading: false });
+        });
   }
 
   render() {
