@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from '@reach/router';
+import { Link } from "@reach/router";
 // import ErrorHandler from "./ErrorHandler";
 // import Loader from "./Loader";
 // import * as api from "../utils/api";
@@ -20,7 +20,6 @@ class AddExperience extends React.Component {
   state = {
     title: "",
     body: "",
-    // experience_id= "",
     err: "",
     isLoading: true,
   }
@@ -39,7 +38,6 @@ class AddExperience extends React.Component {
     const { title } = this.state;
     const { body } = this.state;
     const { username } = this.props;
-    const { experience_id } = this.state;
     // this.state.body.length &&
     //   api
     //     .postExperience(title, body, username, experience_id)
@@ -58,7 +56,7 @@ class AddExperience extends React.Component {
       <FormContainer>
         <FormInnnerContainer>
           <FormTitle>add your experience</FormTitle>
-          <CloseButton to="/">x</CloseButton>
+          <CloseButton><Link to="/">x</Link></CloseButton>
           <form onSubmit={this.handleSubmit}>
             <FormLabel htmlFor="addTitle">add experience title</FormLabel>
             <FormInput experience_id="1" onChange={this.handleTitleChange} type="text" value={this.state.title} placeholder="add your title"></FormInput>
