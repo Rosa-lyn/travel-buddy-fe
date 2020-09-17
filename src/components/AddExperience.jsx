@@ -52,6 +52,10 @@ class AddExperience extends React.Component {
 
   render() {
 
+    const { err, isLoading } = this.state;
+    if (isLoading) return <Loader />;
+    if (err) return <ErrorHandler msg={err} />;
+
     return (
       <FormContainer>
         <FormInnnerContainer>
