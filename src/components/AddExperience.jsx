@@ -56,7 +56,7 @@ class AddExperience extends React.Component {
       <FormContainer>
         <FormInnnerContainer>
           <FormTitle>add your experience</FormTitle>
-          <CloseButton><Link to="/">x</Link></CloseButton>
+          {/* <CloseButton><Link to="/">x</Link></CloseButton> */}
           <form onSubmit={this.handleSubmit}>
             <FormLabel htmlFor="addTitle">add experience title</FormLabel>
             <FormInput experience_id="1" onChange={this.handleTitleChange} type="text" value={this.state.title} placeholder="add your title"></FormInput>
