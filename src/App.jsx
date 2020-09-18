@@ -17,7 +17,7 @@ function App() {
         <SignUpForm path="/signup" />
         <SignUpSuccess path="/signupsuccess" />
         <LoginForm path="/login" />
-        <ExperienceScreen path="/experience" />
+        <ExperienceScreen path="/experience/:experience_id" />
         <AddExperience path="/addexperience" />
         <AddComment path="/addcomment" />
       </Router>{" "}
