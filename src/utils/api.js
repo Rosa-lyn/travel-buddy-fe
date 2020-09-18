@@ -57,3 +57,21 @@ export const getSingleExperience = (experience_id) => {
 export const postComment = () => {
   console.log("not written yet");
 };
+
+// added these as placeholders as throwing error
+
+export const deleteComment = () => {
+  console.log("not written yet");
+};
+
+export const getCommentsByExperienceId = () => {
+  console.log("not written yet");
+};
+
+export const patchLikes = () => {
+  console.log("not written yet");
+};
+
+export const postExperience = () => {
+  console.log("not written yet");
+};
