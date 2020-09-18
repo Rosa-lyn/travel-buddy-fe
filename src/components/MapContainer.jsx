@@ -75,7 +75,6 @@ class MapContainer extends Component {
           closePopup={this.closePopup}
           addExperience={this.addExperience}
         />
-        <AddExperience />
       </section>
     );
   }
