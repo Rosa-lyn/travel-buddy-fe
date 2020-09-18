@@ -69,6 +69,7 @@ class AddExperience extends Component {
         <FormInnnerContainer>
           <CloseButton to="/">x</CloseButton>
           <FormTitle>add your experience</FormTitle>
+
           <FormFont onSubmit={this.handleSubmit}>
             <FormLabel htmlFor="addTitle">add experience title</FormLabel>
             <FormInput onChange={this.handleTitleChange} type="text" value={this.state.title} placeholder="add your title"></FormInput>
