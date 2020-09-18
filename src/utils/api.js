@@ -19,6 +19,41 @@ export const getAllExperiences = () => {
   );
 };
 
+export const getSingleExperience = (experience_id) => {
+  // const query = {
+  //   query: `{experience(experience_id:${experience_id}) {experience_id title body username created_at location_lat location_long likes}}`,
+  // };
+
+  const query = {
+    query: `{experience(experience_id:${experience_id}) {
+    experience_id
+    title
+    body
+    username
+    created_at
+    location_lat
+    location_long
+    likes
+  }
+  comments(experience_id:${experience_id}) {
+    comment_id
+    created_at
+    body
+    likes
+    username
+  }
+  images(experience_id:${experience_id}) {
+    image_id
+    image_desc
+    image_URL
+  }}`,
+  };
+
+  return instance.post("/", query).then(({ data: { data } }) => data);
+
+  // return instance.post("/", query).then((res) => console.log(res.data.data.images));
+};
+
 export const postComment = () => {
   console.log("not written yet");
 };

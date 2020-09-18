@@ -40,11 +40,14 @@ class MapContainer extends Component {
         console.error(JSON.stringify(err));
       }
     );
-    api.getAllExperiences().then((experiences) =>
-      this.setState((currentState) => {
-        return { ...currentState, experiences };
-      })
-    );
+    api
+      .getAllExperiences()
+      .then((experiences) =>
+        this.setState((currentState) => {
+          return { ...currentState, experiences };
+        })
+      )
+      .catch((err) => console.error(JSON.stringify(err)));
   }
   zoomToExperience = (event) => {
     const { lat, lng } = event.latlng;
