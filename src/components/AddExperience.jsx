@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import * as api from "../utils/api";
+import FileUpload from './FileUpload'
 
 import {
   FormContainer,
@@ -79,6 +80,7 @@ class AddExperience extends Component {
               <Button onClick={this.handleSubmit} type="submit" value="post" />
             </ButtonContainer>
           </FormFont>
+          <FileUpload />
         </FormInnnerContainer>
       </FormContainer>
     );
