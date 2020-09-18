@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import * as api from "../utils/api";
 import FileUpload from './FileUpload';
-import separatesHashtags from './utils';
+import separatesHashtags from '../utils/utils';
 
 import {
   FormContainer,
