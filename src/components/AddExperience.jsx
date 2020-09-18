@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import * as api from "../utils/api";
-import FileUpload from './FileUpload'
+import FileUpload from './FileUpload';
+import separatesHashtags from './utils';
 
 import {
   FormContainer,
@@ -40,14 +41,14 @@ class AddExperience extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    this.setState({ body: "", title: "" })
+
     const { title } = this.state;
     const { body } = this.state;
-    const { tag } = this.state;
     const { username } = this.props;
+    const tags = separatesHashtags(body)
     this.state.body &&
       api
-        .postExperience(title, body, username)
+        .postExperience(title, body, username, tags)
         .then((postedExperience) => {
           this.props.addExperienceToState(postedExperience);
           this.setState({ title: "", body: "" })
