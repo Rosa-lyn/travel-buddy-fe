@@ -5,18 +5,18 @@ import Logo from "./Logo";
 import SignUpButton from "./SignUpButton";
 import FindLocation from "./FindLocation";
 import InfoButton from "./InfoButton";
+import { FormContainer } from '../styles/headerStyles';
 
 const Header = () => {
   return (
-    <header>
-      <p>Travel Buddy</p>
+    <FormContainer>
       <Logo />
       <Search />
       <LoginButton />
       <SignUpButton />
       <FindLocation />
       <InfoButton />
-    </header>
+    </FormContainer>
   );
 };
 

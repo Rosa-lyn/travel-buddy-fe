@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "@reach/router";
+import { SignUpLink } from '../styles/headerStyles';
 
 const SignUpButton = () => {
-  return <Link to="/signup">sign up</Link>;
+  return <SignUpLink to="/signup">sign up</SignUpLink>;
 };
 
 export default SignUpButton;

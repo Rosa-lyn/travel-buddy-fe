@@ -1,12 +1,14 @@
 import React from "react";
+import { FindLocationButton } from '../styles/headerStyles';
+import { PlusCircleIcon } from '@primer/octicons-react'
 
 const FindLocation = () => {
   return (
-    <button>
+    <FindLocationButton>
       <span role="img" aria-label="compass">
-        🧭
+        <PlusCircleIcon size={16} />
       </span>
-    </button>
+    </FindLocationButton>
   );
 };
 
