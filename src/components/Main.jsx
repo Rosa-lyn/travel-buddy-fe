@@ -6,7 +6,7 @@ const Main = () => {
   return (
     <section>
       <Header />
-      <MapContainer />
+      {/* <MapContainer /> */}
     </section>
   );
 };

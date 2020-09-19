@@ -4,7 +4,7 @@ import { SignUpTitle } from '../styles/headerStyles';
 
 class SignUpForm extends Component {
   handleSubmit = () => {
-    navigate("/signupsuccess"); s
+    navigate("/signupsuccess");
   };
   render() {
     return (
