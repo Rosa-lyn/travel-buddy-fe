@@ -1,6 +1,13 @@
 import React, { Component } from "react";
 import { storage } from "../firebase/index";
 
+import {
+  AddImageButton,
+  FileUploadLabel,
+  FileStatus,
+  ChooseFileButton
+} from '../styles/AddExperienceStyles'
+
 class FileUpload extends Component {
   state = {
     selectedFile: null,
@@ -41,23 +48,23 @@ class FileUpload extends Component {
     return (
       <div>
         <form onSubmit={this.uploadImage}>
-          <label htmlFor="myfile">add your image:</label>
+          <FileUploadLabel htmlFor="myfile">add your image:</FileUploadLabel>
           <input
             type="file"
             id="myfile"
             name="myfile"
             onChange={this.chooseFile}
           />
-          <input type="submit" value="upload image" />
+          <AddImageButton type="submit" value="add image" />
         </form>
         <section>
           {selectedFile && (
-            <p>
-              file name: {selectedFile.name}
+            <FileStatus>
+              you chose {selectedFile.name}
               {/* <br />
               size: {selectedFile.size} bytes
               <br /> */}
-            </p>
+            </FileStatus>
           )}
           {/* {uploadedFileURL.length > 0 && (
             <div>
