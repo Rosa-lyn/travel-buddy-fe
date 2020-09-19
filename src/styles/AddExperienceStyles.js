@@ -37,7 +37,6 @@ font-size: .8rem;
 font-weight: 200;
 color: rgb(63, 63, 63);
 margin: .6rem 0 .2rem 0;
-
 `;
 
 export const FormTitle = styled.h1`
@@ -127,8 +126,9 @@ export const CloseButton = styled(Link)`
   margin: .6rem 0 0 0;
   color: rgb(63, 63, 63)
 `
+//FileUpload styles
 
-export const AddImageButton = styled(Link)`
+export const ChooseFileButton = styled.input`
   background-color: #BB6BD9;
   font-family: helvetica;
   font-size: .7rem;
@@ -142,4 +142,40 @@ export const AddImageButton = styled(Link)`
   text-decoration: none;
   text-align: center;
   justify-content: center;
-`
+`;
+
+export const AddImageButton = styled.input`
+  background-color: #BB6BD9;
+  font-family: helvetica;
+  font-size: .7rem;
+  font-weight: 200;
+  color: white;
+  border: none;
+  border-radius: .2rem;
+  height: 1.2rem;
+  line-height: 1.2rem;
+  width: 4.5rem;
+  text-decoration: none;
+  text-align: center;
+  justify-content: center;
+`;
+
+export const FileUploadLabel = styled.label`
+display: block;
+text-align: left;
+font-family: helvetica;
+font-size: .8rem;
+font-weight: 200;
+color: rgb(63, 63, 63);
+margin: .6rem 0 .2rem 0;
+`;
+
+export const FileStatus = styled.p`
+display: block;
+text-align: left;
+font-family: helvetica;
+font-size: .8rem;
+font-weight: 200;
+color: rgb(63, 63, 63);
+margin: .6rem 0 .2rem 0;
+`;
