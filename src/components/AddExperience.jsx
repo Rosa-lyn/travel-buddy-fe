@@ -13,7 +13,6 @@ import {
   FormLabel,
   FormInnnerContainer,
   CloseButton,
-  AddImageButton,
   FormFont
 } from '../styles/AddExperienceStyles'
 
@@ -78,7 +77,7 @@ class AddExperience extends Component {
               name="addExperience" placeholder="add your experience"
               rows="6" cols="40" />
             <ButtonContainer>
-              <AddImageButton to="/addimage">add image</AddImageButton>
+              {/* <AddImageButton to="/addimage">add image</AddImageButton> */}
               <Button onClick={this.handleSubmit} type="submit" value="post" />
             </ButtonContainer>
           </FormFont>
