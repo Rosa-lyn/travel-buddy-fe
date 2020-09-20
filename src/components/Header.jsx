@@ -5,18 +5,31 @@ import Logo from "./Logo";
 import SignUpButton from "./SignUpButton";
 import FindLocation from "./FindLocation";
 import InfoButton from "./InfoButton";
-import { FormContainer } from '../styles/headerStyles';
+import { Container, OuterContainer, LoginContainer, LogoContainer, LogoType, InfoSignupContainer, SearchFindMeContainer, FindMeButton } from '../styles/headerStyles';
+//styled components for search field
+// import { SearchWrapper, SearchForm, SearchButton } from '../styles/headerStyles';
+
 
 const Header = () => {
   return (
-    <FormContainer>
-      <Logo />
-      <Search />
-      <LoginButton />
-      <SignUpButton />
-      <FindLocation />
-      <InfoButton />
-    </FormContainer>
+    <OuterContainer>
+      <Container>
+        <LoginContainer>
+          <LoginButton />
+        </LoginContainer>
+        <LogoContainer>
+          <LogoType>travel buddy</LogoType>
+          <InfoSignupContainer>
+            <InfoButton />
+            <SignUpButton />
+          </InfoSignupContainer>
+        </LogoContainer>
+        <SearchFindMeContainer>
+          <Search />
+          <FindMeButton />
+        </SearchFindMeContainer>
+      </Container>
+    </OuterContainer>
   );
 };
 
