@@ -9,12 +9,13 @@ class Search extends Component {
       <>
         <form action="" >
           {/* <FormLabel>search for place or tag</FormLabel> */}
-          <FormInput type="text" placeholder="type place or tag">
+          <FormInput type="text" placeholder="type place or tag eg. Paris or #cafe">
           </FormInput>
+          <SearchButton>
+            <i class="fa fa-search"></i>
+          </SearchButton>
         </form>
-        <SearchButton>
-          <i class="fa fa-search"></i>
-        </SearchButton>
+
       </>
     );
   }
