@@ -85,9 +85,9 @@ export const getCommentsByExperienceId = (experience_id) => {
   return instance.post("/", query).then(
     ({
       data: {
-        data: { experiences },
+        data: { comments },
       },
-    }) => experiences
+    }) => comments
   );
 };
 export const deleteComment = (comment_id) => {
