@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Experience from "./Experience";
-import Comments from "./Comments";
+import CommentsList from "./CommentsList";
 import * as api from "../utils/api";
 import Loader from "./Loader";
 
@@ -25,7 +25,7 @@ class ExperienceScreen extends Component {
     return (
       <div>
         <Experience experience={experience} images={images} />
-        <Comments />
+        <CommentsList />
       </div>
     );
   }

@@ -112,10 +112,9 @@ export const deleteComment = (comment_id) => {
 };
 
 export const patchLikes = (experience_id, image_desc, image_URL) => {
-  const mutation = {
-    query: `mutation{addImage(input:{experience_id:${experience_id}, image_desc:${image_desc}, image_URL:${image_URL})}){image_id image_desc image_URL experience_id}}`,
-  };
-
+  // const mutation = {
+  //   query: `mutation{addImage(input:{experience_id:${experience_id}, image_desc:${image_desc}, image_URL:${image_URL})}){image_id image_desc image_URL experience_id}}`,
+  // };
 
   return instance.patch(`/${type}/${id}`, {
     inc_likes
