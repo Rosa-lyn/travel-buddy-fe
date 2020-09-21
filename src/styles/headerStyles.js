@@ -11,11 +11,11 @@ export const OuterContainer = styled.body` height: 100vh;
 //the control panel containing the controls
 export const Container = styled.header` display: block;
   width: 80vw;
-  height: 100px;
+  height: 94px;
   padding: 17px;
   align-items: center;
   border: 1px solid rgb(248, 166, 248);
-  border-radius: .5rem;
+  border-radius: 3px;
   margin-top: 30px;
 `;
 
@@ -31,10 +31,10 @@ export const Button = styled(Link)` background-color: #BB6BD9;
   font-weight: 200;
   color: white;
   border: none;
-  border-radius: .2rem;
-  height: 20px;
-  line-height: 15px;
-  width: 4rem;
+  border-radius: 3px;
+  height: 18px;
+  line-height: 12px;
+  width: 57px;
   text-decoration: none;
   text-align: center;
   justify-content: center;
@@ -98,10 +98,12 @@ width: 80vw;
 
 //the search form
 export const FormInput = styled.input` height: 40px;
+font-family: Arial, Helvetica, sans-serif;
+font-size: .5rem;
 background-color: #C5C5C5;
 height: 1.5rem;
-width: 55vw;
-border-radius: 0.3rem;
+width: 40vw;
+border-radius: 3px;
 grid-column: 1/2;
 border: none;
 justify-self: start;
@@ -109,7 +111,7 @@ justify-self: start;
 :: placeholder,
 :: -webkit-input-placeholder {
 	font-family: inherit;
-	font-size: .8rem;
+	font-size: .5rem;
 	font-weight: 200;
 	color: white;
 	padding: 0 0 0 .2rem;
@@ -117,7 +119,7 @@ justify-self: start;
 
 : -ms-input-placeholder {
 	font-family: inherit;
-	font-size: .8rem;
+	font-size: .5rem;
 	font-weight: 200;
 	color: white;
 	padding: 0 0 0 .2rem;
@@ -130,11 +132,12 @@ export const SearchButton = styled.button`
   background: #BB6BD9;
   text-align: center;
   color: #fff;
-  border-radius: 5px;
+  border-radius: 3px;
   border: none;
   cursor: pointer;
-  font-size: 13px;
+  font-size: 11px;
   grid-column: 2/3;
+  margin: 0 0 0 5px;
 
   :focus {
     outline: 0;
@@ -144,11 +147,10 @@ export const SearchButton = styled.button`
 export const FindMeButton = styled.button` background-color: lightgray;
 width: 40px;
 height: 40px;
-border-radius: 5px;
+border-radius: 3px;
 background-color: #C5C5C5;
 color: white;
 border: none;
-border-radius: .2rem;
 height: 1.6rem;
 line-height: 1.6rem;
 width: 1.6rem;
