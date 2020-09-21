@@ -8,6 +8,7 @@ import LoginForm from "./components/LoginForm.jsx";
 import ExperienceScreen from "./components/ExperienceScreen";
 import AddExperience from "./components/AddExperience";
 import AddComment from "./components/AddComment";
+import AddImage from "./components/AddImage";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <ExperienceScreen path="/experience/:experience_id" />
         <AddExperience path="/addexperience" />
         <AddComment path="/addcomment" />
+        <AddImage path="/addimage" />
       </Router>{" "}
     </div>
   );
