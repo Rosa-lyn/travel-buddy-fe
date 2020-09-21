@@ -8,7 +8,6 @@ export const getAllExperiences = () => {
   const query = {
     query: "{experiences {experience_id title body username created_at location_lat location_long likes}}",
   };
-
   return instance.post("/", query).then(
     ({
       data: {
@@ -21,10 +20,6 @@ export const getAllExperiences = () => {
 };
 
 export const getSingleExperience = (experience_id) => {
-  // const query = {
-  //   query: `{experience(experience_id:${experience_id}) {experience_id title body username created_at location_lat location_long likes}}`,
-  // };
-
   const query = {
     query: `{experience(experience_id:${experience_id}) {
     experience_id
@@ -49,26 +44,42 @@ export const getSingleExperience = (experience_id) => {
     image_URL
   }}`,
   };
-
   return instance.post("/", query).then(({
     data: {
       data
     }
   }) => data);
+};
 
-  // return instance.post("/", query).then((res) => console.log(res.data.data.images));
+//get graphql running and check return keys for then statements
+
+export const postExperience = (title, body, username, created_at, location_lat, location_long) => {
+  const mutation = {
+    query: `mutation{addExperience(input: {title:${title}, body:${body}, username:${username}, created_at:${created_at}, location_lat:${location_lat}, location_long:${location_long}}) {experience_id title body username created_at location_lat location_long likes}}`,
+  };
+  return instance
+    .post("/", mutation)
+    .then(({
+      data: {
+        data
+      }
+    }) => data.addExperience);
+  //check
 };
 
 
-export const postComment = (experience_id, username, body) => {
+export const postComment = (experience_id, body, username) => {
+  const mutation = {
+    query: `mutation{addComment(input: {experience_id:${experience_id}, body:${body}, username:${username}}) {comment_id body username created_at likes}}`,
+  };
   return instance
-    .post(`/experiences/${experience_id}/comments`, {
-      username,
-      body,
-    })
-    .then((res) => {
-      return res.data.comment;
-    });
+    .post("/", mutation)
+    .then(({
+      data: {
+        data
+      }
+    }) => data);
+
 };
 
 export const getCommentsByExperienceId = (experience_id) => {
@@ -96,7 +107,12 @@ export const deleteComment = (comment_id) => {
   return instance.delete(`/comments/${comment_id}`);
 };
 
-export const patchLikes = (id, inc_likes, type) => {
+export const patchLikes = (experience_id, image_desc, image_URL) => {
+  const mutation = {
+    query: `mutation{addImage(input:{experience_id:${experience_id}, image_desc:${image_desc}, image_URL:${image_URL})}){image_id image_desc image_URL experience_id}}`,
+  };
+
+
   return instance.patch(`/${type}/${id}`, {
     inc_likes
   });
