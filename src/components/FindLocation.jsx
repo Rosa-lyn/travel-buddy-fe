@@ -1,12 +1,13 @@
 import React from "react";
+import { FindMeButton } from '../styles/headerStyles';
 
 const FindLocation = () => {
   return (
-    <button>
-      <span role="img" aria-label="compass">
-        🧭
-      </span>
-    </button>
+    <FindMeButton size={16} >
+      {/* <span role="img" aria-label="compass"> */}
+      <i class="far fa-compass" />
+      {/* </span> */}
+    </FindMeButton>
   );
 };
 

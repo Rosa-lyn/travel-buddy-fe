@@ -1,11 +1,13 @@
 import React from "react";
 import InfoPopup from "./InfoPopup";
+import { IButton } from '../styles/headerStyles';
+
 
 const InfoButton = () => {
   return (
     <section>
       {/*  opens info popup */}
-      <button>i</button>
+      <IButton>i</IButton>
       <InfoPopup />
     </section>
   );
