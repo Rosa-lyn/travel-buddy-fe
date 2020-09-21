@@ -2,7 +2,7 @@ import React from "react";
 import LikeHandler from "./LikeHandler";
 
 const CommentCard = ({
-  username,
+  loggedInUser,
   body,
   comment_id,
   likes,
@@ -12,7 +12,7 @@ const CommentCard = ({
   return (
     <li className="comments">
       <p className="author-date">
-        {username} {new Date(created_at).toLocaleString()}
+        {loggedInUser} {new Date(created_at).toLocaleString()}
       </p>
       <p>{body}</p>
       <label>
