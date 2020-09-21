@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ErrorHandler from "./ErrorHandler";
 import Loader from "./Loader";
-import * as api from "../utils/api";
+import * as api from "../utils/api.js";
 
 class AddComment extends Component {
   state = {
@@ -29,10 +29,15 @@ class AddComment extends Component {
       .postComment(experience_id, username, body)
       .then((postedComment) => {
         this.props.addCommentToState(postedComment);
-        this.setState({ body: "" });
+        this.setState({
+          body: "",
+        });
       })
       .catch((err) => {
-        this.setState({ err: err.response.data.msg, isLoading: false });
+        this.setState({
+          err: err.response.data.msg,
+          isLoading: false,
+        });
       });
   };
 
@@ -55,8 +60,8 @@ class AddComment extends Component {
             required
           />
           <input type="submit" value="submit" />
-          <button className="submit-comment">Submit Comment</button>
-        </form>
+          <button className="submit-comment"> Submit Comment </button>{" "}
+        </form>{" "}
       </div>
     );
   }
