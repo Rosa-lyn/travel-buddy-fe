@@ -82,6 +82,10 @@ export const postComment = (experience_id, body, username) => {
 
 };
 
+
+export const deleteComment = () => {
+  console.log("not written yet");
+};
 export const getCommentsByExperienceId = (experience_id) => {
   const query = {
     query: `{comments(experience_id:${experience_id}) {
@@ -116,4 +120,5 @@ export const patchLikes = (experience_id, image_desc, image_URL) => {
   return instance.patch(`/${type}/${id}`, {
     inc_likes
   });
+
 };

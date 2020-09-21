@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { Link } from "@reach/router";
-// import ErrorHandler from "./ErrorHandler";
-// import Loader from "./Loader";
-// import * as api from "../utils/api";
+import * as api from "../utils/api";
+import FileUpload from './FileUpload';
+import separatesHashtags from '../utils/utils';
+
 import {
   FormContainer,
   FormInput,
@@ -12,14 +12,16 @@ import {
   ButtonContainer,
   FormLabel,
   FormInnnerContainer,
-  CloseButton
+  CloseButton,
+  FormFont
 } from '../styles/AddExperienceStyles'
 
-class AddExperience extends React.Component {
+class AddExperience extends Component {
 
   state = {
     title: "",
     body: "",
+    tags: [],
     err: "",
     isLoading: true,
   }
@@ -28,26 +30,35 @@ class AddExperience extends React.Component {
     this.setState({ title: e.target.value })
   }
 
+  // re: hashtags - body is set in state, then a 
+  // function is needed in the backend to filter 
+  // out hastags iand save them on a separate key
+
   handleBodyChange = (e) => {
     this.setState({ body: e.target.value })
   }
 
-  handleSubmit = async (e) => {
+  handleSubmit = (e) => {
     e.preventDefault()
-    this.setState({ body: "", title: "" })
+
     const { title } = this.state;
     const { body } = this.state;
     const { username } = this.props;
-    // this.state.body.length &&
-    //   api
-    //     .postExperience(title, body, username, experience_id)
-    //     .then((postedExperience) => {
-    //       this.props.addExperienceToState(postedExperience);
-    //       this.setState({ title: "", body: "", experience_id: "", username: "" })
-    //     })
-    //     .catch((err) => {
-    //       this.setState({ err: err.response.data.msg, isLoading: false });
-    //     });
+    const tags = separatesHashtags(body)
+    this.state.body &&
+      api
+        .postExperience(title, body, username, tags)
+        .then((postedExperience) => {
+          this.props.addExperienceToState(postedExperience);
+          this.setState({ title: "", body: "" })
+        })
+        .catch((err) => {
+          this.setState({ err: err.response.data.msg, isLoading: false });
+        });
+  }
+
+  handleClick = () => {
+
   }
 
   render() {
@@ -55,20 +66,22 @@ class AddExperience extends React.Component {
     return (
       <FormContainer>
         <FormInnnerContainer>
+          <CloseButton to="/">x</CloseButton>
           <FormTitle>add your experience</FormTitle>
-          {/* <CloseButton><Link to="/">x</Link></CloseButton> */}
-          <form onSubmit={this.handleSubmit}>
+
+          <FormFont onSubmit={this.handleSubmit}>
             <FormLabel htmlFor="addTitle">add experience title</FormLabel>
-            <FormInput experience_id="1" onChange={this.handleTitleChange} type="text" value={this.state.title} placeholder="add your title"></FormInput>
+            <FormInput onChange={this.handleTitleChange} type="text" value={this.state.title} placeholder="add your title"></FormInput>
             <FormLabel htmlFor="addExperience">describe your experience</FormLabel>
-            <FormTextarea experience_id="2" onChange={this.handleBodyChange} type="textarea" value={this.state.body}
-              id="addExperience" name="addExperience" placeholder="add your experience"
+            <FormTextarea onChange={this.handleBodyChange} type="textarea" value={this.state.body}
+              name="addExperience" placeholder="add your experience"
               rows="6" cols="40" />
             <ButtonContainer>
-              <Button type="submit" value="add image" />
-              <Button type="submit" value="post" />
+              {/* <AddImageButton to="/addimage">add image</AddImageButton> */}
+              <Button onClick={this.handleSubmit} type="submit" value="post" />
             </ButtonContainer>
-          </form>
+          </FormFont>
+          <FileUpload />
         </FormInnnerContainer>
       </FormContainer>
     );
