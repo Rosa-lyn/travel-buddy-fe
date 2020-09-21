@@ -39,7 +39,7 @@ class CommentsList extends Component {
     );
   }
   componentDidMount() {
-    this.getComments();
+    this.getCommentsByExperienceId();
   }
   getCommentsByExperienceId = () => {
     const { experience_id } = this.props;
