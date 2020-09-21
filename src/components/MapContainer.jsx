@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import ExperienceMap from "./ExperienceMap";
-import AddExperience from "./AddExperience";
 import * as api from "../utils/api";
 
 class MapContainer extends Component {
