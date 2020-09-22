@@ -52,18 +52,16 @@ export const postExperience = (
   title,
   body,
   username,
-  created_at,
   location_lat,
   location_long
 ) => {
   const mutation = {
     query: `mutation { addExperience(input: {
-      title:${title},
-      body:${body},
-      username:${username},
-      created_at:${created_at},
-      location_lat:${location_lat},
-      location_long:${location_long}
+      title:"${title}",
+      body:"${body}",
+      username:"${username}",
+      location_lat:"${location_lat}",
+      location_long:"${location_long}"
     }) {
       experience_id
       title
