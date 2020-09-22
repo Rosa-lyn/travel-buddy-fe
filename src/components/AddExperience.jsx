@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import * as api from "../utils/api";
 import FileUpload from "./FileUpload";
 import separatesHashtags from "../utils/utils";
+import { navigate } from "@reach/router";
 
 import {
   FormContainer,
@@ -18,9 +19,9 @@ import {
 
 class AddExperience extends Component {
   state = {
-    title: "",
-    body: "",
-    tags: [],
+    // title: "",
+    // body: "",
+    // tags: [],
     err: "",
     isLoading: true,
   };
@@ -41,17 +42,19 @@ class AddExperience extends Component {
     e.preventDefault();
 
     const { title, body } = this.state;
-    const { username } = this.props;
-    //need the coordinates of clicked map
-    // console.log(title, body);
+    const { loggedInUser } = this.props;
+    console.log(title, body);
     // const tags = separatesHashtags(body);
     // console.log(tags);
+    const {
+      newExperience: { location_lat, location_long },
+    } = this.props;
     this.state.body &&
       api
-        .postExperience(title, body, username)
+        .postExperience(title, body, loggedInUser, location_lat, location_long)
         .then((postedExperience) => {
-          this.props.addExperienceToState(postedExperience);
-          this.setState({ title: "", body: "" });
+          console.log(postedExperience);
+          navigate(`/experience/${postedExperience.experience_id}`);
         })
         .catch((err) => {
           this.setState({ err: err.response.data.msg, isLoading: false });
@@ -59,13 +62,13 @@ class AddExperience extends Component {
   };
 
   render() {
-    const { newLat, newLong } = this.props;
+    const {
+      newExperience: { location_lat, location_long },
+    } = this.props;
     return (
       <FormContainer>
         {/* div */}
-        <p>
-          new experience location is: [{newLat}, {newLong}]
-        </p>
+
         <FormInnnerContainer>
           {/* div */}
 
@@ -83,6 +86,7 @@ class AddExperience extends Component {
               type="text"
               value={this.state.title}
               placeholder="add your title"
+              required
             ></FormInput>
             <FormLabel htmlFor="addExperience">
               describe your experience
@@ -95,8 +99,8 @@ class AddExperience extends Component {
               placeholder="add your experience"
               rows="6"
               cols="40"
+              required
             />
-            <FileUpload />
             <ButtonContainer>
               {/* div */}
 
@@ -104,6 +108,7 @@ class AddExperience extends Component {
               <Button type="submit" value="post" />
             </ButtonContainer>
           </FormFont>
+          <FileUpload />
         </FormInnnerContainer>
       </FormContainer>
     );

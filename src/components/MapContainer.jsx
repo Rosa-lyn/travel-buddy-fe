@@ -57,7 +57,7 @@ class MapContainer extends Component {
     const { loggedInUser } = this.props;
     const { lat, lng } = event.latlng;
     const newExperience = {
-      experience_id: "temp_id",
+      experience_id: null,
       title: null,
       body: null,
       username: loggedInUser,
@@ -84,7 +84,7 @@ class MapContainer extends Component {
       newExperience,
       addExperienceClicked,
     } = this.state;
-
+    const { loggedInUser } = this.props;
     return (
       <>
         <OuterContainer>
@@ -102,6 +102,7 @@ class MapContainer extends Component {
           addExperience={this.addExperience}
           toggle={this.toggle}
           addExperienceClicked={addExperienceClicked}
+          loggedInUser={loggedInUser}
         />
       </>
     );
