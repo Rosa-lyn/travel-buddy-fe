@@ -1,5 +1,5 @@
 import React from "react";
-import LikeButton from "./LikeButton";
+import LikeHandler from "./LikeHandler.jsx";
 
 const Experience = ({ experience, images }) => {
   const { title, body, username, created_at, likes } = experience;
@@ -19,7 +19,7 @@ const Experience = ({ experience, images }) => {
         {username} on {date.toLocaleString()}
       </p>
       <p>
-        <LikeButton />
+        <LikeHandler />
         likes: {likes}
       </p>
     </div>
