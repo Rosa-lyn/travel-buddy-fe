@@ -2,30 +2,19 @@ import React, { Component } from "react";
 import ExperienceMap from "./ExperienceMap";
 import AddExperience from "./AddExperience";
 import * as api from "../utils/api";
+import FindLocation from "./FindLocation";
+import Search from "./Search";
 
 class MapContainer extends Component {
   state = {
     currentUser: "roz",
     center: [0, 0],
     zoom: 2,
-    // experiences: [
-    //   {
-    //     experience_id: 123456789,
-    //     title: "Fab place to watch street performers.",
-    //     body:
-    //       "Saw some great acts here on saturday lunchtime, look out for the guy with the pogo stick, he will blow your mind.",
-    //     username: "joey_traveller",
-    //     created_at: 1560347936852,
-    //     location_lat: 53.96268,
-    //     location_long: -1.085605,
-    //     likes: 13,
-    //     belongs_to_tag_text: ["#streetPerformers", "#outdoorExperience"],
-    //   },
-    // ],
     experiences: [],
     newExperience: null,
   };
-  componentDidMount() {
+
+  getUserLocation = (event) => {
     navigator.geolocation.getCurrentPosition(
       ({ coords }) => {
         const lat = coords.latitude;
@@ -40,6 +29,10 @@ class MapContainer extends Component {
         console.error(JSON.stringify(err));
       }
     );
+  };
+
+  componentDidMount() {
+    this.getUserLocation();
     api
       .getAllExperiences()
       .then((experiences) =>
@@ -76,6 +69,8 @@ class MapContainer extends Component {
     const { center, zoom, experiences, newExperience } = this.state;
     return (
       <section>
+        <FindLocation getUserLocation={this.getUserLocation} />
+        <Search />
         <ExperienceMap
           center={center}
           zoom={zoom}

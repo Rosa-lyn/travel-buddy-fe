@@ -35,7 +35,7 @@ const ExperienceMap = (props) => {
               <p>
                 {username} on {created_at}
               </p>
-              <Link to={`/experience/${experience_id}`} >...read more</Link>
+              <Link to={`/experience/${experience_id}`}>...read more</Link>
             </Popup>
           </Marker>
         );
