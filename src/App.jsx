@@ -6,8 +6,6 @@ import SignUpForm from "./components/SignUpForm.jsx";
 import SignUpSuccess from "./components/SignUpSuccess.jsx";
 import LoginForm from "./components/LoginForm.jsx";
 import ExperienceScreen from "./components/ExperienceScreen";
-import AddExperience from "./components/AddExperience";
-import AddImage from "./components/AddImage";
 
 class App extends Component {
   state = {
@@ -18,7 +16,7 @@ class App extends Component {
     return (
       <div className="App">
         <Router>
-          <Main path="/" />
+          <Main path="/" loggedInUser={loggedInUser} />
           <SignUpForm path="/signup" />
           <SignUpSuccess path="/signupsuccess" />
           <LoginForm path="/login" />
@@ -26,10 +24,7 @@ class App extends Component {
             path="/experience/:experience_id"
             loggedInUser={loggedInUser}
           />
-          <AddExperience path="/addexperience" />
-          {/* <AddComment path="/addcomment" /> */}
-          <AddImage path="/addimage" />
-        </Router>{" "}
+        </Router>
       </div>
     );
   }
