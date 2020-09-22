@@ -1,18 +1,19 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "http://localhost:9090/graphql/",
+  baseURL: "https://travel-buddy-2020.herokuapp.com/graphql",
 });
 
 export const getAllExperiences = () => {
   const query = {
-    query:
-      "{experiences {experience_id title body username created_at location_lat location_long likes}}",
+    query: "{experiences {experience_id title body username created_at location_lat location_long likes}}",
   };
   return instance.post("/", query).then(
     ({
       data: {
-        data: { experiences },
+        data: {
+          experiences
+        },
       },
     }) => experiences
   );
@@ -43,7 +44,11 @@ export const getSingleExperience = (experience_id) => {
     image_URL
   }}`,
   };
-  return instance.post("/", query).then(({ data: { data } }) => data);
+  return instance.post("/", query).then(({
+    data: {
+      data
+    }
+  }) => data);
 };
 
 //get graphql running and check return keys for then statements
@@ -61,7 +66,11 @@ export const postExperience = (
   };
   return instance
     .post("/", mutation)
-    .then(({ data: { data } }) => data.addExperience);
+    .then(({
+      data: {
+        data
+      }
+    }) => data.addExperience);
   //check
 };
 
@@ -69,7 +78,11 @@ export const postComment = (experience_id, body, username) => {
   const mutation = {
     query: `mutation{addComment(input: {experience_id:${experience_id}, body:${body}, username:${username}}) {comment_id body username created_at likes}}`,
   };
-  return instance.post("/", mutation).then(({ data: { data } }) => data);
+  return instance.post("/", mutation).then(({
+    data: {
+      data
+    }
+  }) => data);
 };
 
 export const getCommentsByExperienceId = (experience_id) => {
@@ -85,7 +98,9 @@ export const getCommentsByExperienceId = (experience_id) => {
   return instance.post("/", query).then(
     ({
       data: {
-        data: { experiences },
+        data: {
+          experiences
+        },
       },
     }) => experiences
   );
@@ -100,5 +115,9 @@ export const patchLikes = (experience_id, inc_likes) => {
   };
   return instance
     .patch(`/`, mutation)
-    .then(({ data: { updateExperienceLikes } }) => updateExperienceLikes);
+    .then(({
+      data: {
+        updateExperienceLikes
+      }
+    }) => updateExperienceLikes);
 };

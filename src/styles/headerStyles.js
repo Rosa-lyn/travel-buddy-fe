@@ -1,15 +1,17 @@
 import styled from "styled-components";
-import { Link } from "@reach/router";
+import {
+  Link
+} from "@reach/router";
 
 //centres the control panel
-export const OuterContainer = styled.body` height: 100vh;
+export const OuterContainer = styled.body ` height: 100vh;
   width: 100vw;
   display: flex;
   justify-content: center;
 `;
 
 //the control panel containing the controls
-export const Container = styled.header` display: block;
+export const Container = styled.header ` display: block;
   width: 80vw;
   height: 94px;
   padding: 17px;
@@ -20,12 +22,13 @@ export const Container = styled.header` display: block;
 `;
 
 //first flexbox contains login button
-export const LoginContainer = styled.div` display: flex;
+export const LoginContainer = styled.div ` display: flex;
   justify-content: flex-end;
 `;
 
 //the login button
-export const Button = styled(Link)` background-color: #BB6BD9;
+export const Button = styled(Link)
+` background-color: #BB6BD9;
   font-family: helvetica;
   font-size: .8rem;
   font-weight: 200;
@@ -42,12 +45,12 @@ export const Button = styled(Link)` background-color: #BB6BD9;
 `;
 
 //this contains the logo, the info button and signup link
-export const LogoContainer = styled.div` display: flex;
+export const LogoContainer = styled.div ` display: flex;
   justify-content: space-between;
 `;
 
 //the travel buddy logo
-export const LogoType = styled.h1` font-family: "Coiny",
+export const LogoType = styled.h1 ` font-family: "Coiny",
 cursive;
   font-size: 1.3rem;
   font-weight: 200;
@@ -56,12 +59,12 @@ cursive;
 `;
 
 //this sub-contains the info and signup link
-export const InfoSignupContainer = styled.div` display: flex;
+export const InfoSignupContainer = styled.div ` display: flex;
 justify-content: space-between;
 align-items: center;
 width: 62px;
 ` //info button
-export const IButton = styled.button` background-color: lightgray;
+export const IButton = styled.button ` background-color: lightgray;
 border-radius: 50%;
 background-color: #C5C5C5;
 font-family: 'Times New Roman',
@@ -75,21 +78,40 @@ height: 1.3rem;
 line-height: 1rem;
 width: 1.3rem;
 text-decoration: none;
+
+:hover {
+background-color: black;
+}
+`;
+
+//infopopup container
+export const InfoContainer = styled.div ` 
+ width: 20 rem;
+ height: 20 rem;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+background-color: darkgrey;
+`;
+
+export const InfoTextContainer = styled.div ` 
+ 
 `;
 //signup link
-export const SignUpTitle = styled.h1`
+export const SignUpTitle = styled.h1 `
 /* justify-self: flex-start; */
 
 /* align-self: center; */
 
 `;
-export const SignUpLink = styled(Link)` font-family: helvetica;
+export const SignUpLink = styled(Link)
+` font-family: helvetica;
 font-size: .6rem;
 justify-self: flex-start;
 align-self: center;
 `;
 //this contains the search input & findme button
-export const SearchFindMeContainer = styled.div` display: grid;
+export const SearchFindMeContainer = styled.div ` display: grid;
 grid-column-gap: .5rem;
 grid-template-columns: 7fr 1fr;
 height: 40px;
@@ -97,7 +119,7 @@ width: 80vw;
 `;
 
 //the search form
-export const FormInput = styled.input` height: 40px;
+export const FormInput = styled.input ` height: 40px;
 font-family: Arial, Helvetica, sans-serif;
 font-size: .5rem;
 background-color: #C5C5C5;
@@ -126,7 +148,7 @@ justify-self: start;
 }
 `;
 
-export const SearchButton = styled.button`
+export const SearchButton = styled.button `
   width: 26px;
   height: 26px;
   background: #BB6BD9;
@@ -144,7 +166,7 @@ export const SearchButton = styled.button`
   }
 `;
 
-export const FindMeButton = styled.button` background-color: lightgray;
+export const FindMeButton = styled.button ` background-color: lightgray;
 width: 40px;
 height: 40px;
 border-radius: 3px;
@@ -157,6 +179,7 @@ width: 1.6rem;
 grid-column: 3/4;
 justify-self: end;
 `;
+
 
 //search bar new css
 
@@ -187,7 +210,3 @@ justify-self: end;
 //   color: #70c5b5;
 // }
 // `;
-
-
-
-
