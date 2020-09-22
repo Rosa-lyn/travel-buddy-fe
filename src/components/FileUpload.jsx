@@ -5,7 +5,7 @@ import {
   AddImageButton,
   FileUploadLabel,
   FileStatus,
-  ChooseFileButton
+  FileUploadInput,
 } from '../styles/AddExperienceStyles'
 
 class FileUpload extends Component {
@@ -29,19 +29,13 @@ class FileUpload extends Component {
 
     // get the image uri and image from firebase
     uploadTask.on("state_changed", console.log, console.error, () => {
-      //   // either:
-      //   storage
-      //     .ref("images") // name of the folder
-      //     .child(selectedFile.name); // name of the file...
-      //   //  or:
+
       storageRef //storage reference we created above
         .getDownloadURL()
         .then((uploadedFileURL) => {
           this.setState({ uploadedFileURL });
         });
     });
-    // send upload request to backend
-    //  axios.post("api/uploadfile", data);
   };
   render() {
     const { selectedFile, uploadedFileURL } = this.state;
@@ -49,12 +43,14 @@ class FileUpload extends Component {
       <div>
         <form onSubmit={this.uploadImage}>
           <FileUploadLabel htmlFor="myfile">add your image:</FileUploadLabel>
-          <input
+
+          <FileUploadInput
             type="file"
             id="myfile"
             name="myfile"
             onChange={this.chooseFile}
           />
+
           <AddImageButton type="submit" value="add image" />
         </form>
         <section>
