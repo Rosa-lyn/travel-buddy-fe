@@ -1,9 +1,9 @@
 import React from "react";
-import Search from "./Search";
+
 import LoginButton from "./LoginButton";
 // import Logo from "./Lsogo";
 import SignUpButton from "./SignUpButton";
-import FindLocation from "./FindLocation";
+
 import InfoButton from "./InfoButton";
 import {
   Container,

@@ -1,7 +1,10 @@
 import styled from "styled-components";
-import { Link } from "@reach/router";
+import {
+  Link
+} from "@reach/router";
 
 //centres the control panel
+
 export const OuterContainer = styled.body` 
   height: 65px;
   width: 100vw;
@@ -10,7 +13,7 @@ export const OuterContainer = styled.body`
 `;
 
 //the control panel containing the controls
-export const Container = styled.header` display: block;
+export const Container = styled.header ` display: block;
   width: 80vw;
   height: 45px;
   padding: 17px;
@@ -21,12 +24,13 @@ export const Container = styled.header` display: block;
 `;
 
 //first flexbox contains login button
-export const LoginContainer = styled.div` display: flex;
+export const LoginContainer = styled.div ` display: flex;
   justify-content: flex-end;
 `;
 
 //the login button
-export const Button = styled(Link)` background-color: #BB6BD9;
+export const Button = styled(Link)
+` background-color: #BB6BD9;
   font-family: helvetica;
   font-size: .8rem;
   font-weight: 200;
@@ -43,12 +47,12 @@ export const Button = styled(Link)` background-color: #BB6BD9;
 `;
 
 //this contains the logo, the info button and signup link
-export const LogoContainer = styled.div` display: flex;
+export const LogoContainer = styled.div ` display: flex;
   justify-content: space-between;
 `;
 
 //the travel buddy logo
-export const LogoType = styled.h1` font-family: "Coiny",
+export const LogoType = styled.h1 ` font-family: "Coiny",
 cursive;
   font-size: 1.5rem;
   font-weight: 200;
@@ -57,14 +61,17 @@ cursive;
 `;
 
 //this sub-contains the info and signup link
-export const InfoSignupContainer = styled.div` display: flex;
+export const InfoSignupContainer = styled.div ` display: flex;
 justify-content: space-between;
 align-items: center;
 width: 62px;
+
+
 `;
 
 //info button
 export const IButton = styled.button` background-color: lightgray;
+
 border-radius: 50%;
 background-color: #C5C5C5;
 font-family: 'Times New Roman',
@@ -78,12 +85,31 @@ height: 1.3rem;
 line-height: 1rem;
 width: 1.3rem;
 text-decoration: none;
+
+:hover {
+background-color: black;
+}
+`;
+
+//infopopup container
+export const InfoContainer = styled.div ` 
+ width: 20 rem;
+ height: 20 rem;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+background-color: darkgrey;
+`;
+
+export const InfoTextContainer = styled.div ` 
+ 
 `;
 
 //signup link
-export const SignUpTitle = styled.h1`
+export const SignUpTitle = styled.h1 `
 /* justify-self: flex-start; */
 /* align-self: center; */
+
 `;
 export const SignUpLink = styled(Link)` 
   font-family: helvetica;
@@ -92,6 +118,7 @@ export const SignUpLink = styled(Link)`
   align-self: center;
   color: #BB6BD9;
 `;
+
 
 
 

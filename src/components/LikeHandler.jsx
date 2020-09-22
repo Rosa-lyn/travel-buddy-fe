@@ -38,8 +38,8 @@ class LikeHandler extends Component {
     const { inc_likes } = this.state;
     const { likes, experience_id, comment_id } = this.props;
     return (
-      <>
-        <p className="likes">Likes: {likes + inc_likes} </p>
+      <div>
+        <div className="likes">Likes: {likes + inc_likes} </div>
         <button
           className="like-button"
           onClick={() => this.handleLikeChange(1, experience_id, comment_id)}
@@ -58,7 +58,7 @@ class LikeHandler extends Component {
             👎
           </span>
         </button>
-      </>
+      </div>
     );
   }
 }
