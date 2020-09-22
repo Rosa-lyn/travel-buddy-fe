@@ -3,6 +3,9 @@ import ExperienceMap from "./ExperienceMap";
 import * as api from "../utils/api";
 import FindLocation from "./FindLocation";
 import Search from "./Search";
+import {
+  OuterContainer,
+} from "../styles/SearchStyles";
 
 class MapContainer extends Component {
   state = {
@@ -84,8 +87,11 @@ class MapContainer extends Component {
 
     return (
       <>
-        <FindLocation getUserLocation={this.getUserLocation} />
-        <Search />
+        <OuterContainer>
+          <Search />
+          <FindLocation getUserLocation={this.getUserLocation} />
+        </OuterContainer>
+
         <ExperienceMap
           center={center}
           zoom={zoom}
