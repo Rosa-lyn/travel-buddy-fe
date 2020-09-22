@@ -4,7 +4,6 @@ import LikeHandler from "./LikeHandler.jsx";
 const Experience = ({ experience, images }) => {
   const { title, body, username, created_at, likes } = experience;
   const date = new Date(+created_at);
-  console.log(images[0]);
   return (
     <div>
       <h2>{title}</h2>

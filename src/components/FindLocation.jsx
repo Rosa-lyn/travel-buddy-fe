@@ -1,5 +1,5 @@
 import React from "react";
-import { FindMeButton } from "../styles/headerStyles";
+import { FindMeButton } from "../styles/SearchStyles";
 
 const FindLocation = (props) => {
   const { getUserLocation } = props;

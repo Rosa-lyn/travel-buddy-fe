@@ -7,7 +7,7 @@ import AddComment from "./AddComment.jsx";
 
 class CommentsList extends Component {
   state = {
-    commentsByExperienceId: [],
+    comments: [],
     isLoading: true,
     err: "",
   };
@@ -16,20 +16,21 @@ class CommentsList extends Component {
     if (isLoading) return <Loader />;
     if (err) return <ErrorHandler msg={err} />;
 
+    const { comments } = this.state;
     return (
       <>
         <AddComment
-          username={this.props.username}
-          experience_id={this.props.article_id}
-          addCommentToState={this.addCommentToState}
+          loggedInUser={this.props.loggedInUser}
+          experience_id={this.props.experience_id}
+          addNewComment={this.addNewComment}
         />
         <ul className="comments-list">
-          {this.state.commentsByExperienceId.map((comment) => {
+          {comments.map((comment) => {
             return (
               <CommentCard
                 key={comment.comment_id}
                 {...comment}
-                username={this.props.username}
+                loggedInUser={this.props.loggedInUser}
                 deleteComment={this.deleteComment}
               />
             );
@@ -45,39 +46,34 @@ class CommentsList extends Component {
     const { experience_id } = this.props;
     api
       .getCommentsByExperienceId(experience_id)
-      .then((commentsByExperienceId) => {
-        this.setState({ commentsByExperienceId, isLoading: false });
+      .then((comments) => {
+        this.setState({ comments, isLoading: false });
       })
       .catch((err) => {
         this.setState({ err: err.response.data.msg, isLoading: false });
       });
   };
-  addCommentToState = (newComment) => {
+  addNewComment = (newComment) => {
     this.setState((currentState) => {
       return {
-        commentsByExperienceId: [
-          newComment,
-          ...currentState.commentsByExperienceId,
-        ],
+        comments: [newComment, ...currentState.comments],
       };
     });
   };
-  deleteComment = (comment_id) => {
-    api
-      .deleteComment(comment_id)
-      .then(() => {
-        this.setState((currentState) => {
-          const newCommentsByExperienceId = currentState.commentsByExperienceId.filter(
-            (comment) => {
-              return comment_id !== comment.comment_id;
-            }
-          );
-          return { commentsByExperienceId: newCommentsByExperienceId };
-        });
-      })
-      .catch((err) => {
-        this.setState({ err: err.response.data.msg, isLoading: false });
-      });
-  };
+  // deleteComment = (comment_id) => {
+  //   api
+  //     .deleteComment(comment_id)
+  //     .then(() => {
+  //       this.setState((currentState) => {
+  //         const newComments = currentState.comments.filter((comment) => {
+  //           return comment_id !== comment.comment_id;
+  //         });
+  //         return { comments: newComments };
+  //       });
+  //     })
+  //     .catch((err) => {
+  //       this.setState({ err: err.response.data.msg, isLoading: false });
+  //     });
+  // };
 }
 export default CommentsList;

@@ -1,17 +1,20 @@
 import React, { Component } from "react";
 import ExperienceMap from "./ExperienceMap";
-import AddExperience from "./AddExperience";
 import * as api from "../utils/api";
 import FindLocation from "./FindLocation";
 import Search from "./Search";
+import {
+  OuterContainer,
+} from "../styles/SearchStyles";
 
 class MapContainer extends Component {
   state = {
-    currentUser: "roz",
     center: [0, 0],
     zoom: 2,
+    usersCurrentLocation: [null, null],
     experiences: [],
     newExperience: null,
+    addExperienceClicked: false,
   };
 
   getUserLocation = (event) => {
@@ -23,6 +26,7 @@ class MapContainer extends Component {
         this.setState({
           center: [lat, lng],
           zoom: 13,
+          usersCurrentLocation: [lat, lng],
         });
       },
       (err) => {
@@ -50,27 +54,44 @@ class MapContainer extends Component {
     this.setState({ zoom: 14 });
   };
   addExperience = (event) => {
-    const { currentUser } = this.state; // this will probably actually be passed down from App as a prop once backend is implemented
+    const { loggedInUser } = this.props;
     const { lat, lng } = event.latlng;
     const newExperience = {
       experience_id: "temp_id",
       title: null,
       body: null,
-      username: currentUser,
+      username: loggedInUser,
       created_at: Date.now(),
       location_lat: lat,
       location_long: lng,
       likes: 0,
-      belongs_to_tag_text: [],
     };
     this.setState({ newExperience, center: [lat, lng], zoom: 18 });
   };
+  toggle = () => {
+    this.setState((currentState) => {
+      return {
+        ...currentState,
+        addExperienceClicked: !currentState.addExperienceClicked,
+      };
+    });
+  };
   render() {
-    const { center, zoom, experiences, newExperience } = this.state;
+    const {
+      center,
+      zoom,
+      experiences,
+      newExperience,
+      addExperienceClicked,
+    } = this.state;
+
     return (
-      <section>
-        <FindLocation getUserLocation={this.getUserLocation} />
-        <Search />
+      <>
+        <OuterContainer>
+          <Search />
+          <FindLocation getUserLocation={this.getUserLocation} />
+        </OuterContainer>
+
         <ExperienceMap
           center={center}
           zoom={zoom}
@@ -79,8 +100,10 @@ class MapContainer extends Component {
           zoomToExperience={this.zoomToExperience}
           closePopup={this.closePopup}
           addExperience={this.addExperience}
+          toggle={this.toggle}
+          addExperienceClicked={addExperienceClicked}
         />
-      </section>
+      </>
     );
   }
 }
