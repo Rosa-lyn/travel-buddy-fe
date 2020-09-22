@@ -11,12 +11,12 @@ export const OuterContainer = styled.body` height: 100vh;
 //the control panel containing the controls
 export const Container = styled.header` display: block;
   width: 80vw;
-  height: 94px;
+  height: 50px;
   padding: 17px;
   align-items: center;
   border: 1px solid rgb(248, 166, 248);
   border-radius: 3px;
-  margin-top: 30px;
+  margin-top: 40px;
 `;
 
 //first flexbox contains login button
@@ -34,7 +34,7 @@ export const Button = styled(Link)` background-color: #BB6BD9;
   border-radius: 3px;
   height: 18px;
   line-height: 12px;
-  width: 57px;
+  width: 62px;
   text-decoration: none;
   text-align: center;
   justify-content: center;

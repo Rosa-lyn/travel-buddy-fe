@@ -12,8 +12,6 @@ import {
   LogoContainer,
   LogoType,
   InfoSignupContainer,
-  SearchFindMeContainer,
-  FindMeButton,
 } from "../styles/headerStyles";
 //styled components for search field
 // import { SearchWrapper, SearchForm, SearchButton } from '../styles/headerStyles';
