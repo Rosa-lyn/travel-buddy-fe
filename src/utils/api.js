@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "http://localhost:9090/graphql/",
+  baseURL: "http://travel-buddy-2020.herokuapp.com/graphql",
 });
 
 export const getAllExperiences = () => {

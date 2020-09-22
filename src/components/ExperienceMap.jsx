@@ -14,18 +14,22 @@ const ExperienceMap = (props) => {
     newExperience,
     addExperienceClicked,
     toggle,
+    loggedInUser,
   } = props;
+  console.log(newExperience);
   return (
     <>
       {addExperienceClicked ? (
-        <AddExperience />
+        <AddExperience
+          newExperience={newExperience}
+          loggedInUser={loggedInUser}
+        />
       ) : (
         <Map
           className="Map"
           center={center}
           zoom={zoom}
           onclick={addExperience}
-
         >
           <TileLayer
             attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
