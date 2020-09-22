@@ -1,9 +1,10 @@
 import React from "react";
-import { FindMeButton } from '../styles/headerStyles';
+import { FindMeButton } from "../styles/headerStyles";
 
-const FindLocation = () => {
+const FindLocation = (props) => {
+  const { getUserLocation } = props;
   return (
-    <FindMeButton size={16} >
+    <FindMeButton size={16} onClick={getUserLocation}>
       {/* <span role="img" aria-label="compass"> */}
       <i class="far fa-compass" />
       {/* </span> */}
