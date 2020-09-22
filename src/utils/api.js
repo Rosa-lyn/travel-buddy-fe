@@ -52,12 +52,25 @@ export const postExperience = (
   title,
   body,
   username,
-  created_at,
   location_lat,
   location_long
 ) => {
   const mutation = {
-    query: `mutation{addExperience(input: {title:${title}, body:${body}, username:${username}, created_at:${created_at}, location_lat:${location_lat}, location_long:${location_long}}) {experience_id title body username created_at location_lat location_long likes}}`,
+    query: `mutation { addExperience(input: {
+      title:"${title}",
+      body:"${body}",
+      username:"${username}",
+      location_lat:"${location_lat}",
+      location_long:"${location_long}"
+    }) {
+      experience_id
+      title
+      body
+      username
+      created_at
+      location_lat
+      location_long
+      likes}}`,
   };
   return instance
     .post("/", mutation)
@@ -65,11 +78,22 @@ export const postExperience = (
   //check
 };
 
-export const postComment = (experience_id, body, username) => {
+export const postComment = (experience_id, username, body) => {
   const mutation = {
-    query: `mutation{addComment(input: {experience_id:${experience_id}, body:${body}, username:${username}}) {comment_id body username created_at likes}}`,
+    query: `mutation{ addComment(input: {
+      experience_id:"${experience_id}",
+      body:"${body}",
+      username:"${username}"
+    }) {
+      comment_id
+      body
+      username
+      created_at
+      likes}}`,
   };
-  return instance.post("/", mutation).then(({ data: { data } }) => data);
+  return instance.post("/", mutation).then(({ data: { data } }) => {
+    return data.addComment;
+  });
 };
 
 export const getCommentsByExperienceId = (experience_id) => {
@@ -85,9 +109,9 @@ export const getCommentsByExperienceId = (experience_id) => {
   return instance.post("/", query).then(
     ({
       data: {
-        data: { experiences },
+        data: { comments },
       },
-    }) => experiences
+    }) => comments
   );
 };
 export const deleteComment = (comment_id) => {

@@ -2,11 +2,11 @@ import React from "react";
 import Header from "./Header.jsx";
 import MapContainer from "./MapContainer.jsx";
 
-const Main = () => {
+const Main = ({ loggedInUser }) => {
   return (
     <section>
       <Header />
-      <MapContainer />
+      <MapContainer loggedInUser={loggedInUser} />
     </section>
   );
 };

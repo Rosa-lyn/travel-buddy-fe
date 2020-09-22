@@ -14,18 +14,23 @@ class ExperienceScreen extends Component {
     const { experience_id } = this.props;
     api
       .getSingleExperience(experience_id)
-      .then(({ experience, images, comments }) =>
-        this.setState({ experience, images, comments, isLoading: false })
+      .then(({ experience, images }) =>
+        this.setState({ experience, images, isLoading: false })
       );
   }
 
   render() {
+    const { loggedInUser } = this.props;
     if (this.state.isLoading) return <Loader />;
     const { experience, images } = this.state;
+    const { experience_id } = experience;
     return (
       <div>
         <Experience experience={experience} images={images} />
-        <CommentsList />
+        <CommentsList
+          experience_id={experience_id}
+          loggedInUser={loggedInUser}
+        />
       </div>
     );
   }

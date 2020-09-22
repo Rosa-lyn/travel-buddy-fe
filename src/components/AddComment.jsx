@@ -19,21 +19,18 @@ class AddComment extends Component {
   handleSubmitForm = (event) => {
     event.preventDefault();
 
-    const { username } = this.props;
-
+    const { loggedInUser, experience_id, addNewComment } = this.props;
     const { body } = this.state;
-
-    const { experience_id } = this.props;
-
     api
-      .postComment(experience_id, username, body)
+      .postComment(experience_id, loggedInUser, body)
       .then((postedComment) => {
-        this.props.addCommentToState(postedComment);
+        addNewComment(postedComment);
         this.setState({
           body: "",
         });
       })
       .catch((err) => {
+        console.log(err);
         this.setState({
           err: err.response.data.msg,
           isLoading: false,
@@ -56,11 +53,11 @@ class AddComment extends Component {
             value={body}
             rows="10"
             cols="40"
-            placeholder="type comment here"
+            placeholder="type comment here..."
             required
           />
-          <input type="submit" value="submit" />
-          <button className="submit-comment"> Submit Comment </button>{" "}
+          <input type="submit" value="submit" className="submit-comment" />
+          {/* <button className="submit-comment"> Submit Comment </button>{" "} */}
         </form>{" "}
       </div>
     );
