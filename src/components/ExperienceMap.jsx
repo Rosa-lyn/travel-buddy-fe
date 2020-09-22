@@ -25,6 +25,7 @@ const ExperienceMap = (props) => {
           center={center}
           zoom={zoom}
           onclick={addExperience}
+
         >
           <TileLayer
             attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

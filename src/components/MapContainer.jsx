@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import ExperienceMap from "./ExperienceMap";
 import * as api from "../utils/api";
+import FindLocation from "./FindLocation";
+import Search from "./Search";
 
 class MapContainer extends Component {
   state = {
@@ -11,7 +13,8 @@ class MapContainer extends Component {
     newExperience: null,
     addExperienceClicked: false,
   };
-  componentDidMount() {
+
+  getUserLocation = (event) => {
     navigator.geolocation.getCurrentPosition(
       ({ coords }) => {
         const lat = coords.latitude;
@@ -27,6 +30,10 @@ class MapContainer extends Component {
         console.error(JSON.stringify(err));
       }
     );
+  };
+
+  componentDidMount() {
+    this.getUserLocation();
     api
       .getAllExperiences()
       .then((experiences) =>
@@ -76,17 +83,21 @@ class MapContainer extends Component {
     } = this.state;
 
     return (
-      <ExperienceMap
-        center={center}
-        zoom={zoom}
-        experiences={experiences}
-        newExperience={newExperience}
-        zoomToExperience={this.zoomToExperience}
-        closePopup={this.closePopup}
-        addExperience={this.addExperience}
-        toggle={this.toggle}
-        addExperienceClicked={addExperienceClicked}
-      />
+      <>
+        <FindLocation getUserLocation={this.getUserLocation} />
+        <Search />
+        <ExperienceMap
+          center={center}
+          zoom={zoom}
+          experiences={experiences}
+          newExperience={newExperience}
+          zoomToExperience={this.zoomToExperience}
+          closePopup={this.closePopup}
+          addExperience={this.addExperience}
+          toggle={this.toggle}
+          addExperienceClicked={addExperienceClicked}
+        />
+      </>
     );
   }
 }

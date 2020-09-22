@@ -5,10 +5,18 @@ import LoginButton from "./LoginButton";
 import SignUpButton from "./SignUpButton";
 import FindLocation from "./FindLocation";
 import InfoButton from "./InfoButton";
-import { Container, OuterContainer, LoginContainer, LogoContainer, LogoType, InfoSignupContainer, SearchFindMeContainer, FindMeButton } from '../styles/headerStyles';
+import {
+  Container,
+  OuterContainer,
+  LoginContainer,
+  LogoContainer,
+  LogoType,
+  InfoSignupContainer,
+  SearchFindMeContainer,
+  FindMeButton,
+} from "../styles/headerStyles";
 //styled components for search field
 // import { SearchWrapper, SearchForm, SearchButton } from '../styles/headerStyles';
-
 
 const Header = () => {
   return (
@@ -24,10 +32,6 @@ const Header = () => {
             <SignUpButton />
           </InfoSignupContainer>
         </LogoContainer>
-        <SearchFindMeContainer>
-          <Search />
-          <FindLocation />
-        </SearchFindMeContainer>
       </Container>
     </OuterContainer>
   );
