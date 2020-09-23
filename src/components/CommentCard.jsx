@@ -9,10 +9,11 @@ const CommentCard = ({
   created_at,
   deleteComment,
 }) => {
+  const date = new Date(+created_at);
   return (
     <li className="comments">
       <p className="author-date">
-        {loggedInUser} {new Date(created_at).toLocaleString()}
+        {loggedInUser} on {date.toLocaleString()}
       </p>
       <p>{body}</p>
       <label>
@@ -21,7 +22,7 @@ const CommentCard = ({
             deleteComment(comment_id);
           }}
         >
-          Delete Comment
+          delete
         </button>
       </label>
 
