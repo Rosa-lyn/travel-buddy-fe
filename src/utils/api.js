@@ -136,11 +136,13 @@ export const deleteComment = (comment_id) => {
   return instance.delete(`/comments/${comment_id}`);
 };
 
-export const patchLikes = (experience_id, inc_likes) => {
+export const updateExperienceLikes = (experience_id, inc_likes) => {
   const mutation = {
     query: `mutation{updateExperienceLikes(input:{experience_id:${experience_id}, inc_likes: ${inc_likes}}){experience_id title body username created_at location_lat location_long likes}}`,
   };
   return instance
-    .patch(`/`, mutation)
+    .post(`/`, mutation)
     .then(({ data: { updateExperienceLikes } }) => updateExperienceLikes);
 };
+
+//updateCommentLikes
