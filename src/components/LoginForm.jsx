@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "./Header";
+
 import {
   FormContainer,
   FormInput,
@@ -11,12 +11,16 @@ import {
   FormInnnerContainer,
   CloseButton,
   FormFont,
+  LogoContainer,
+  LogoType,
 } from "../styles/loginStyles";
 
 const LoginForm = () => {
   return (
     <div>
-      <Header />
+      <LogoContainer>
+        <LogoType>travel buddy</LogoType>
+      </LogoContainer>
       <FormContainer>
         {/* div */}
         <FormInnnerContainer>

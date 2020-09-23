@@ -10,15 +10,14 @@ display: flex;
 flex-direction: column;
 border-width: 1px;
 border: #BB6BD9 solid 1px;
-border-radius: .3rem;F
-
+border-radius: .3rem;
 margin: 0;
 position: absolute;
 top: 50%;
 left: 50%;
 -ms-transform: translate(-50%, -50%);
 transform: translate(-50%, -50%);
-}
+
 `;
 
 export const FormInnnerContainer = styled.div `
@@ -130,55 +129,28 @@ export const CloseButton = styled(Link)
   color: rgb(63, 63, 63)
 `
 //FileUpload styles
-
-export const ChooseFileButton = styled.input `
-  background-color: #BB6BD9;
-  font-family: helvetica;
-  font-size: .7rem;
-  font-weight: 200;
-  color: white;
-  border: none;
-  border-radius: .2rem;
-  height: 1.2rem;
-  line-height: 1.2rem;
-  width: 4.5rem;
-  text-decoration: none;
-  text-align: center;
+export const LogoContainer = styled.div ` 
+   height: 45px;
   justify-content: center;
+  width: 90 vw;
+  display: flex;
+  flex-direction: column;
+  border-width: 1px;
+  border: #BB6BD9 solid 1 px;
+  border-radius: .3 rem;
+  margin: 0;
+  position: absolute;
+  top: 10%;
+  left: 42%; 
+ 
 `;
 
-export const AddImageButton = styled.input `
-  background-color: #BB6BD9;
-  font-family: helvetica;
-  font-size: .7rem;
+//the travel buddy logo
+export const LogoType = styled.h1 ` font-family: "Coiny",cursive;
+  font-size: 30px;
   font-weight: 200;
-  color: white;
-  border: none;
-  border-radius: .2rem;
-  height: 1.2rem;
-  line-height: 1.2rem;
-  width: 4.5rem;
-  text-decoration: none;
-  text-align: center;
-  justify-content: center;
-`;
-
-export const FileUploadLabel = styled.label `
-display: block;
-text-align: left;
-font-family: helvetica;
-font-size: .8rem;
-font-weight: 200;
-color: rgb(63, 63, 63);
-margin: .6rem 0 .2rem 0;
-`;
-
-export const FileStatus = styled.p `
-display: block;
-text-align: left;
-font-family: helvetica;
-font-size: .8rem;
-font-weight: 200;
-color: rgb(63, 63, 63);
-margin: .6rem 0 .2rem 0;
+  line-height: 25px; 
+  margin: 0;
+  padding: 0;
+  width: 100px;
 `;
