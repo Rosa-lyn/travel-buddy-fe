@@ -1,21 +1,18 @@
 import axios from "axios";
 
 const instance = axios.create({
-  
   baseURL: "https://travel-buddy-2020.herokuapp.com/graphql",
-
 });
 
 export const getAllExperiences = () => {
   const query = {
-    query: "{experiences {experience_id title body username created_at location_lat location_long likes}}",
+    query:
+      "{experiences {experience_id title body username created_at location_lat location_long likes}}",
   };
   return instance.post("/", query).then(
     ({
       data: {
-        data: {
-          experiences
-        },
+        data: { experiences },
       },
     }) => experiences
   );
@@ -46,11 +43,7 @@ export const getSingleExperience = (experience_id) => {
     image_URL
   }}`,
   };
-  return instance.post("/", query).then(({
-    data: {
-      data
-    }
-  }) => data);
+  return instance.post("/", query).then(({ data: { data } }) => data);
 };
 
 //get graphql running and check return keys for then statements
@@ -81,12 +74,26 @@ export const postExperience = (
   };
   return instance
     .post("/", mutation)
-    .then(({
-      data: {
-        data
-      }
-    }) => data.addExperience);
+    .then(({ data: { data } }) => data.addExperience);
   //check
+};
+
+export const postImage = (experience_id, image_URL, image_desc) => {
+  const mutation = {
+    query: `mutation{ addImage(input: {
+      experience_id: "${experience_id}",
+      image_URL: "${image_URL}",
+      image_desc: "${image_desc}"
+    }) {
+      image_id
+      image_desc
+      image_URL
+      experience_id
+    }}`,
+  };
+  return instance.post("/", mutation).then(({ data: { data } }) => {
+    return data.addImage;
+  });
 };
 
 export const postComment = (experience_id, username, body) => {
@@ -105,7 +112,6 @@ export const postComment = (experience_id, username, body) => {
   return instance.post("/", mutation).then(({ data: { data } }) => {
     return data.addComment;
   });
-
 };
 
 export const getCommentsByExperienceId = (experience_id) => {
@@ -122,7 +128,6 @@ export const getCommentsByExperienceId = (experience_id) => {
     ({
       data: {
         data: { comments },
-
       },
     }) => comments
   );
@@ -137,9 +142,5 @@ export const patchLikes = (experience_id, inc_likes) => {
   };
   return instance
     .patch(`/`, mutation)
-    .then(({
-      data: {
-        updateExperienceLikes
-      }
-    }) => updateExperienceLikes);
+    .then(({ data: { updateExperienceLikes } }) => updateExperienceLikes);
 };
