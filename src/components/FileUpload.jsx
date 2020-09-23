@@ -21,7 +21,7 @@ class FileUpload extends Component {
     const { selectedFile } = this.state;
 
     // create storage reference
-    const storageRef = storage.ref(`images/${selectedFile.name}`);
+    const storageRef = storage.ref(`${selectedFile.name}`);
 
     // upload file
     const uploadTask = storageRef.put(selectedFile);
