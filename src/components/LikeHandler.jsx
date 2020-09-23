@@ -3,62 +3,77 @@ import * as api from "../utils/api";
 
 class LikeHandler extends Component {
   state = {
-    inc_likes: 0,
+    optimistic_experience_likes: 0,
+    optimistic_comment_likes: 0,
   };
 
-  handleLikeChange = (event) => {
-    this.setState(({ inc_likes }) => {
-      return {
-        inc_likes: inc_likes + event,
-      };
-    });
-
-    const { experience_id, comment_id } = this.props;
-    const inc_likes = event;
-    if (experience_id) {
-      return api.patchLikes(experience_id, inc_likes).catch((err) => {
-        this.setState(({ inc_likes }) => {
-          return {
-            inc_likes: inc_likes + event,
-          };
-        });
+  handleExperienceLike = () => {
+    const { experience_id } = this.props;
+    const { optimistic_experience_likes } = this.state;
+    if (optimistic_experience_likes === 0) {
+      return api.updateExperienceLikes(experience_id, 1).then(() => {
+        return this.setState({ optimistic_experience_likes: 1 });
       });
-    } else if (comment_id) {
-      return api.patchLikes(comment_id, inc_likes).catch((err) => {
-        this.setState(({ inc_likes }) => {
-          return {
-            inc_likes: inc_likes + event,
-          };
-        });
+    } else {
+      return api.updateExperienceLikes(experience_id, -1).then(() => {
+        return this.setState({ optimistic_experience_likes: 0 });
+      });
+    }
+  };
+
+  handleCommentLike = () => {
+    const { comment_id } = this.props;
+    const { optimistic_comment_likes } = this.state;
+    if (optimistic_comment_likes === 0) {
+      return api.updateCommentLikes(comment_id, 1).then(() => {
+        return this.setState({ optimistic_comment_likes: 1 });
+      });
+    } else {
+      return api.updateCommentLikes(comment_id, -1).then(() => {
+        return this.setState({ optimistic_comment_likes: 0 });
       });
     }
   };
 
   render() {
-    const { inc_likes } = this.state;
-    const { likes, experience_id, comment_id } = this.props;
+    const {
+      optimistic_experience_likes,
+      optimistic_comment_likes,
+    } = this.state;
+    const { likes } = this.props;
+
     return (
-      <div>
-        <div className="likes">Likes: {likes + inc_likes} </div>
-        <button
-          className="like-button"
-          onClick={() => this.handleLikeChange(1, experience_id, comment_id)}
-          disabled={inc_likes > 0}
-        >
-          <span role="img" aria-label="thumb-up">
-            👍
-          </span>
-        </button>
-        <button
-          className="like-button"
-          onClick={() => this.handleLikeChange(-1, experience_id, comment_id)}
-          disabled={inc_likes < 0}
-        >
-          <span role="img" aria-label="thumb-down">
-            👎
-          </span>
-        </button>
-      </div>
+      <>
+        {this.props.experience_id ? (
+          <button className="like-button" onClick={this.handleExperienceLike}>
+            {optimistic_experience_likes === 0 ? (
+              <span role="img" aria-label="white-heart">
+                🤍
+              </span>
+            ) : (
+              <span role="img" aria-label="purple-heart">
+                💜
+              </span>
+            )}
+          </button>
+        ) : (
+          <button className="like-button" onClick={this.handleCommentLike}>
+            {optimistic_comment_likes === 0 ? (
+              <span role="img" aria-label="white-heart">
+                🤍
+              </span>
+            ) : (
+              <span role="img" aria-label="purple-heart">
+                💜
+              </span>
+            )}
+          </button>
+        )}
+        {likes +
+          (this.props.experience_id
+            ? optimistic_experience_likes
+            : optimistic_comment_likes)}
+      </>
     );
   }
 }
