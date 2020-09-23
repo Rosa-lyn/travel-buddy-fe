@@ -8,40 +8,42 @@ import {
   FileUploadInput,
 } from '../styles/AddExperienceStyles'
 
+
 class FileUpload extends Component {
   state = {
     selectedFile: null,
-    uploadedFileURL: "",
   };
   chooseFile = (event) => {
     const selectedFile = event.target.files[0];
     this.setState({ selectedFile });
   };
-  uploadImage = (e) => {
+  uploadImageToFirebase = (e) => {
+    // this adds the image to the firebase database and then adds the image's url to the state on AddExperience
     e.preventDefault();
     const { selectedFile } = this.state;
 
     // create storage reference
-    const storageRef = storage.ref(`images/${selectedFile.name}`);
+    const storageRef = storage.ref(`${selectedFile.name}`);
 
     // upload file
     const uploadTask = storageRef.put(selectedFile);
 
     // get the image uri and image from firebase
     uploadTask.on("state_changed", console.log, console.error, () => {
-
       storageRef //storage reference we created above
         .getDownloadURL()
         .then((uploadedFileURL) => {
-          this.setState({ uploadedFileURL });
+          const { setImageURL } = this.props;
+          console.log("file uploaded!", uploadedFileURL);
+          setImageURL(uploadedFileURL);
         });
     });
   };
   render() {
-    const { selectedFile, uploadedFileURL } = this.state;
+    const { selectedFile } = this.state;
     return (
-      <div>
-        <form onSubmit={this.uploadImage}>
+      <>
+        <>
           <FileUploadLabel htmlFor="myfile">add your image:</FileUploadLabel>
 
           <FileUploadInput
@@ -50,29 +52,18 @@ class FileUpload extends Component {
             name="myfile"
             onChange={this.chooseFile}
           />
-
-          <AddImageButton type="submit" value="add image" />
-        </form>
+          <AddImageButton
+            type="button"
+            value="add image"
+            onClick={this.uploadImageToFirebase}
+          />
+        </>
         <section>
           {selectedFile && (
-            <FileStatus>
-              you chose {selectedFile.name}
-              {/* <br />
-              size: {selectedFile.size} bytes
-              <br /> */}
-            </FileStatus>
+            <FileStatus>you chose {selectedFile.name}</FileStatus>
           )}
-          {/* {uploadedFileURL.length > 0 && (
-            <div>
-              <h2>image url: {uploadedFileURL}</h2>
-              <h2>
-                preview:
-                <img src={uploadedFileURL} alt={selectedFile.name} />
-              </h2>
-            </div> */}
-          {/* )} */}
         </section>
-      </div>
+      </>
     );
   }
 }

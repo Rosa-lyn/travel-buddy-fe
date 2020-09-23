@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "http://localhost:9090/graphql/",
+  baseURL: "https://travel-buddy-2020.herokuapp.com/graphql",
 });
 
 export const getAllExperiences = () => {
@@ -52,12 +52,25 @@ export const postExperience = (
   title,
   body,
   username,
-  created_at,
   location_lat,
   location_long
 ) => {
   const mutation = {
-    query: `mutation{addExperience(input: {title:${title}, body:${body}, username:${username}, created_at:${created_at}, location_lat:${location_lat}, location_long:${location_long}}) {experience_id title body username created_at location_lat location_long likes}}`,
+    query: `mutation { addExperience(input: {
+      title:"${title}",
+      body:"${body}",
+      username:"${username}",
+      location_lat:"${location_lat}",
+      location_long:"${location_long}"
+    }) {
+      experience_id
+      title
+      body
+      username
+      created_at
+      location_lat
+      location_long
+      likes}}`,
   };
   return instance
     .post("/", mutation)
@@ -65,11 +78,40 @@ export const postExperience = (
   //check
 };
 
-export const postComment = (experience_id, body, username) => {
+export const postImage = (experience_id, image_URL, image_desc) => {
   const mutation = {
-    query: `mutation{addComment(input: {experience_id:${experience_id}, body:${body}, username:${username}}) {comment_id body username created_at likes}}`,
+    query: `mutation{ addImage(input: {
+      experience_id: "${experience_id}",
+      image_URL: "${image_URL}",
+      image_desc: "${image_desc}"
+    }) {
+      image_id
+      image_desc
+      image_URL
+      experience_id
+    }}`,
   };
-  return instance.post("/", mutation).then(({ data: { data } }) => data);
+  return instance.post("/", mutation).then(({ data: { data } }) => {
+    return data.addImage;
+  });
+};
+
+export const postComment = (experience_id, username, body) => {
+  const mutation = {
+    query: `mutation{ addComment(input: {
+      experience_id:"${experience_id}",
+      body:"${body}",
+      username:"${username}"
+    }) {
+      comment_id
+      body
+      username
+      created_at
+      likes}}`,
+  };
+  return instance.post("/", mutation).then(({ data: { data } }) => {
+    return data.addComment;
+  });
 };
 
 export const getCommentsByExperienceId = (experience_id) => {
@@ -85,20 +127,29 @@ export const getCommentsByExperienceId = (experience_id) => {
   return instance.post("/", query).then(
     ({
       data: {
-        data: { experiences },
+        data: { comments },
       },
-    }) => experiences
+    }) => comments
   );
 };
 export const deleteComment = (comment_id) => {
   return instance.delete(`/comments/${comment_id}`);
 };
 
-export const patchLikes = (experience_id, inc_likes) => {
+export const updateExperienceLikes = (experience_id, inc_likes) => {
   const mutation = {
     query: `mutation{updateExperienceLikes(input:{experience_id:${experience_id}, inc_likes: ${inc_likes}}){experience_id title body username created_at location_lat location_long likes}}`,
   };
   return instance
-    .patch(`/`, mutation)
+    .post(`/`, mutation)
+    .then(({ data: { updateExperienceLikes } }) => updateExperienceLikes);
+};
+
+export const updateCommentLikes = (comment_id, inc_likes) => {
+  const mutation = {
+    query: `mutation{updateCommentLikes(input:{comment_id:${comment_id}, inc_likes: ${inc_likes}}){comment_id body username created_at likes}}`,
+  };
+  return instance
+    .post(`/`, mutation)
     .then(({ data: { updateExperienceLikes } }) => updateExperienceLikes);
 };
