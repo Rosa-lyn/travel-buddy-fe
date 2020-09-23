@@ -19,7 +19,7 @@ header {
   position: absolute;
   top: 0;
   left: 0;
-  background-color: #242f3f;
+  background-color: darkgrey;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -30,7 +30,7 @@ header {
   width: 30px;
   height: 30px;
   position: relative;
-  border: 4px solid #Fff;
+  border: 4px solid lightgrey;
   animation: loader 2s infinite ease;
 }
 
@@ -38,7 +38,7 @@ header {
   vertical-align: top;
   display: inline-block;
   width: 100%;
-  background-color: #fff;
+  background-color: #BB6BD9;
   animation: loader-inner 2s infinite ease-in;
 }
 
