@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { navigate } from "@reach/router";
+import { SignUpTitle } from '../styles/headerStyles';
 
 class SignUpForm extends Component {
   handleSubmit = () => {
@@ -8,7 +9,7 @@ class SignUpForm extends Component {
   render() {
     return (
       <section>
-        <h1>sign up</h1>
+        <SignUpTitle>sign up</SignUpTitle>
         <form onSubmit={this.handleSubmit}>
           <label htmlFor="username">Username:</label>
           <input type="text" id="username" />

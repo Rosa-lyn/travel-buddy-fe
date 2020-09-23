@@ -1,12 +1,14 @@
 import React from "react";
+import { FindMeButton } from "../styles/SearchStyles";
 
-const FindLocation = () => {
+const FindLocation = (props) => {
+  const { getUserLocation } = props;
   return (
-    <button>
-      <span role="img" aria-label="compass">
-        🧭
-      </span>
-    </button>
+    <FindMeButton size={16} onClick={getUserLocation}>
+      {/* <span role="img" aria-label="compass"> */}
+      <i class="far fa-compass" />
+      {/* </span> */}
+    </FindMeButton>
   );
 };
 
