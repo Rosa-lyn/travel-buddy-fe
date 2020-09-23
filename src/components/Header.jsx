@@ -8,9 +8,11 @@ import InfoButton from "./InfoButton";
 import {
   Container,
   OuterContainer,
+  InnerContainer,
   LoginContainer,
   LogoContainer,
   LogoType,
+  LoginInfoSignupContainer,
   InfoSignupContainer,
 } from "../styles/headerStyles";
 //styled components for search field
@@ -20,16 +22,18 @@ const Header = () => {
   return (
     <OuterContainer>
       <Container>
-        <LoginContainer>
-          <LoginButton />
-        </LoginContainer>
-        <LogoContainer>
-          <LogoType>travel buddy</LogoType>
-          <InfoSignupContainer>
-            <InfoButton />
-            <SignUpButton />
-          </InfoSignupContainer>
-        </LogoContainer>
+        <InnerContainer>
+          <LogoContainer>
+            <LogoType>travel buddy</LogoType>
+          </LogoContainer>
+          <LoginInfoSignupContainer>
+            <LoginButton />
+            <InfoSignupContainer>
+              <InfoButton />
+              <SignUpButton />
+            </InfoSignupContainer>
+          </LoginInfoSignupContainer>
+        </InnerContainer>
       </Container>
     </OuterContainer>
   );
