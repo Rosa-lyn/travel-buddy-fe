@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-  
+
   baseURL: "https://travel-buddy-2020.herokuapp.com/graphql",
 
 });
@@ -102,7 +102,11 @@ export const postComment = (experience_id, username, body) => {
       created_at
       likes}}`,
   };
-  return instance.post("/", mutation).then(({ data: { data } }) => {
+  return instance.post("/", mutation).then(({
+    data: {
+      data
+    }
+  }) => {
     return data.addComment;
   });
 
@@ -121,7 +125,9 @@ export const getCommentsByExperienceId = (experience_id) => {
   return instance.post("/", query).then(
     ({
       data: {
-        data: { comments },
+        data: {
+          comments
+        },
 
       },
     }) => comments
@@ -131,15 +137,17 @@ export const deleteComment = (comment_id) => {
   return instance.delete(`/comments/${comment_id}`);
 };
 
-export const patchLikes = (experience_id, inc_likes) => {
+export const updateExperienceLikes = (experience_id, inc_likes) => {
   const mutation = {
     query: `mutation{updateExperienceLikes(input:{experience_id:${experience_id}, inc_likes: ${inc_likes}}){experience_id title body username created_at location_lat location_long likes}}`,
   };
   return instance
-    .patch(`/`, mutation)
+    .post(`/`, mutation)
     .then(({
       data: {
         updateExperienceLikes
       }
     }) => updateExperienceLikes);
 };
+
+//updateCommentLikes
