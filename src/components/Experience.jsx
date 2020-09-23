@@ -13,6 +13,7 @@ const Experience = ({ experience, images }) => {
           className="experience-image"
           src={image.image_URL}
           alt={image.image_desc}
+          key={image.image_id}
         ></img>
       ))}
       <p>
