@@ -5,7 +5,6 @@ import {
   AddImageButton,
   FileUploadLabel,
   FileStatus,
-  ChooseFileButton,
 } from "../styles/AddExperienceStyles";
 
 class FileUpload extends Component {
