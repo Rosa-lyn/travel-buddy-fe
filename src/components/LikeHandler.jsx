@@ -3,39 +3,21 @@ import * as api from "../utils/api";
 
 class LikeHandler extends Component {
   state = {
-    inc_likes: 0, //optimistic likes
+    optimistic_likes: 0,
   };
 
-  handleLikeChange = (like, experience_id, comment_id) => {
-    console.log(like, experience_id);
-    const { likeExperience, userHasLiked } = this.props;
-    const { inc_likes } = this.state;
+  handleLikeChange = () => {
+    const { experience_id, comment_id } = this.props;
+    const { optimistic_likes } = this.state;
     if (experience_id) {
-      if (userHasLiked === false) {
-        if (inc_likes === 0) {
-          return api
-            .updateExperienceLikes(experience_id, inc_likes)
-            .then(() => {
-              return this.setState(({ inc_likes }) => {
-                return {
-                  inc_likes: inc_likes + like,
-                };
-              });
-            });
-        } else {
-          return api
-            .updateExperienceLikes(experience_id, inc_likes)
-            .then(() => {
-              return this.setState(({ inc_likes }) => {
-                return {
-                  inc_likes: inc_likes - like,
-                };
-              });
-            });
-        }
-        //  return likeExperience()
+      if (optimistic_likes === 0) {
+        return api.updateExperienceLikes(experience_id, 1).then(() => {
+          return this.setState({ optimistic_likes: 1 });
+        });
       } else {
-        // maybe we don't need an else
+        return api.updateExperienceLikes(experience_id, -1).then(() => {
+          return this.setState({ optimistic_likes: 0 });
+        });
       }
     }
     /*   else if (comment_id) {
@@ -50,20 +32,22 @@ class LikeHandler extends Component {
   };
 
   render() {
-    const { inc_likes } = this.state;
-    const { likes, experience_id, comment_id, userHasLiked } = this.props;
+    const { optimistic_likes } = this.state;
+    const { likes } = this.props;
     return (
       <div>
-        <button
-          className="like-button"
-          onClick={() => this.handleLikeChange(1, experience_id, comment_id)}
-          // disabled={userHasLiked}
-        >
-          <span role="img" aria-label="heart">
-            💜
-          </span>
-        </button>
-        likes: {inc_likes + likes}
+        <button className="like-button" onClick={this.handleLikeChange}>
+          {optimistic_likes === 0 ? (
+            <span role="img" aria-label="white-heart">
+              🤍
+            </span>
+          ) : (
+            <span role="img" aria-label="purple-heart">
+              💜
+            </span>
+          )}
+        </button>{" "}
+        {likes + optimistic_likes}
       </div>
     );
   }
