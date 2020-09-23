@@ -25,13 +25,13 @@ class ExperienceScreen extends Component {
     const { experience, images } = this.state;
     const { experience_id } = experience;
     return (
-      <div>
+      <>
         <Experience experience={experience} images={images} />
         <CommentsList
           experience_id={experience_id}
           loggedInUser={loggedInUser}
         />
-      </div>
+      </>
     );
   }
 }
