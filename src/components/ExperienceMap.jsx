@@ -16,7 +16,6 @@ const ExperienceMap = (props) => {
     toggle,
     loggedInUser,
   } = props;
-  console.log(newExperience);
   return (
     <>
       {addExperienceClicked ? (

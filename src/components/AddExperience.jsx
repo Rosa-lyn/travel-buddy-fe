@@ -19,8 +19,11 @@ import {
 
 class AddExperience extends Component {
   state = {
-    // title: "",
-    // body: "",
+    title: "",
+    body: "",
+    image_URL: null,
+    image_desc: "temp description",
+    experience_id: null,
     // tags: [],
     err: "",
     isLoading: true,
@@ -39,11 +42,21 @@ class AddExperience extends Component {
   };
 
   handleSubmit = (e) => {
+    // this adds the image to the postgres database and redirects us to the single experience page
     e.preventDefault();
+    const { experience_id, image_URL, image_desc } = this.state;
+    api.postImage(experience_id, image_URL, image_desc).then((postedImage) => {
+      console.log(postedImage);
+      navigate(`/experience/${experience_id}`);
+    });
+  };
 
+  confirmExperience = (e) => {
+    e.preventDefault();
+    // this method adds the experience to experiences in the postgres database
+    // this has to be done before adding images so we can assign the image an experience_id
     const { title, body } = this.state;
     const { loggedInUser } = this.props;
-    console.log(title, body);
     // const tags = separatesHashtags(body);
     // console.log(tags);
     const {
@@ -53,18 +66,20 @@ class AddExperience extends Component {
       api
         .postExperience(title, body, loggedInUser, location_lat, location_long)
         .then((postedExperience) => {
-          console.log(postedExperience);
-          navigate(`/experience/${postedExperience.experience_id}`);
+          const { experience_id } = postedExperience;
+          this.setState({ experience_id });
         })
         .catch((err) => {
           this.setState({ err: err.response.data.msg, isLoading: false });
         });
   };
 
+  setImageURL = (image_URL) => {
+    // this is invoked in FileUpload
+    this.setState({ image_URL });
+  };
+
   render() {
-    const {
-      newExperience: { location_lat, location_long },
-    } = this.props;
     return (
       <FormContainer>
         {/* div */}
@@ -101,6 +116,8 @@ class AddExperience extends Component {
               cols="40"
               required
             />
+            <button onClick={this.confirmExperience}>confirm</button>
+            <FileUpload setImageURL={this.setImageURL} />
             <ButtonContainer>
               {/* div */}
 
@@ -108,7 +125,6 @@ class AddExperience extends Component {
               <Button type="submit" value="post" />
             </ButtonContainer>
           </FormFont>
-          <FileUpload />
         </FormInnnerContainer>
       </FormContainer>
     );
