@@ -3,7 +3,7 @@ import * as api from "../utils/api";
 
 class LikeHandler extends Component {
   state = {
-    inc_likes: 0,
+    inc_likes: 0, //optimistic likes
   };
 
   handleLikeChange = (like, experience_id, comment_id) => {
@@ -11,7 +11,7 @@ class LikeHandler extends Component {
     const { likeExperience, userHasLiked } = this.props;
     const { inc_likes } = this.state;
     if (experience_id) {
-      if (!userHasLiked) {
+      if (userHasLiked === false) {
         if (inc_likes === 0) {
           return api
             .updateExperienceLikes(experience_id, inc_likes)
@@ -33,6 +33,9 @@ class LikeHandler extends Component {
               });
             });
         }
+        //  return likeExperience()
+      } else {
+        // maybe we don't need an else
       }
     }
     /*   else if (comment_id) {
@@ -54,10 +57,10 @@ class LikeHandler extends Component {
         <button
           className="like-button"
           onClick={() => this.handleLikeChange(1, experience_id, comment_id)}
-          disabled={userHasLiked}
+          // disabled={userHasLiked}
         >
-          <span role="img" aria-label="thumb-up">
-            👍
+          <span role="img" aria-label="heart">
+            💜
           </span>
         </button>
         likes: {inc_likes + likes}
