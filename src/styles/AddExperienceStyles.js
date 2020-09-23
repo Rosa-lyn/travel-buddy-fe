@@ -128,22 +128,6 @@ export const CloseButton = styled(Link)`
 `
 //FileUpload styles
 
-export const ChooseFileButton = styled.input`
-  background-color: #BB6BD9;
-  font-family: helvetica;
-  font-size: .7rem;
-  font-weight: 200;
-  color: white;
-  border: none;
-  border-radius: .2rem;
-  height: 1.2rem;
-  line-height: 1.2rem;
-  width: 4.5rem;
-  text-decoration: none;
-  text-align: center;
-  justify-content: center;
-`;
-
 export const AddImageButton = styled.input`
   background-color: #BB6BD9;
   font-family: helvetica;
@@ -158,6 +142,7 @@ export const AddImageButton = styled.input`
   text-decoration: none;
   text-align: center;
   justify-content: center;
+  margin: 0 0 15px 0;
 `;
 
 export const FileUploadLabel = styled.label`
@@ -178,4 +163,29 @@ font-size: .8rem;
 font-weight: 200;
 color: rgb(63, 63, 63);
 margin: .6rem 0 .2rem 0;
+`; 
+
+export const FileUploadInput = styled.input`
+background-color: #C5C5C5;
+height: 1.5rem;
+width: 79vw;
+border-style: none;
+border-radius: 0.3rem;
+margin: 0 0 10px 0;
+
+:: placeholder,
+:: -webkit-input-placeholder {
+  font-family: inherit;
+  font-size: .8rem;
+  font-weight: 200;
+  color: white;
+  padding: 0 0 0 .2rem;
+}
+: -ms-input-placeholder {
+  font-family: inherit;
+  font-size: .8rem;
+  font-weight: 200;
+  color: white;
+  padding: 0 0 0 .2rem;
+}
 `;

@@ -5,7 +5,9 @@ import {
   AddImageButton,
   FileUploadLabel,
   FileStatus,
-} from "../styles/AddExperienceStyles";
+  FileUploadInput,
+} from '../styles/AddExperienceStyles'
+
 
 class FileUpload extends Component {
   state = {
@@ -43,7 +45,8 @@ class FileUpload extends Component {
       <>
         <>
           <FileUploadLabel htmlFor="myfile">add your image:</FileUploadLabel>
-          <input
+
+          <FileUploadInput
             type="file"
             id="myfile"
             name="myfile"
