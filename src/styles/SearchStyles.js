@@ -22,17 +22,18 @@ export const SearchFindMeContainer = styled.div` display: grid;
 grid-column-gap: .5rem;
 grid-template-columns: 7fr 1fr;
 height: 40px;
-width: 80vw;
+width: 70vw;
 `;
 
 //the search form
-export const FormInput = styled.input` height: 40px;
+export const FormInput = styled.input` 
+height: 40px;
 font-family: Arial, Helvetica, sans-serif;
 font-size: .6rem;
 font-weight: 600;
-background-color: #C5C5C5;
+background-color: lightgray;
 height: 1.5rem;
-width: 40vw;
+width: 63vw;
 border-radius: 3px;
 grid-column: 1/2;
 border: none;
@@ -41,25 +42,25 @@ justify-self: start;
 :: placeholder,
 :: -webkit-input-placeholder {
 	font-family: inherit;
-	font-size: .5rem;
+	font-size: .6rem;
 	font-weight: 200;
-	color: white;
-	padding: 0 0 0 .2rem;
+	color: black;
+	padding: 0 0 0 .3rem;
 }
 
 : -ms-input-placeholder {
 	font-family: inherit;
 	font-size: .5rem;
 	font-weight: 200;
-	color: white;
-	padding: 0 0 0 .2rem;
+	color: black;
+	padding: 0 0 0 .3rem;
 }
 :: -moz-input-placeholder {
 	font-family: inherit;
 	font-size: .5rem;
 	font-weight: 200;
-	color: white;
-	padding: 0 0 0 .2rem;
+	color: black;
+	padding: 0 0 0 .3rem;
 }
 `;
 
@@ -85,7 +86,7 @@ export const FindMeButton = styled.button` background-color: lightgray;
 width: 40px;
 height: 40px;
 border-radius: 3px;
-background-color: #C5C5C5;
+background-color: lightgray;
 color: white;
 border: none;
 height: 1.6rem;

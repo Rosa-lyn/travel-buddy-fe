@@ -14,7 +14,7 @@ export const OuterContainer = styled.body`
 
 //the control panel containing the controls
 export const Container = styled.header ` display: block;
-  width: 80vw;
+  width: 70vw;
   height: 45px;
   padding: 17px;
   align-items: center;
@@ -23,55 +23,77 @@ export const Container = styled.header ` display: block;
   margin-top: 30px;
 `;
 
+export const InnerContainer = styled.div` 
+  width: 70vw;
+  height: 45px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
 //first flexbox contains login button
-export const LoginContainer = styled.div ` display: flex;
+export const LoginContainer = styled.div ` 
+  display: flex;
   justify-content: flex-end;
 `;
 
 //the login button
-export const Button = styled(Link)
-` background-color: #BB6BD9;
+export const Button = styled(Link)` 
+  background-color: #BB6BD9;
   font-family: helvetica;
   font-size: .8rem;
   font-weight: 200;
   color: white;
   border: none;
   border-radius: 3px;
-  height: 18px;
-  line-height: 12px;
-  width: 62px;
+  height: 12px;
+  line-height: 6px;
+  width: 55px;
   text-decoration: none;
   text-align: center;
   justify-content: center;
   padding-top: 0.5rem;
+  margin-top: 3px;
 `;
 
-//this contains the logo, the info button and signup link
-export const LogoContainer = styled.div ` display: flex;
-  justify-content: space-between;
+//this contains the logo
+export const LogoContainer = styled.div ` 
+  display: flex;
+  justify-content: start;
+  height: 45px;
 `;
 
 //the travel buddy logo
-export const LogoType = styled.h1 ` font-family: "Coiny",
-cursive;
-  font-size: 1.5rem;
+export const LogoType = styled.h1 ` font-family: "Coiny",cursive;
+  font-size: 30px;
   font-weight: 200;
+  line-height: 25px; 
   margin: 0;
   padding: 0;
+  width: 100px;
+`;
+
+//this sub-contains the login, info and signup link
+export const LoginInfoSignupContainer = styled.div ` 
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+align-content: space-space-between;
+width: 55px;
+height: 50px;
 `;
 
 //this sub-contains the info and signup link
 export const InfoSignupContainer = styled.div ` display: flex;
 justify-content: space-between;
 align-items: center;
-width: 62px;
-
-
+width: 55px;
+height: 22px;
 `;
 
 //info button
-export const IButton = styled.button` background-color: lightgray;
-
+export const IButton = styled.button` 
+background-color: lightgray;
 border-radius: 50%;
 background-color: #C5C5C5;
 font-family: 'Times New Roman',
