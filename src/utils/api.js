@@ -145,4 +145,11 @@ export const updateExperienceLikes = (experience_id, inc_likes) => {
     .then(({ data: { updateExperienceLikes } }) => updateExperienceLikes);
 };
 
-//updateCommentLikes
+export const updateCommentLikes = (comment_id, inc_likes) => {
+  const mutation = {
+    query: `mutation{updateCommentLikes(input:{comment_id:${comment_id}, inc_likes: ${inc_likes}}){comment_id body username created_at likes}}`,
+  };
+  return instance
+    .post(`/`, mutation)
+    .then(({ data: { updateExperienceLikes } }) => updateExperienceLikes);
+};
