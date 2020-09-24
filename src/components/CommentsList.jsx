@@ -4,6 +4,7 @@ import Loader from "./Loader";
 import ErrorHandler from "./ErrorHandler";
 import * as api from "../utils/api";
 import AddComment from "./AddComment.jsx";
+import '../styles/style.css';
 
 class CommentsList extends Component {
   state = {
@@ -18,25 +19,27 @@ class CommentsList extends Component {
 
     const { comments } = this.state;
     return (
-      <>
-        <AddComment
-          loggedInUser={this.props.loggedInUser}
-          experience_id={this.props.experience_id}
-          addNewComment={this.addNewComment}
-        />
-        <ul className="comments-list">
-          {comments.map((comment) => {
-            return (
-              <CommentCard
-                key={comment.comment_id}
-                {...comment}
-                loggedInUser={this.props.loggedInUser}
-                deleteComment={this.deleteComment}
-              />
-            );
-          })}
-        </ul>
-      </>
+      <div className="outer-container">
+        <div className="inner-container">
+          <AddComment
+            loggedInUser={this.props.loggedInUser}
+            experience_id={this.props.experience_id}
+            addNewComment={this.addNewComment}
+          />
+          <ul className="comments-list">
+            {comments.map((comment) => {
+              return (
+                <CommentCard
+                  key={comment.comment_id}
+                  {...comment}
+                  loggedInUser={this.props.loggedInUser}
+                  deleteComment={this.deleteComment}
+                />
+              );
+            })}
+          </ul>
+        </div>
+      </div>
     );
   }
   componentDidMount() {
