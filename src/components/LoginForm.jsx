@@ -1,29 +1,24 @@
 import React from "react";
-import * as api from "../utils/api";
-
-
+import Page from "../styles/Page.js";
 
 import {
   FormContainer,
   FormInput,
   FormTitle,
-  FormTextarea,
   Button,
   ButtonContainer,
   FormLabel,
   FormInnnerContainer,
   CloseButton,
   FormFont,
-  LogoContainer,
   LogoType,
 } from "../styles/loginStyles";
 
 const LoginForm = () => {
   return (
-    <div>
-      <LogoContainer>
-        <LogoType>travel buddy</LogoType>
-      </LogoContainer>
+    <Page>
+      <LogoType>travel buddy</LogoType>
+
       <FormContainer>
         {/* div */}
         <FormInnnerContainer>
@@ -39,7 +34,7 @@ const LoginForm = () => {
               placeholder="enter your username"
             ></FormInput>
             <FormLabel htmlFor="password">Password:</FormLabel>
-            <FormTextarea type="textarea" placeholder="password" />
+            <FormInput type="password" placeholder="password" />
 
             <ButtonContainer>
               {/* div */}
@@ -50,7 +45,7 @@ const LoginForm = () => {
           </FormFont>
         </FormInnnerContainer>
       </FormContainer>
-    </div>
+    </Page>
   );
 };
 

@@ -141,7 +141,7 @@ export const updateExperienceLikes = (experience_id, inc_likes) => {
     query: `mutation{updateExperienceLikes(input:{experience_id:${experience_id}, inc_likes: ${inc_likes}}){experience_id title body username created_at location_lat location_long likes}}`,
   };
   return instance
-    .post(`/`, mutation)
+    .post("/", mutation)
     .then(({ data: { updateExperienceLikes } }) => updateExperienceLikes);
 };
 
@@ -150,6 +150,28 @@ export const updateCommentLikes = (comment_id, inc_likes) => {
     query: `mutation{updateCommentLikes(input:{comment_id:${comment_id}, inc_likes: ${inc_likes}}){comment_id body username created_at likes}}`,
   };
   return instance
-    .post(`/`, mutation)
+    .post("/", mutation)
     .then(({ data: { updateExperienceLikes } }) => updateExperienceLikes);
+};
+
+export const getAllTags = () => {
+  const query = {
+    query: "{tags {tag_id tag_text}}",
+  };
+  return instance.post("/", query).then(
+    ({
+      data: {
+        data: { tags },
+      },
+    }) => {
+      return tags;
+    }
+  );
+};
+
+export const postNewTag = (tag_text) => {
+  const mutation = {
+    query: `mutation{addNewTag(input:{tag_text:"${tag_text}"}){tag_id tag_text}}`,
+  };
+  return instance.post("/", mutation).then(({ data: { tag } }) => tag);
 };

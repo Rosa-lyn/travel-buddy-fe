@@ -2,14 +2,20 @@ import React from "react";
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 import { Link } from "@reach/router";
 import AddExperience from "./AddExperience";
-import L from 'leaflet';
-import userLocationURL from '../img/pin.svg';
-import '../styles/style.css';
+import L from "leaflet";
+import userLocationURL from "../img/pin.svg";
+import "../styles/style.css";
 
 const myIcon = L.icon({
   iconUrl: userLocationURL,
-  iconSize: [25, 41]
+  iconSize: [25, 41],
 });
+
+const showMarker = (ref) => {
+  if (ref) {
+    ref.leafletElement.openPopup();
+  }
+};
 
 const ExperienceMap = (props) => {
   const {
@@ -23,6 +29,7 @@ const ExperienceMap = (props) => {
     addExperienceClicked,
     toggle,
     loggedInUser,
+    deleteExperience,
   } = props;
   return (
     <>
@@ -30,8 +37,10 @@ const ExperienceMap = (props) => {
         <AddExperience
           newExperience={newExperience}
           loggedInUser={loggedInUser}
+          toggle={toggle}
         />
       ) : (
+
           <Map
             className="Map"
             center={center}
@@ -74,24 +83,44 @@ const ExperienceMap = (props) => {
             })}
             {/* this marker will only show when the map is clicked */}
             {newExperience !== null && (
+
               <Marker
-                key={newExperience.experience_id}
-                position={[
-                  newExperience.location_lat,
-                  newExperience.location_long,
-                ]}
-                onClick={zoomToExperience}
+                key={experience_id}
+                position={markerPosition}
                 icon={myIcon}
                 className="marker"
               >
-                <Popup className="custom-popup">
-                  <p>Do you want to add your experience here?</p>
-                  <button onClick={toggle}>yes</button>
+                <Popup onClose={closePopup} className="custom-popup">
+                  <h1>{title}</h1>
+                  <p>
+                    {username} on {created_at}
+                  </p>
+                  <Link to={`/experience/${experience_id}`}>...read more</Link>
                 </Popup>
               </Marker>
-            )}
-          </Map>
-        )}
+            );
+          })}
+          {/* this marker will only show when the map is clicked */}
+          {newExperience !== null && (
+            <Marker
+              key={newExperience.experience_id}
+              position={[
+                newExperience.location_lat,
+                newExperience.location_long,
+              ]}
+              onClick={zoomToExperience}
+              icon={myIcon}
+              className="marker"
+              ref={showMarker}
+            >
+              <Popup className="custom-popup" onClose={deleteExperience}>
+                <p>Do you want to add your experience here?</p>
+                <button onClick={toggle}>yes</button>
+              </Popup>
+            </Marker>
+          )}
+        </Map>
+      )}
     </>
   );
 };
