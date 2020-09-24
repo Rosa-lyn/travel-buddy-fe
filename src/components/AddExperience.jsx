@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import * as api from "../utils/api";
 import FileUpload from "./FileUpload";
-import separatesHashtags from "../utils/utils";
+// import separatesHashtags from "../utils/utils";
 import { navigate } from "@reach/router";
 
 import {
@@ -9,7 +9,6 @@ import {
   FormInput,
   FormTitle,
   FormTextarea,
-  Button,
   ButtonContainer,
   FormLabel,
   FormInnnerContainer,
@@ -42,26 +41,14 @@ class AddExperience extends Component {
   };
 
   handleSubmit = (e) => {
-    // this adds the image to the postgres database and redirects us to the single experience page
     e.preventDefault();
-    const { experience_id, image_URL, image_desc } = this.state;
-    api.postImage(experience_id, image_URL, image_desc).then((postedImage) => {
-      console.log(postedImage);
-      navigate(`/experience/${experience_id}`);
-    });
-  };
-
-  confirmExperience = (e) => {
-    e.preventDefault();
-    // this method adds the experience to experiences in the postgres database
-    // this has to be done before adding images so we can assign the image an experience_id
     const { title, body } = this.state;
-    const { loggedInUser } = this.props;
-    // const tags = separatesHashtags(body);
-    // console.log(tags);
     const {
+      loggedInUser,
       newExperience: { location_lat, location_long },
     } = this.props;
+    // const tags = separatesHashtags(body);
+    // console.log(tags);
     this.state.body &&
       api
         .postExperience(title, body, loggedInUser, location_lat, location_long)
@@ -69,17 +56,24 @@ class AddExperience extends Component {
           const { experience_id } = postedExperience;
           this.setState({ experience_id });
         })
+        .then(() => {
+          const { experience_id, image_URL, image_desc } = this.state;
+          return api.postImage(experience_id, image_URL, image_desc);
+        })
+        .then((postedImage) => {
+          navigate(`/experience/${postedImage.experience_id}`);
+        })
         .catch((err) => {
           this.setState({ err: err.response.data.msg, isLoading: false });
         });
   };
 
   setImageURL = (image_URL) => {
-    // this is invoked in FileUpload
     this.setState({ image_URL });
   };
 
   render() {
+    const { image_URL } = this.state;
     return (
       <FormContainer>
         {/* div */}
@@ -116,13 +110,11 @@ class AddExperience extends Component {
               cols="40"
               required
             />
-            <button onClick={this.confirmExperience}>confirm</button>
-            <FileUpload setImageURL={this.setImageURL} />
+            <FileUpload setImageURL={this.setImageURL} image_URL={image_URL} />
             <ButtonContainer>
               {/* div */}
 
-              {/* <AddImageButton to="/addimage">add image</AddImageButton> */}
-              <Button type="submit" value="post" />
+              <input type="submit" value="post" />
             </ButtonContainer>
           </FormFont>
         </FormInnnerContainer>
