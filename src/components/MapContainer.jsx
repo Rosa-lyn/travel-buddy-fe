@@ -3,9 +3,7 @@ import ExperienceMap from "./ExperienceMap";
 import * as api from "../utils/api";
 import FindLocation from "./FindLocation";
 import Search from "./Search";
-import {
-  OuterContainer,
-} from "../styles/SearchStyles";
+import { OuterContainer } from "../styles/SearchStyles";
 
 class MapContainer extends Component {
   state = {
@@ -33,6 +31,10 @@ class MapContainer extends Component {
         console.error(JSON.stringify(err));
       }
     );
+  };
+
+  deleteExperience = () => {
+    this.setState((currentState) => ({ ...currentState, newExperience: null }));
   };
 
   componentDidMount() {
@@ -103,6 +105,7 @@ class MapContainer extends Component {
           toggle={this.toggle}
           addExperienceClicked={addExperienceClicked}
           loggedInUser={loggedInUser}
+          deleteExperience={this.deleteExperience}
         />
       </>
     );
