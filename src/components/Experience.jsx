@@ -1,6 +1,6 @@
 import React from "react";
 import LikeHandler from "./LikeHandler.jsx";
-import '../styles/style.css';
+import "../styles/style.css";
 
 const Experience = (props) => {
   const {
@@ -18,7 +18,7 @@ const Experience = (props) => {
         <h1>{title}</h1>
         <p>{body}</p>
         <div className="image-container">
-          {images.map((image) => (
+          {props.images.map((image) => (
             <img
               className="experience-image"
               src={image.image_URL}
@@ -35,7 +35,6 @@ const Experience = (props) => {
         </p>
       </div>
     </div>
-
   );
 };
 

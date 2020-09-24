@@ -1,13 +1,12 @@
 import React, { Component } from "react";
-import { storage } from "../firebase/index";
+import { storage } from "../firebase/firebase_config";
 
 import {
   AddImageButton,
   FileUploadLabel,
   FileStatus,
   FileUploadInput,
-} from '../styles/AddExperienceStyles'
-
+} from "../styles/AddExperienceStyles";
 
 class FileUpload extends Component {
   state = {
