@@ -19,27 +19,27 @@ class CommentsList extends Component {
 
     const { comments } = this.state;
     return (
-      <div className="outer-container">
-        <div className="inner-container">
-          <AddComment
-            loggedInUser={this.props.loggedInUser}
-            experience_id={this.props.experience_id}
-            addNewComment={this.addNewComment}
-          />
-          <ul className="comments-list">
-            {comments.map((comment) => {
-              return (
-                <CommentCard
-                  key={comment.comment_id}
-                  {...comment}
-                  loggedInUser={this.props.loggedInUser}
-                  deleteComment={this.deleteComment}
-                />
-              );
-            })}
-          </ul>
-        </div>
+      // <div className="outer-container">
+      <div className="comments-inner-container">
+        <ul className="comments-list">
+          {comments.map((comment) => {
+            return (
+              <CommentCard
+                key={comment.comment_id}
+                {...comment}
+                loggedInUser={this.props.loggedInUser}
+                deleteComment={this.deleteComment}
+              />
+            );
+          })}
+        </ul>
+        <AddComment
+          loggedInUser={this.props.loggedInUser}
+          experience_id={this.props.experience_id}
+          addNewComment={this.addNewComment}
+        />
       </div>
+      // </div>
     );
   }
   componentDidMount() {

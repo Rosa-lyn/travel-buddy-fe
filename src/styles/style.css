@@ -1,5 +1,21 @@
+/* ExperienceScreen styles */
+.experience-comments-container {
+  /* justify-content: center; */
+  width: 90vw;
+  height: auto;
+  /* display: flex; */
+  /* flex-direction: column; */
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  padding: 10px; 
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+/* experience styles */
 .outer-container {
-  justify-content: center;
+  /* justify-content: center;
   width: 90vw;
   height: auto;
   display: flex;
@@ -11,35 +27,45 @@
   top: 50%;
   left: 50%;
   -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); */
 }
 
-.inner-container {
-  height: 85vh;
+.experience-inner-container {
   width: 80vw;
   display: flex;
   flex-direction: column;
-  border: none;
   margin: auto;
+  border: rgb(248, 166, 248) solid 1px;
+  border-radius: .3rem;
+  padding: 13px;
+  margin: 20px 0 0 0;
 }
 
 h1 {
   font-family: helvetica;
   font-size: 18px;
   font-weight: 200;
-  margin: 15px 0 5px 0;
+  margin: 10px 0 5px 0;
 }
 
 p {
   font-family: helvetica;
   font-size: 12px;
+  margin: 5px 0 0 0;
+}
+
+.user-date {
+  font-family: helvetica;
+  font-size: 10px;
+  font-weight: 600;
+  margin: 5px 0 0 0;
 }
 
 .image-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 10px;
-  margin: 10px 0;
+  margin: 8px 0 5px 0;
 }
 
 .experience-image {
@@ -53,6 +79,100 @@ p {
   outline: none;
   background-color: #fff;
   color: #BB6BD9;
+  padding: 0;
+  width: 25px;
+}
+
+/* CommentsList styles */
+
+.comments-inner-container {
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  border: rgb(248, 166, 248) solid 1px;
+  border-radius: .3rem;
+  padding: 13px;
+  margin: 20px 0 0 0;
+}
+
+.comments-list {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  width: 79vw;
+  margin: 5px 0;
+  padding: 0;
+  list-style: none;
+}
+
+.author-date {
+  font-size: 10px;
+  font-weight: 600;
+}
+
+/* AddComment styles */
+.comment-adder {
+  font-family: helvetica;
+  margin: 18px 0px;
+  display: flex;
+}
+
+.comment-box {
+  background-color: lightgray;
+  height: 1.5rem;
+  width: 79vw;
+  border-style: none;
+  border-radius: 0.3rem;
+
+:: placeholder,
+:: -webkit-input-placeholder {
+  font-family: inherit;
+  font-size: .8rem;
+  font-weight: 200;
+  color: black;
+  padding: 0 0 0 .3rem;
+}
+: -ms-input-placeholder {
+  font-family: inherit;
+  font-size: .8rem;
+  font-weight: 200;
+  color: black;
+  padding: 0 0 0 .3rem;
+}
+}
+
+.submit-comment {
+  background-color: #BB6BD9;
+  font-family: helvetica;
+  font-size: .7rem;
+  font-weight: 200;
+  color: white;
+  border: none;
+  border-radius: .2rem;
+  height: 1.6rem;
+  width: 4.5rem;
+  margin: 0 0 0 5px;
+}
+
+/* CommentCard styles */
+button {
+  background-color: #BB6BD9;
+  font-family: helvetica;
+  font-size: .6rem;
+  font-weight: 200;
+  color: white;
+  border: none;
+  border-radius: .2rem;
+  height: 1.2rem;
+  line-height: 1.2rem;
+  width: 2.5rem;
+  text-align: center;
+  justify-content: center;
+}
+
+li {
+  margin: 10px 0 0 0;
 }
 
 /* styles for popup in map component */

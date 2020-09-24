@@ -3,6 +3,7 @@ import Experience from "./Experience";
 import CommentsList from "./CommentsList";
 import * as api from "../utils/api";
 import Loader from "./Loader";
+import "../styles/style.css";
 
 class ExperienceScreen extends Component {
   state = {
@@ -25,13 +26,13 @@ class ExperienceScreen extends Component {
     const { experience, images } = this.state;
     const { experience_id } = experience;
     return (
-      <>
-        {/* <Experience experience={experience} images={images} /> */}
+      <div className="experience-comments-container">
+        <Experience experience={experience} images={images} />
         <CommentsList
           experience_id={experience_id}
           loggedInUser={loggedInUser}
         />
-      </>
+      </div>
     );
   }
 }
