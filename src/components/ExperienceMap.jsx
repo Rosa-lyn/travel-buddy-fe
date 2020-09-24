@@ -40,50 +40,27 @@ const ExperienceMap = (props) => {
           toggle={toggle}
         />
       ) : (
-
-          <Map
-            className="Map"
-            center={center}
-            zoom={zoom}
-            onclick={addExperience}
-          >
-            <TileLayer
-              attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-              url="https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png"
-            />
-            {experiences.map((experience) => {
-              const {
-                experience_id,
-                title,
-                username,
-                location_lat,
-                location_long,
-                created_at,
-              } = experience;
-              const markerPosition = [location_lat, location_long];
-              return (
-                <Marker
-                  key={experience_id}
-                  position={markerPosition}
-                  icon={myIcon}
-                  className="marker"
-                >
-                  <Popup
-                    onClose={closePopup}
-                    className="custom-popup"
-                  >
-                    <h1>{title}</h1>
-                    <p>
-                      {username} on {created_at}
-                    </p>
-                    <Link to={`/experience/${experience_id}`}>...read more</Link>
-                  </Popup>
-                </Marker>
-              );
-            })}
-            {/* this marker will only show when the map is clicked */}
-            {newExperience !== null && (
-
+        <Map
+          className="Map"
+          center={center}
+          zoom={zoom}
+          onclick={addExperience}
+        >
+          <TileLayer
+            attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            url="https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png"
+          />
+          {experiences.map((experience) => {
+            const {
+              experience_id,
+              title,
+              username,
+              location_lat,
+              location_long,
+              created_at,
+            } = experience;
+            const markerPosition = [location_lat, location_long];
+            return (
               <Marker
                 key={experience_id}
                 position={markerPosition}
@@ -100,6 +77,7 @@ const ExperienceMap = (props) => {
               </Marker>
             );
           })}
+
           {/* this marker will only show when the map is clicked */}
           {newExperience !== null && (
             <Marker
