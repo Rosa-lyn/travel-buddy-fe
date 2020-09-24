@@ -1,18 +1,17 @@
 import React, { Component } from "react";
 import { navigate } from "@reach/router";
+import Page from "../styles/Page.js";
 
 import {
   FormContainer,
   FormInput,
   FormTitle,
-  FormTextarea,
   Button,
   ButtonContainer,
   FormLabel,
   FormInnnerContainer,
   CloseButton,
   FormFont,
-  LogoContainer,
   LogoType,
 } from "../styles/SignUpFormStyles.js";
 
@@ -22,10 +21,8 @@ class SignUpForm extends Component {
   };
   render() {
     return (
-      <section>
-        <LogoContainer>
-          <LogoType>travel buddy</LogoType>
-        </LogoContainer>
+      <Page>
+        <LogoType>travel buddy</LogoType>
         <FormContainer>
           {/* div */}
           <FormInnnerContainer>
@@ -52,7 +49,7 @@ class SignUpForm extends Component {
             </FormFont>
           </FormInnnerContainer>
         </FormContainer>
-      </section>
+      </Page>
     );
   }
 }

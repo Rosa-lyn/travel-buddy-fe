@@ -2,6 +2,9 @@ import styled from "styled-components";
 import {
   Link
 } from "@reach/router";
+import {
+  device
+} from "./@MediaRules.js"
 
 export const FormContainer = styled.div `
 justify-content: center;
@@ -11,12 +14,19 @@ flex-direction: column;
 border-width: 1px;
 border: #BB6BD9 solid 1px;
 border-radius: .3rem;
-margin: 0;
+margin-top: 40px;
 position: absolute;
 top: 40%;
 left: 50%;
 -ms-transform: translate(-50%, -50%);
 transform: translate(-50%, -50%);
+
+@media ${device.tablet} {
+ margin-top: 0px;
+}
+@media ${device.mobileM} {
+  top: 30%;
+}
 
 `;
 
@@ -133,23 +143,16 @@ export const CloseButton = styled(Link)
   color: rgb(63, 63, 63);
 `
 
-export const LogoContainer = styled.header ` display: flex;
-  width: 85vw;
-  height: 45px;
-  padding: 17px;
-  align-items: center;
-  border: #BB6BD9 1px solid;
-  border-radius: 3px;
-  margin-top: 40px;
-position: absolute;
-`;
+
 
 //the travel buddy logo
 export const LogoType = styled.h1 ` font-family: "Coiny",cursive;
   font-size: 30px;
   font-weight: 200;
   line-height: 25px; 
-  margin: 0;
+  margin: 0 auto;
+   margin-top: 40px;
   padding: 0;
   width: 100px;
+  
 `;
