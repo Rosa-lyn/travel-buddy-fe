@@ -33,6 +33,10 @@ class MapContainer extends Component {
     );
   };
 
+  deleteExperience = () => {
+    this.setState((currentState) => ({ ...currentState, newExperience: null }));
+  };
+
   componentDidMount() {
     this.getUserLocation();
     api
@@ -103,6 +107,7 @@ class MapContainer extends Component {
           toggle={this.toggle}
           addExperienceClicked={addExperienceClicked}
           loggedInUser={loggedInUser}
+          deleteExperience={this.deleteExperience}
         />
       </>
     );

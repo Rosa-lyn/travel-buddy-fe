@@ -1,8 +1,6 @@
 import React from "react";
 import * as api from "../utils/api";
 
-
-
 import {
   FormContainer,
   FormInput,
@@ -39,7 +37,7 @@ const LoginForm = () => {
               placeholder="enter your username"
             ></FormInput>
             <FormLabel htmlFor="password">Password:</FormLabel>
-            <FormTextarea type="textarea" placeholder="password" />
+            <FormInput type="password" placeholder="password" />
 
             <ButtonContainer>
               {/* div */}

@@ -11,6 +11,12 @@ const myIcon = L.icon({
   iconSize: [25, 41],
 });
 
+const showMarker = (ref) => {
+  if (ref) {
+    ref.leafletElement.openPopup();
+  }
+};
+
 const ExperienceMap = (props) => {
   const {
     center,
@@ -23,6 +29,7 @@ const ExperienceMap = (props) => {
     addExperienceClicked,
     toggle,
     loggedInUser,
+    deleteExperience,
   } = props;
   return (
     <>
@@ -81,8 +88,9 @@ const ExperienceMap = (props) => {
               onClick={zoomToExperience}
               icon={myIcon}
               className="marker"
+              ref={showMarker}
             >
-              <Popup className="custom-popup">
+              <Popup className="custom-popup" onClose={deleteExperience}>
                 <p>Do you want to add your experience here?</p>
                 <button onClick={toggle}>yes</button>
               </Popup>
