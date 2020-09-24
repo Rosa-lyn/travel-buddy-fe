@@ -37,6 +37,7 @@ const ExperienceMap = (props) => {
         <AddExperience
           newExperience={newExperience}
           loggedInUser={loggedInUser}
+          toggle={toggle}
         />
       ) : (
         <Map

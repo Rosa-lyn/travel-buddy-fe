@@ -33,13 +33,13 @@ class FileUpload extends Component {
         .getDownloadURL()
         .then((uploadedFileURL) => {
           const { setImageURL } = this.props;
-          console.log("file uploaded!", uploadedFileURL);
           setImageURL(uploadedFileURL);
         });
     });
   };
   render() {
     const { selectedFile } = this.state;
+    const { image_URL } = this.props;
     return (
       <>
         <>
@@ -50,16 +50,25 @@ class FileUpload extends Component {
             id="myfile"
             name="myfile"
             onChange={this.chooseFile}
+            disabled={image_URL}
           />
+
+          {/* input */}
           <AddImageButton
             type="button"
             value="add image"
             onClick={this.uploadImageToFirebase}
+            disabled={image_URL}
           />
         </>
         <section>
-          {selectedFile && (
+          {selectedFile && image_URL === null && (
             <FileStatus>you chose {selectedFile.name}</FileStatus>
+          )}
+          {image_URL && (
+            <FileStatus>
+              {selectedFile.name} was successfully uploaded
+            </FileStatus>
           )}
         </section>
       </>
