@@ -26,7 +26,7 @@ class ExperienceScreen extends Component {
     const { experience_id } = experience;
     return (
       <>
-        <Experience experience={experience} images={images} />
+        {/* <Experience experience={experience} images={images} /> */}
         <CommentsList
           experience_id={experience_id}
           loggedInUser={loggedInUser}
