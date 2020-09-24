@@ -1,4 +1,4 @@
-const { separatesHashtags } = require("./utils");
+import separatesHashtags from "./utils";
 
 describe("separatesHashtags", () => {
   it("returns an empty array when no hashtags are present", () => {
