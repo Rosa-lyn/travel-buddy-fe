@@ -74,6 +74,7 @@ class AddExperience extends Component {
 
   render() {
     const { image_URL } = this.state;
+    const { toggle } = this.props;
     return (
       <FormContainer>
         {/* div */}
@@ -81,7 +82,9 @@ class AddExperience extends Component {
         <FormInnnerContainer>
           {/* div */}
 
-          <CloseButton to="/">x</CloseButton>
+          <CloseButton to="/" onClick={toggle}>
+            x
+          </CloseButton>
           <FormTitle>add your experience</FormTitle>
 
           <FormFont onSubmit={this.handleSubmit}>
