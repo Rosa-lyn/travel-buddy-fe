@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import * as api from "../utils/api";
+import "../styles/style.css";
 
 class LikeHandler extends Component {
   state = {
@@ -48,27 +49,27 @@ class LikeHandler extends Component {
           <button className="like-button" onClick={this.handleExperienceLike}>
             {optimistic_experience_likes === 0 ? (
               <span role="img" aria-label="white-heart">
-                🤍
+                <i class="far fa-heart"></i>
               </span>
             ) : (
-              <span role="img" aria-label="purple-heart">
-                💜
-              </span>
-            )}
+                <span role="img" aria-label="purple-heart">
+                  <i class="fas fa-heart"></i>
+                </span>
+              )}
           </button>
         ) : (
-          <button className="like-button" onClick={this.handleCommentLike}>
-            {optimistic_comment_likes === 0 ? (
-              <span role="img" aria-label="white-heart">
-                🤍
-              </span>
-            ) : (
-              <span role="img" aria-label="purple-heart">
-                💜
-              </span>
-            )}
-          </button>
-        )}
+            <button className="like-button" onClick={this.handleCommentLike}>
+              {optimistic_comment_likes === 0 ? (
+                <span role="img" aria-label="white-heart">
+                  <i class="far fa-heart"></i>
+                </span>
+              ) : (
+                  <span role="img" aria-label="purple-heart">
+                    <i class="fas fa-heart"></i>
+                  </span>
+                )}
+            </button>
+          )}
         {likes +
           (this.props.experience_id
             ? optimistic_experience_likes
