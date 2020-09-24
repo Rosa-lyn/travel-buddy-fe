@@ -4,6 +4,7 @@ import Loader from "./Loader";
 import ErrorHandler from "./ErrorHandler";
 import * as api from "../utils/api";
 import AddComment from "./AddComment.jsx";
+import '../styles/style.css';
 
 class CommentsList extends Component {
   state = {
@@ -18,12 +19,8 @@ class CommentsList extends Component {
 
     const { comments } = this.state;
     return (
-      <>
-        <AddComment
-          loggedInUser={this.props.loggedInUser}
-          experience_id={this.props.experience_id}
-          addNewComment={this.addNewComment}
-        />
+      // <div className="outer-container">
+      <div className="comments-inner-container">
         <ul className="comments-list">
           {comments.map((comment) => {
             return (
@@ -36,7 +33,13 @@ class CommentsList extends Component {
             );
           })}
         </ul>
-      </>
+        <AddComment
+          loggedInUser={this.props.loggedInUser}
+          experience_id={this.props.experience_id}
+          addNewComment={this.addNewComment}
+        />
+      </div>
+      // </div>
     );
   }
   componentDidMount() {
