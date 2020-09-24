@@ -13,7 +13,7 @@ border: #BB6BD9 solid 1px;
 border-radius: .3rem;
 margin: 0;
 position: absolute;
-top: 50%;
+top: 40%;
 left: 50%;
 -ms-transform: translate(-50%, -50%);
 transform: translate(-50%, -50%);
@@ -36,7 +36,7 @@ font-family: helvetica;
 font-size: .8rem;
 font-weight: 200;
 color: rgb(63, 63, 63);
-margin: .6rem 0 .2rem 0;
+margin: .6rem .0 .2rem 0.4rem;
 `;
 
 export const FormTitle = styled.h1 `
@@ -55,17 +55,21 @@ background-color: #C5C5C5;
 height: 1.5rem;
 width: 79vw;
 border-style: none;
-border-radius: 0.3rem;
+border-radius: .3rem;
+margin-top: 5px;
+margin-bottom: 5px;
+margin-right: 5px;
+margin-left: 5px;
 
-:: placeholder,
-:: -webkit-input-placeholder {
+::placeholder,
+::-webkit-input-placeholder {
   font-family: inherit;
   font-size: .8rem;
   font-weight: 200;
   color: white;
   padding: 0 0 0 .2rem;
 }
-: -ms-input-placeholder {
+:-ms-input-placeholder {
   font-family: inherit;
   font-size: .8rem;
   font-weight: 200;
@@ -82,15 +86,15 @@ border-style: none;
 border-radius: 0.3rem;
 
 
-:: placeholder,
-  :: -webkit-textarea-placeholder {
+::placeholder,
+  ::-webkit-textarea-placeholder {
   font-family: helvetica;
   font-size: .8rem;
   font-weight: 200;
   color: white;
   padding: .2rem .1rem 0 .2rem;
 }
-  : -ms-textarea-placeholder {
+  :-ms-textarea-placeholder {
   font-family: helvetica;
   font-size: .8rem;
   font-weight: 200;
@@ -126,23 +130,18 @@ export const CloseButton = styled(Link)
   text-decoration: none;
   text-align: right;
   margin: .6rem 0 0 0;
-  color: rgb(63, 63, 63)
+  color: rgb(63, 63, 63);
 `
-//FileUpload styles
-export const LogoContainer = styled.div ` 
-   height: 45px;
-  justify-content: center;
-  width: 90 vw;
-  display: flex;
-  flex-direction: column;
-  border-width: 1px;
-  border: #BB6BD9 solid 1 px;
-  border-radius: .3 rem;
-  margin: 0;
-  position: absolute;
-  top: 10%;
-  left: 42%; 
- 
+
+export const LogoContainer = styled.header ` display: flex;
+  width: 85vw;
+  height: 45px;
+  padding: 17px;
+  align-items: center;
+  border: #BB6BD9 1px solid;
+  border-radius: 3px;
+  margin-top: 40px;
+position: absolute;
 `;
 
 //the travel buddy logo
