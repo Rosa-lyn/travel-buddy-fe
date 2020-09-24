@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import * as api from "../utils/api";
 import FileUpload from "./FileUpload";
-// import separatesHashtags from "../utils/utils";
+import separatesHashtags from "../utils/utils";
 import { navigate } from "@reach/router";
 
 import {
@@ -32,10 +32,6 @@ class AddExperience extends Component {
     this.setState({ title: e.target.value });
   };
 
-  // re: hashtags - body is set in state, then a
-  // function is needed in the backend to filter
-  // out hastags iand save them on a separate key
-
   handleBodyChange = (e) => {
     this.setState({ body: e.target.value });
   };
@@ -47,8 +43,6 @@ class AddExperience extends Component {
       loggedInUser,
       newExperience: { location_lat, location_long },
     } = this.props;
-    // const tags = separatesHashtags(body);
-    // console.log(tags);
     this.state.body &&
       api
         .postExperience(title, body, loggedInUser, location_lat, location_long)
@@ -57,15 +51,43 @@ class AddExperience extends Component {
           this.setState({ experience_id });
         })
         .then(() => {
+          // get all the tags from the db
+          return api.getAllTags();
+        })
+        .then((tagObjects) => {
+          // get only the tag text
+          const tagsFromDataBase = tagObjects.map((tagObject) => {
+            return tagObject.tag_text;
+          });
+          //get the hashtags off the body
+          const tagsFromBody = separatesHashtags(body);
+          // filter tags and check if they are already in alltags
+          const tagsToAdd = tagsFromBody.filter((tagFromBody) => {
+            return !tagsFromDataBase.includes(tagFromBody);
+          });
+          console.log(tagsToAdd, "tagsToAdd");
+          //if they aren't post them to the tags table
+          const promises = [];
+          tagsToAdd.forEach((tagToAdd) => {
+            promises.push(api.postNewTag(tagToAdd));
+          });
+          return Promise.all(promises);
+        })
+        .then(() => {
+          // we need the tag ids of all the tags on the new exp so get all the tags from the tags table
+          // filter the returned ones to only have the ones from tags array
+          // loop through all the tags from the database and insert them into the tag_experience junction table
+        })
+        .then(() => {
           const { experience_id, image_URL, image_desc } = this.state;
           return api.postImage(experience_id, image_URL, image_desc);
         })
         .then((postedImage) => {
           navigate(`/experience/${postedImage.experience_id}`);
-        })
-        .catch((err) => {
-          this.setState({ err: err.response.data.msg, isLoading: false });
         });
+    // .catch((err) => {
+    //   this.setState({ err: err.response.data.msg, isLoading: false });
+    // });
   };
 
   setImageURL = (image_URL) => {
