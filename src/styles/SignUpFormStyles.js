@@ -76,14 +76,14 @@ margin-left: 5px;
   font-family: inherit;
   font-size: .8rem;
   font-weight: 200;
-  color: white;
+  color: black;
   padding: 0 0 0 .2rem;
 }
 :-ms-input-placeholder {
   font-family: inherit;
   font-size: .8rem;
   font-weight: 200;
-  color: white;
+  color: black;
   padding: 0 0 0 .2rem;
 }
 `;
@@ -141,6 +141,10 @@ export const CloseButton = styled(Link)
   text-align: right;
   margin: .6rem 0 0 0;
   color: rgb(63, 63, 63);
+
+  :a {
+    color: #BB6BD9;
+  }
 `
 
 
