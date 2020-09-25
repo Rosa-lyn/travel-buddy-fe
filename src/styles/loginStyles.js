@@ -37,7 +37,7 @@ export const FormContainer = styled.div `
   display: flex;
   flex-direction: column;
   width: 90vw;
-  border: #BB6BD9 solid 1px;
+  border: rgb(248, 166, 248) solid 1px;
   border-radius: .3rem;
 
   @media ${device.tablet} {
