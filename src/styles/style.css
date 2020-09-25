@@ -10,12 +10,13 @@ body {
   position: absolute;
   top: 20px;
   left: 50%;
-  /*
+  
   transform: translate(-50%, 0);
   padding: 10px;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  */
+
+  /* -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); */
+  
 }
 
 /* experience styles */
@@ -39,16 +40,11 @@ body {
   width: 82vw;
   display: flex;
   flex-direction: column;
-  /* margin: auto; */
   border: rgb(248, 166, 248) solid 1px;
-  /*
-  border-radius: .3rem;
-  padding: 10px;
-  margin: 0;
   border-radius: 0.3rem;
   padding: 13px;
   margin: 20px 0 0 0;
-  */
+  
 }
 
 h1 {
@@ -222,6 +218,16 @@ li {
 
 .error {
   width: 200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* loader styles */
+.loader-wrapper {
+  width: 100vw;
+  height: 100vh;
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
