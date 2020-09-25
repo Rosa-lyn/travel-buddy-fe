@@ -26,7 +26,6 @@ const CommentCard = ({
           delete
         </button>
       </label>
-
       <LikeHandler likes={likes} comment_id={comment_id} />
     </li>
   );
