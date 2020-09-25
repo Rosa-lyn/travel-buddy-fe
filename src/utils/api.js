@@ -133,7 +133,16 @@ export const getCommentsByExperienceId = (experience_id) => {
   );
 };
 export const deleteComment = (comment_id) => {
-  return instance.delete(`/comments/${comment_id}`);
+  const mutation = {
+    query: `mutation{deleteComment(input:{comment_id:${comment_id}}){comment_id}}`,
+  };
+  return instance.post("/", mutation).then(
+    ({
+      data: {
+        data: { deleteComment },
+      },
+    }) => deleteComment
+  );
 };
 
 export const updateExperienceLikes = (experience_id, inc_likes) => {

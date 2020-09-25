@@ -4,7 +4,7 @@ import Loader from "./Loader";
 import ErrorHandler from "./ErrorHandler";
 import * as api from "../utils/api";
 import AddComment from "./AddComment.jsx";
-import '../styles/style.css';
+import "../styles/style.css";
 
 class CommentsList extends Component {
   state = {
@@ -63,20 +63,20 @@ class CommentsList extends Component {
       };
     });
   };
-  // deleteComment = (comment_id) => {
-  //   api
-  //     .deleteComment(comment_id)
-  //     .then(() => {
-  //       this.setState((currentState) => {
-  //         const newComments = currentState.comments.filter((comment) => {
-  //           return comment_id !== comment.comment_id;
-  //         });
-  //         return { comments: newComments };
-  //       });
-  //     })
-  //     .catch((err) => {
-  //       this.setState({ err: err.response.data.msg, isLoading: false });
-  //     });
-  // };
+  deleteComment = (comment_id) => {
+    api
+      .deleteComment(comment_id)
+      .then(() => {
+        this.setState((currentState) => {
+          const commentsToKeep = currentState.comments.filter((comment) => {
+            return comment_id !== comment.comment_id;
+          });
+          return { ...currentState, comments: commentsToKeep };
+        });
+      })
+      .catch((err) => {
+        this.setState({ err: err.response.data.msg, isLoading: false });
+      });
+  };
 }
 export default CommentsList;
