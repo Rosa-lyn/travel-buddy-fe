@@ -4,25 +4,33 @@ import CommentsList from "./CommentsList";
 import * as api from "../utils/api";
 import Loader from "./Loader";
 import "../styles/style.css";
+import ErrorHandler from "./ErrorHandler";
 
 class ExperienceScreen extends Component {
   state = {
     experience: {},
     images: [],
     isLoading: true,
+    err: null,
   };
   componentDidMount() {
     const { experience_id } = this.props;
-    api
-      .getSingleExperience(experience_id)
-      .then(({ experience, images }) =>
-        this.setState({ experience, images, isLoading: false })
-      );
+    api.getSingleExperience(experience_id).then((res) => {
+      const { experience, images } = res;
+      if (experience)
+        this.setState({ experience, images, isLoading: false, err: null });
+      else
+        this.setState({
+          isLoading: false,
+          err: { msg: "invalid experience id" },
+        });
+    });
   }
 
   render() {
     const { loggedInUser } = this.props;
     if (this.state.isLoading) return <Loader />;
+    if (this.state.err) return <ErrorHandler msg={this.state.err.msg} />;
     const { experience, images } = this.state;
     const { experience_id } = experience;
     return (
