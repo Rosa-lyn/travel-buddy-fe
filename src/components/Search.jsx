@@ -1,24 +1,27 @@
 import React, { Component } from "react";
-import { FormInput, SearchButton, SearchElements } from '../styles/SearchStyles';
+import {
+  FormInput,
+  SearchButton,
+  SearchElements,
+} from "../styles/SearchStyles";
 
 class Search extends Component {
-
   render() {
-
     return (
       <>
-        <SearchElements action="" >
+        <SearchElements action="">
           {/* <FormLabel>search for place or tag</FormLabel> */}
-          <FormInput type="text" placeholder="type place or tag eg. Paris or #cafe">
-          </FormInput>
+          <FormInput
+            type="text"
+            placeholder="type place or tag eg. Paris or #cafe"
+          ></FormInput>
           <SearchButton>
-            <i class="fa fa-search"></i>
+            <i className="fa fa-search"></i>
           </SearchButton>
         </SearchElements>
-
       </>
     );
   }
-};
+}
 
 export default Search;

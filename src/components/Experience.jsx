@@ -2,6 +2,7 @@ import React from "react";
 import LikeHandler from "./LikeHandler.jsx";
 import "../styles/style.css";
 import * as api from "../utils/api";
+import { navigate } from "@reach/router";
 
 const Experience = (props) => {
   const {
@@ -15,14 +16,17 @@ const Experience = (props) => {
   const { loggedIn } = props;
   const date = new Date(+created_at);
   const { tags } = props;
-  console.log(tags);
   return (
     // <div className="outer-container">
     <div className="experience-inner-container">
       <h1>{title}</h1>
       <p>{body}</p>
       {tags.map((tag) => {
-        return <p className="user-date">{tag.tag_text}</p>;
+        return (
+          <p key={tag.tag_id} className="user-date">
+            {tag.tag_text}
+          </p>
+        );
       })}
 
       <div className="image-container">
@@ -48,18 +52,17 @@ const Experience = (props) => {
         {loggedIn === username && (
           <button
             onClick={() =>
-              api
-                .deleteExperience(experience_id)
-                .then((deletedExperience) =>
-                  console.log("deleted:", deletedExperience)
-                )
+              api.deleteExperience(experience_id).then((deletedExperience) => {
+                console.log("deleted:", deletedExperience);
+                return navigate("/");
+              })
             }
           >
             delete
           </button>
         )}
       </div>
-    </div >
+    </div>
   );
 };
 

@@ -13,11 +13,15 @@ class MapContainer extends Component {
     newExperience: null,
     addExperienceClicked: false,
     newPinLocation: null,
+    usersCurrentLocation: null,
   };
 
   getUserLocation = (event) => {
+    console.log(event);
     navigator.geolocation.getCurrentPosition(
-      ({ coords }) => {
+      (res) => {
+        console.log(res);
+        const { coords } = res;
         const lat = coords.latitude;
         const lng = coords.longitude;
         console.log("getCurrentPosition Success " + lat + lng);
