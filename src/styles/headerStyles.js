@@ -14,7 +14,7 @@ export const OuterContainer = styled.body`
 
 //the control panel containing the controls
 export const Container = styled.header ` display: block;
-  width: 75vw;
+  width: 80vw;
   height: 45px;
   padding: 17px;
   align-items: center;
