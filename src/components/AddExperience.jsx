@@ -127,7 +127,7 @@ class AddExperience extends Component {
 
   render() {
     const { image_URL } = this.state;
-    const { toggle } = this.props;
+    const { toggleMapClicked } = this.props;
     return (
       <Page>
         <OuterFormContainer>
@@ -137,7 +137,7 @@ class AddExperience extends Component {
             <FormInnnerContainer>
               {/* div */}
 
-              <CloseButton to="/" onClick={toggle}>
+              <CloseButton to="/" onClick={toggleMapClicked}>
                 x
               </CloseButton>
               <FormTitle>add your experience</FormTitle>
