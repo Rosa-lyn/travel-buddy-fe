@@ -153,3 +153,16 @@ export const updateCommentLikes = (comment_id, inc_likes) => {
     .post(`/`, mutation)
     .then(({ data: { updateExperienceLikes } }) => updateExperienceLikes);
 };
+
+export const deleteExperience = (experience_id) => {
+  const mutation = {
+    query: `mutation{deleteExperience(input:{experience_id:${experience_id}}){experience_id}}`,
+  };
+  return instance.post("/", mutation).then(
+    ({
+      data: {
+        data: { deleteExperience },
+      },
+    }) => deleteExperience
+  );
+};

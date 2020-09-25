@@ -9,6 +9,7 @@ class ExperienceScreen extends Component {
     experience: {},
     images: [],
     isLoading: true,
+    loggedIn: "burt1943",
   };
   componentDidMount() {
     const { experience_id } = this.props;
@@ -26,7 +27,11 @@ class ExperienceScreen extends Component {
     const { experience_id } = experience;
     return (
       <>
-        <Experience experience={experience} images={images} />
+        <Experience
+          experience={experience}
+          images={images}
+          loggedIn={this.state.loggedIn}
+        />
         <CommentsList
           experience_id={experience_id}
           loggedInUser={loggedInUser}
