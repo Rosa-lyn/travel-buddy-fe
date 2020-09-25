@@ -6,28 +6,49 @@ import {
   device
 } from "./@MediaRules.js"
 
+export const OuterFormContainer = styled.div `
+  width: 88vw;
+  margin: 0;
+  position: absolute;
+  display: flex;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 100%);
+`;
+
+//the travel buddy logo
+export const LogoType = styled.h1 `
+  
+  display: flex;
+  flex-direction: column;
+
+  margin: 0;
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  font-family: "Coiny",cursive;
+  font-size: 30px;
+  font-weight: 200;
+  line-height: 25px;
+  width: 100px;
+  color: #002352;
+`;
+
 export const FormContainer = styled.div `
-justify-content: center;
-width: 90vw;
-display: flex;
-flex-direction: column;
-border-width: 1px;
-border: #BB6BD9 solid 1px;
-border-radius: .3rem;
-margin-top: 40px;
-position: absolute;
-top: 40%;
-left: 50%;
--ms-transform: translate(-50%, -50%);
-transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  width: 90vw;
+  border: #BB6BD9 solid 1px;
+  border-radius: .3rem;
 
-@media ${device.tablet} {
- margin-top: 0px;
-}
-@media ${device.mobileM} {
-  top: 30%;
-}
-
+  @media ${device.tablet} {
+  margin-top: 0px;
+  }
+  @media ${device.mobileM} {
+    top: 30%; 
+  }
 `;
 
 export const FormInnnerContainer = styled.div `
@@ -130,8 +151,7 @@ export const ButtonContainer = styled.div `
   margin-bottom: 1.5rem;
 `
 
-export const CloseButton = styled(Link)
-`
+export const CloseButton = styled(Link)`
   font-family: helvetica;
   font-size: .8rem;
   font-weight: 200;
@@ -140,17 +160,3 @@ export const CloseButton = styled(Link)
   margin: .6rem 0 0 0;
   color: rgb(63, 63, 63);
 `
-
-
-
-//the travel buddy logo
-export const LogoType = styled.h1 ` font-family: "Coiny",cursive;
-  font-size: 30px;
-  font-weight: 200;
-  line-height: 25px; 
-  margin: 0 auto;
-   margin-top: 40px;
-  padding: 0;
-  width: 100px;
-  color: #002352;
-`;
