@@ -14,6 +14,8 @@ import {
   FormInnnerContainer,
   CloseButton,
   FormFont,
+  PostButton,
+  // OuterContainer,
 } from "../styles/AddExperienceStyles";
 
 class AddExperience extends Component {
@@ -122,6 +124,7 @@ class AddExperience extends Component {
     const { image_URL } = this.state;
     const { toggle } = this.props;
     return (
+      // <OuterContainer>
       <FormContainer>
         {/* div */}
 
@@ -163,11 +166,12 @@ class AddExperience extends Component {
             <ButtonContainer>
               {/* div */}
 
-              <input type="submit" value="post" />
+              <PostButton type="submit" value="submit" />
             </ButtonContainer>
           </FormFont>
         </FormInnnerContainer>
       </FormContainer>
+      // </OuterContainer>
     );
   }
 }

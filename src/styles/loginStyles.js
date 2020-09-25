@@ -43,17 +43,18 @@ export const FormLabel = styled.label `
 display: block;
 text-align: left;
 font-family: helvetica;
-font-size: .8rem;
+font-size: .7rem;
 font-weight: 200;
 color: rgb(63, 63, 63);
-margin: .6rem .0 .2rem 0.4rem;
+margin: 8px 0 5px 0;
 `;
 
 export const FormTitle = styled.h1 `
 font-family: helvetica;
-font-size: 1.3rem;
+font-size: 1.1rem;
 font-weight: 200;
 color: rgb(63, 63, 63);
+margin: 0;
 `;
 
 export const FormFont = styled.form `
@@ -61,29 +62,26 @@ export const FormFont = styled.form `
 `
 
 export const FormInput = styled.input `
-background-color: #C5C5C5;
-height: 1.5rem;
-width: 79vw;
-border-style: none;
-border-radius: .3rem;
-margin-top: 5px;
-margin-bottom: 5px;
-margin-right: 5px;
-margin-left: 5px;
+  background-color: #C5C5C5;
+  height: 1.5rem;
+  width: 79vw;
+  border-style: none;
+  border-radius: .3rem;
+  margin: 0 5px 5px 0;
 
 ::placeholder,
 ::-webkit-input-placeholder {
   font-family: inherit;
   font-size: .8rem;
   font-weight: 200;
-  color: white;
+  color: #002352;
   padding: 0 0 0 .2rem;
 }
 :-ms-input-placeholder {
   font-family: inherit;
   font-size: .8rem;
   font-weight: 200;
-  color: white;
+  color: #002352;
   padding: 0 0 0 .2rem;
 }
 `;
@@ -101,14 +99,14 @@ border-radius: 0.3rem;
   font-family: helvetica;
   font-size: .8rem;
   font-weight: 200;
-  color: white;
+  color: #002352;
   padding: .2rem .1rem 0 .2rem;
 }
   :-ms-textarea-placeholder {
   font-family: helvetica;
   font-size: .8rem;
   font-weight: 200;
-  color: white;
+  color: #002352;
   padding: 0 0 0 .2rem;
 }
 `;
@@ -154,5 +152,5 @@ export const LogoType = styled.h1 ` font-family: "Coiny",cursive;
    margin-top: 40px;
   padding: 0;
   width: 100px;
-  
+  color: #002352;
 `;

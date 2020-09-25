@@ -138,7 +138,16 @@ export const getCommentsByExperienceId = (experience_id) => {
   );
 };
 export const deleteComment = (comment_id) => {
-  return instance.delete(`/comments/${comment_id}`);
+  const mutation = {
+    query: `mutation{deleteComment(input:{comment_id:${comment_id}}){comment_id}}`,
+  };
+  return instance.post("/", mutation).then(
+    ({
+      data: {
+        data: { deleteComment },
+      },
+    }) => deleteComment
+  );
 };
 
 export const updateExperienceLikes = (experience_id, inc_likes) => {
@@ -159,6 +168,18 @@ export const updateCommentLikes = (comment_id, inc_likes) => {
     .then(({ data: { updateExperienceLikes } }) => updateExperienceLikes);
 };
 
+export const deleteExperience = (experience_id) => {
+  const mutation = {
+    query: `mutation{deleteExperience(input:{experience_id:${experience_id}}){experience_id}}`,
+  };
+  return instance.post("/", mutation).then(
+    ({
+      data: {
+        data: { deleteExperience },
+      },
+    }) => deleteExperience
+  );
+};
 export const getAllTags = () => {
   const query = {
     query: "{tags {tag_id tag_text}}",
