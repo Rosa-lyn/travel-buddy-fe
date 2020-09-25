@@ -8,7 +8,7 @@
   position: absolute;
   top: 54%;
   left: 50%;
-  padding: 10px; 
+  padding: 10px;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
@@ -36,7 +36,7 @@
   flex-direction: column;
   margin: auto;
   border: rgb(248, 166, 248) solid 1px;
-  border-radius: .3rem;
+  border-radius: 0.3rem;
   padding: 13px;
   margin: 20px 0 0 0;
 }
@@ -79,7 +79,7 @@ p {
   border: none;
   outline: none;
   background-color: #fff;
-  color: #BB6BD9;
+  color: #bb6bd9;
   padding: 0;
   width: 25px;
 }
@@ -92,7 +92,7 @@ p {
   flex-direction: column;
   margin: auto;
   border: rgb(248, 166, 248) solid 1px;
-  border-radius: .3rem;
+  border-radius: 0.3rem;
   padding: 13px;
   margin: 20px 0 0 0;
 }
@@ -126,31 +126,31 @@ p {
   border-style: none;
   border-radius: 0.3rem;
 
-:: placeholder,
+  :: placeholder,
 :: -webkit-input-placeholder {
-  font-family: inherit;
-  font-size: .8rem;
-  font-weight: 200;
-  color: black;
-  padding: 0 0 0 .3rem;
-}
-: -ms-input-placeholder {
-  font-family: inherit;
-  font-size: .8rem;
-  font-weight: 200;
-  color: black;
-  padding: 0 0 0 .3rem;
-}
+    font-family: inherit;
+    font-size: 0.8rem;
+    font-weight: 200;
+    color: black;
+    padding: 0 0 0 0.3rem;
+  }
+  : -ms-input-placeholder {
+    font-family: inherit;
+    font-size: 0.8rem;
+    font-weight: 200;
+    color: black;
+    padding: 0 0 0 0.3rem;
+  }
 }
 
 .submit-comment {
-  background-color: #BB6BD9;
+  background-color: #bb6bd9;
   font-family: helvetica;
-  font-size: .7rem;
+  font-size: 0.7rem;
   font-weight: 200;
   color: white;
   border: none;
-  border-radius: .2rem;
+  border-radius: 0.2rem;
   height: 1.6rem;
   width: 4.5rem;
   margin: 0 0 0 5px;
@@ -158,13 +158,13 @@ p {
 
 /* CommentCard styles */
 button {
-  background-color: #BB6BD9;
+  background-color: #bb6bd9;
   font-family: helvetica;
-  font-size: .6rem;
+  font-size: 0.6rem;
   font-weight: 200;
   color: white;
   border: none;
-  border-radius: .2rem;
+  border-radius: 0.2rem;
   height: 1.2rem;
   line-height: 1.2rem;
   width: 2.5rem;
@@ -179,26 +179,34 @@ li {
 /* styles for popup in map component */
 .custom-popup .leaflet-popup-content-wrapper {
   background: rgba(0 0 0 0.8);
-  color:#333;
-  font-size:13px;
-  line-height:24px;
+  color: #333;
+  font-size: 13px;
+  line-height: 24px;
   border-radius: 5px;
-  }
+}
 .custom-popup .leaflet-popup-content-wrapper a {
   color: rgb(234, 172, 240);
-  }
+}
 .custom-popup .leaflet-popup-tip-container {
-  width:25px;
-  height:25px;
-  }
+  width: 25px;
+  height: 25px;
+}
 .custom-popup .leaflet-popup-tip {
-  border-left:15px transparent;
-  border-right:15px transparent;
-  border-top:15px #fff;
-  border-bottom:15px transparent;
-  }
+  border-left: 15px transparent;
+  border-right: 15px transparent;
+  border-top: 15px #fff;
+  border-bottom: 15px transparent;
+}
 
-  .marker {
-    width: 30px;
-    height: 30px;
-  }
+.marker {
+  width: 30px;
+  height: 30px;
+}
+
+.error {
+  width: 200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
