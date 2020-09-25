@@ -26,8 +26,9 @@ const ExperienceMap = (props) => {
     closePopup,
     addExperience,
     newExperience,
+    newPinLocation,
     addExperienceClicked,
-    toggle,
+    toggleMapClicked,
     loggedInUser,
     deleteExperience,
   } = props;
@@ -35,9 +36,9 @@ const ExperienceMap = (props) => {
     <>
       {addExperienceClicked ? (
         <AddExperience
-          newExperience={newExperience}
+          newPinLocation={newPinLocation}
           loggedInUser={loggedInUser}
-          toggle={toggle}
+          toggleMapClicked={toggleMapClicked}
         />
       ) : (
 
@@ -96,7 +97,7 @@ const ExperienceMap = (props) => {
               >
                 <Popup className="custom-popup" onClose={deleteExperience}>
                   <p>Do you want to add your experience here?</p>
-                  <button onClick={toggle}>yes</button>
+                  <button onClick={toggleMapClicked}>yes</button>
                 </Popup>
               </Marker>
             )}

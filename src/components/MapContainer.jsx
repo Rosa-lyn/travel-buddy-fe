@@ -9,10 +9,10 @@ class MapContainer extends Component {
   state = {
     center: [0, 0],
     zoom: 2,
-    usersCurrentLocation: [null, null],
     experiences: [],
     newExperience: null,
     addExperienceClicked: false,
+    newPinLocation: null,
   };
 
   getUserLocation = (event) => {
@@ -56,25 +56,25 @@ class MapContainer extends Component {
     this.setState({ zoom: 14 });
   };
   addExperience = (event) => {
-    const { loggedInUser } = this.props;
     const { lat, lng } = event.latlng;
     const newExperience = {
       experience_id: null,
       title: null,
       body: null,
-      username: loggedInUser,
-      created_at: Date.now(),
       location_lat: lat,
       location_long: lng,
-      likes: 0,
     };
     this.setState({ newExperience, center: [lat, lng], zoom: 18 });
   };
-  toggle = () => {
+  toggleMapClicked = () => {
     this.setState((currentState) => {
       return {
         ...currentState,
         addExperienceClicked: !currentState.addExperienceClicked,
+        newPinLocation: {
+          location_lat: currentState.newExperience.location_lat,
+          location_long: currentState.newExperience.location_long,
+        },
       };
     });
   };
@@ -84,6 +84,7 @@ class MapContainer extends Component {
       zoom,
       experiences,
       newExperience,
+      newPinLocation,
       addExperienceClicked,
     } = this.state;
     const { loggedInUser } = this.props;
@@ -101,10 +102,11 @@ class MapContainer extends Component {
           zoom={zoom}
           experiences={experiences}
           newExperience={newExperience}
+          newPinLocation={newPinLocation}
           zoomToExperience={this.zoomToExperience}
           closePopup={this.closePopup}
           addExperience={this.addExperience}
-          toggle={this.toggle}
+          toggleMapClicked={this.toggleMapClicked}
           addExperienceClicked={addExperienceClicked}
           loggedInUser={loggedInUser}
           deleteExperience={this.deleteExperience}

@@ -41,7 +41,12 @@ export const getSingleExperience = (experience_id) => {
     image_id
     image_desc
     image_URL
-  }}`,
+  }
+  tagsForAnExperience(experience_id:${experience_id}){
+    tag_id
+    tag_text
+  }
+}`,
   };
   return instance.post("/", query).then(({ data: { data } }) => data);
 };
@@ -194,5 +199,16 @@ export const postNewTag = (tag_text) => {
   const mutation = {
     query: `mutation{addNewTag(input:{tag_text:"${tag_text}"}){tag_id tag_text}}`,
   };
-  return instance.post("/", mutation).then(({ data: { tag } }) => tag);
+  return instance.post("/", mutation).then((data) => {
+    return data.data.data.addNewTag;
+  });
+};
+
+export const postTagToExperience = (experience_id, tag_id) => {
+  const mutation = {
+    query: `mutation {addTagToExperience(input:{experience_id: ${experience_id}, tag_id:${tag_id}}){tag_id experience_id}}`,
+  };
+  return instance.post("/", mutation).then((data) => {
+    return data.data.data.addTagToExperience;
+  });
 };
