@@ -27,16 +27,17 @@ const Experience = (props) => {
           ></img>
           // </div>
         ))}
-        <p>{body}</p>
       </div>
-      <p className="user-date">
-        {username} on {date.toLocaleString()}
-        {/* </p> */}
-        {/* <p> */}
+      <p>{body}</p>
+      <div className="experience-user-details-container">
+        <p className="user-date">
+          {username} on {date.toLocaleString()}
+          {/* </p> */}
+          {/* <p> */}
+        </p>
         <LikeHandler likes={likes} experience_id={experience_id} />
-      </p>
+      </div >
     </div >
-    // </div >
   );
 };
 
