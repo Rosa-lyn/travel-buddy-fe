@@ -1,7 +1,5 @@
 import styled from "styled-components";
-import {
-  device
-} from "./@MediaRules.js"
+
 
 
 export const IButton = styled.button `
