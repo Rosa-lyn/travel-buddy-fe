@@ -41,7 +41,12 @@ export const getSingleExperience = (experience_id) => {
     image_id
     image_desc
     image_URL
-  }}`,
+  }
+  tagsForAnExperience(experience_id:${experience_id}){
+    tag_id
+    tag_text
+  }
+}`,
   };
   return instance.post("/", query).then(({ data: { data } }) => data);
 };
