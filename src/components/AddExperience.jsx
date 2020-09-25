@@ -3,8 +3,10 @@ import * as api from "../utils/api";
 import FileUpload from "./FileUpload";
 import separatesHashtags from "../utils/utils";
 import { navigate } from "@reach/router";
+import Page from "../styles/Page.js";
 
 import {
+  OuterFormContainer,
   FormContainer,
   FormInput,
   FormTitle,
@@ -100,54 +102,56 @@ class AddExperience extends Component {
     const { image_URL } = this.state;
     const { toggle } = this.props;
     return (
-      // <OuterContainer>
-      <FormContainer>
-        {/* div */}
+      <Page>
+        <OuterFormContainer>
+          <FormContainer>
+            {/* div */}
 
-        <FormInnnerContainer>
-          {/* div */}
-
-          <CloseButton to="/" onClick={toggle}>
-            x
-          </CloseButton>
-          <FormTitle>add your experience</FormTitle>
-
-          <FormFont onSubmit={this.handleSubmit}>
-            {/* form */}
-
-            <FormLabel htmlFor="addTitle">add experience title</FormLabel>
-            {/* label */}
-
-            <FormInput
-              onChange={this.handleTitleChange}
-              type="text"
-              value={this.state.title}
-              placeholder="add your title"
-              required
-            ></FormInput>
-            <FormLabel htmlFor="addExperience">
-              describe your experience
-            </FormLabel>
-            <FormTextarea
-              onChange={this.handleBodyChange}
-              type="textarea"
-              value={this.state.body}
-              name="addExperience"
-              placeholder="add your experience"
-              rows="6"
-              cols="40"
-              required
-            />
-            <FileUpload setImageURL={this.setImageURL} image_URL={image_URL} />
-            <ButtonContainer>
+            <FormInnnerContainer>
               {/* div */}
 
-              <PostButton type="submit" value="submit" />
-            </ButtonContainer>
-          </FormFont>
-        </FormInnnerContainer>
-      </FormContainer>
-      // </OuterContainer>
+              <CloseButton to="/" onClick={toggle}>
+                x
+          </CloseButton>
+              <FormTitle>add your experience</FormTitle>
+
+              <FormFont onSubmit={this.handleSubmit}>
+                {/* form */}
+
+                <FormLabel htmlFor="addTitle">add experience title</FormLabel>
+                {/* label */}
+
+                <FormInput
+                  onChange={this.handleTitleChange}
+                  type="text"
+                  value={this.state.title}
+                  placeholder="add your title"
+                  required
+                ></FormInput>
+                <FormLabel htmlFor="addExperience">
+                  describe your experience
+            </FormLabel>
+                <FormTextarea
+                  onChange={this.handleBodyChange}
+                  type="textarea"
+                  value={this.state.body}
+                  name="addExperience"
+                  placeholder="add your experience"
+                  rows="6"
+                  cols="40"
+                  required
+                />
+                <FileUpload setImageURL={this.setImageURL} image_URL={image_URL} />
+                <ButtonContainer>
+                  {/* div */}
+
+                  <PostButton type="submit" value="submit" />
+                </ButtonContainer>
+              </FormFont>
+            </FormInnnerContainer>
+          </FormContainer>
+        </OuterFormContainer>
+      </Page>
     );
   }
 }
