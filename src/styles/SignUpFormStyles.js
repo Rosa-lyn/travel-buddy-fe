@@ -108,14 +108,18 @@ export const FormInput = styled.input `
   font-family: inherit;
   font-size: .8rem;
   font-weight: 200;
-  color: #002352;
+
+  color: black;
+
   padding: 0 0 0 .2rem;
 }
 :-ms-input-placeholder {
   font-family: inherit;
   font-size: .8rem;
   font-weight: 200;
-  color: #002352;
+
+  color: black;
+
   padding: 0 0 0 .2rem;
 }
 `;
@@ -171,5 +175,23 @@ export const CloseButton = styled(Link)`
   text-decoration: none;
   text-align: right;
   margin: .6rem 0 0 0;
-  color: rgb(63, 63, 63);
+
+
+  :a {
+    color: #BB6BD9;
+  }
+`
+
+
+
+//the travel buddy logo
+export const LogoType = styled.h1 ` font-family: "Coiny",cursive;
+  font-size: 30px;
+  font-weight: 200;
+  line-height: 25px; 
+  margin: 0 auto;
+   margin-top: 40px;
+  padding: 0;
+  width: 100px;
+
 `;

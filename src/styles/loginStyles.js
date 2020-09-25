@@ -87,19 +87,24 @@ export const FormInput = styled.input `
   border-radius: .3rem;
   margin: 0 5px 5px 0;
 
+
 ::placeholder,
 ::-webkit-input-placeholder {
   font-family: inherit;
   font-size: .8rem;
   font-weight: 200;
-  color: #002352;
+
+  color: black;
+
   padding: 0 0 0 .2rem;
 }
 :-ms-input-placeholder {
   font-family: inherit;
   font-size: .8rem;
   font-weight: 200;
-  color: #002352;
+
+  color: black;
+
   padding: 0 0 0 .2rem;
 }
 `;
