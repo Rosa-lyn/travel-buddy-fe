@@ -23,7 +23,7 @@ class AddExperience extends Component {
     title: "",
     body: "",
     image_URL: null,
-    image_desc: "temp description",
+    image_desc: "img description",
     experience_id: null,
     // tags: [],
     err: "",
@@ -31,7 +31,10 @@ class AddExperience extends Component {
   };
 
   handleTitleChange = (e) => {
-    this.setState({ title: e.target.value });
+    this.setState({
+      title: e.target.value,
+      // image_desc: e.target.value
+    });
   };
 
   handleBodyChange = (e) => {
@@ -43,8 +46,9 @@ class AddExperience extends Component {
     const { title, body } = this.state;
     const {
       loggedInUser,
-      newExperience: { location_lat, location_long },
+      newPinLocation: { location_lat, location_long },
     } = this.props;
+    console.log(location_lat, location_long);
     this.state.body &&
       api
         .postExperience(title, body, loggedInUser, location_lat, location_long)
@@ -54,31 +58,51 @@ class AddExperience extends Component {
         })
         .then(() => {
           // get all the tags from the db
-          return api.getAllTags();
+          return api.getAllTags(); // [{tag_id: 1, tag_text:"#tag"},{...}]
         })
-        .then((tagObjects) => {
-          // get only the tag text
-          const tagsFromDataBase = tagObjects.map((tagObject) => {
-            return tagObject.tag_text;
-          });
+        .then((allTagObjects) => {
           //get the hashtags off the body
-          const tagsFromBody = separatesHashtags(body);
-          // filter tags and check if they are already in alltags
+          const tagsFromBody = separatesHashtags(body); //["#tag", "#from", "#body",]
+
+          //filter the tag objects so we only have ones that are already in the db. this is so we can get those ids and won't need to make a second getAllTags() request
+          const filteredtagObjects = allTagObjects.filter((tagObject) => {
+            return tagsFromBody.includes(tagObject.tag_text);
+          }); // [{tag_id: 1, tag_text:"#tag"}]
+
+          // map the filtered tag objects so we have an array of the ids of the tags that are aready in the db
+          const tagIds = filteredtagObjects.map(
+            (tagObject) => tagObject.tag_id
+          ); //["1"]
+
+          // get only the tag text from the ones that are in the db
+          const tagTextFromDataBase = allTagObjects.map((tagObject) => {
+            return tagObject.tag_text;
+          }); // ["#tag"]
+
+          // filter tags from body so we only have the ones that aren't in the db
           const tagsToAdd = tagsFromBody.filter((tagFromBody) => {
-            return !tagsFromDataBase.includes(tagFromBody);
+            return !tagTextFromDataBase.includes(tagFromBody);
           });
-          console.log(tagsToAdd, "tagsToAdd");
-          //if they aren't post them to the tags table
+
+          //if they aren't already in db post them to the tags table
           const promises = [];
           tagsToAdd.forEach((tagToAdd) => {
             promises.push(api.postNewTag(tagToAdd));
           });
+          promises.push(tagIds);
           return Promise.all(promises);
         })
-        .then(() => {
-          // we need the tag ids of all the tags on the new exp so get all the tags from the tags table
-          // filter the returned ones to only have the ones from tags array
-          // loop through all the tags from the database and insert them into the tag_experience junction table
+        .then((newlyAddedTags) => {
+          const tagIds = newlyAddedTags.pop();
+          // push the ids of the newly added tags to the tagId array
+          newlyAddedTags.forEach((newlyAddedTag) => {
+            tagIds.push(newlyAddedTag.tag_id);
+          });
+          const { experience_id } = this.state;
+          // post to tag-exp junction table
+          tagIds.forEach((tagId) => {
+            api.postTagToExperience(experience_id, tagId);
+          });
         })
         .then(() => {
           const { experience_id, image_URL, image_desc } = this.state;
@@ -86,10 +110,10 @@ class AddExperience extends Component {
         })
         .then((postedImage) => {
           navigate(`/experience/${postedImage.experience_id}`);
+        })
+        .catch((err) => {
+          this.setState({ err: err.response.data.msg, isLoading: false });
         });
-    // .catch((err) => {
-    //   this.setState({ err: err.response.data.msg, isLoading: false });
-    // });
   };
 
   setImageURL = (image_URL) => {
