@@ -2,6 +2,7 @@ import React from "react";
 import Page from "../styles/Page.js";
 
 import {
+  OuterFormContainer,
   FormContainer,
   FormInput,
   FormTitle,
@@ -10,7 +11,7 @@ import {
   FormLabel,
   FormInnnerContainer,
   CloseButton,
-  FormFont,
+  // FormFont,
   LogoType,
 } from "../styles/loginStyles";
 
@@ -18,14 +19,16 @@ const LoginForm = () => {
   return (
     <Page>
       <LogoType>travel buddy</LogoType>
-
-      <FormContainer>
-        {/* div */}
-        <FormInnnerContainer>
+      <OuterFormContainer>
+        <FormContainer>
           {/* div */}
-          <CloseButton to="/">x</CloseButton>
-          <FormTitle>login</FormTitle>
-          <FormFont>
+
+          <FormInnnerContainer>
+            {/* div */}
+            <CloseButton to="/">x</CloseButton>
+            <FormTitle>Login</FormTitle>
+            {/* <FormFont> */}
+
             {/* form */}
             <FormLabel htmlFor="username">username</FormLabel>
             {/* label */}
@@ -33,18 +36,18 @@ const LoginForm = () => {
               type="text"
               placeholder="enter your username"
             ></FormInput>
+
             <FormLabel htmlFor="password">password</FormLabel>
             <FormInput type="password" placeholder="enter your password" />
 
-            <ButtonContainer>
-              {/* div */}
 
-              {/* <AddImageButton to="/addimage">add image</AddImageButton> */}
+            <ButtonContainer>
               <Button type="submit" value="login" />
             </ButtonContainer>
-          </FormFont>
-        </FormInnnerContainer>
-      </FormContainer>
+            {/* </FormFont> */}
+          </FormInnnerContainer>
+        </FormContainer>
+      </OuterFormContainer>
     </Page>
   );
 };

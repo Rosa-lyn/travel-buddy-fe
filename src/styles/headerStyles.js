@@ -14,7 +14,7 @@ export const OuterContainer = styled.body`
 
 //the control panel containing the controls
 export const Container = styled.header ` display: block;
-  width: 70vw;
+  width: 80vw;
   height: 45px;
   padding: 17px;
   align-items: center;
@@ -24,7 +24,7 @@ export const Container = styled.header ` display: block;
 `;
 
 export const InnerContainer = styled.div` 
-  width: 70vw;
+  width: 75vw;
   height: 45px;
   display: flex;
   justify-content: space-between;
@@ -64,13 +64,15 @@ export const LogoContainer = styled.div `
 `;
 
 //the travel buddy logo
-export const LogoType = styled.h1 ` font-family: "Coiny",cursive;
+export const LogoType = styled.h1 ` 
+  font-family: "Coiny",cursive;
   font-size: 30px;
   font-weight: 200;
   line-height: 25px; 
   margin: 0;
   padding: 0;
   width: 100px;
+  color: #002352;
 `;
 
 //this sub-contains the login, info and signup link
@@ -101,7 +103,7 @@ Times,
 serif;
 font-size: .8rem;
 font-weight: 800;
-color: white;
+color: #002352;
 border: none;
 height: 1.3rem;
 line-height: 1rem;

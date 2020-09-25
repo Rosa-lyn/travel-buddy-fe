@@ -3,18 +3,16 @@ import ExperienceMap from "./ExperienceMap";
 import * as api from "../utils/api";
 import FindLocation from "./FindLocation";
 import Search from "./Search";
-import {
-  OuterContainer,
-} from "../styles/SearchStyles";
+import { OuterContainer } from "../styles/SearchStyles";
 
 class MapContainer extends Component {
   state = {
     center: [0, 0],
     zoom: 2,
-    usersCurrentLocation: [null, null],
     experiences: [],
     newExperience: null,
     addExperienceClicked: false,
+    newPinLocation: null,
   };
 
   getUserLocation = (event) => {
@@ -33,6 +31,10 @@ class MapContainer extends Component {
         console.error(JSON.stringify(err));
       }
     );
+  };
+
+  deleteExperience = () => {
+    this.setState((currentState) => ({ ...currentState, newExperience: null }));
   };
 
   componentDidMount() {
@@ -54,25 +56,25 @@ class MapContainer extends Component {
     this.setState({ zoom: 14 });
   };
   addExperience = (event) => {
-    const { loggedInUser } = this.props;
     const { lat, lng } = event.latlng;
     const newExperience = {
       experience_id: null,
       title: null,
       body: null,
-      username: loggedInUser,
-      created_at: Date.now(),
       location_lat: lat,
       location_long: lng,
-      likes: 0,
     };
     this.setState({ newExperience, center: [lat, lng], zoom: 18 });
   };
-  toggle = () => {
+  toggleMapClicked = () => {
     this.setState((currentState) => {
       return {
         ...currentState,
         addExperienceClicked: !currentState.addExperienceClicked,
+        newPinLocation: {
+          location_lat: currentState.newExperience.location_lat,
+          location_long: currentState.newExperience.location_long,
+        },
       };
     });
   };
@@ -82,27 +84,32 @@ class MapContainer extends Component {
       zoom,
       experiences,
       newExperience,
+      newPinLocation,
       addExperienceClicked,
     } = this.state;
     const { loggedInUser } = this.props;
     return (
       <>
-        <OuterContainer>
-          <Search />
-          <FindLocation getUserLocation={this.getUserLocation} />
-        </OuterContainer>
+        {!addExperienceClicked && (
+          <OuterContainer>
+            <Search />
+            <FindLocation getUserLocation={this.getUserLocation} />
+          </OuterContainer>
+        )}
 
         <ExperienceMap
           center={center}
           zoom={zoom}
           experiences={experiences}
           newExperience={newExperience}
+          newPinLocation={newPinLocation}
           zoomToExperience={this.zoomToExperience}
           closePopup={this.closePopup}
           addExperience={this.addExperience}
-          toggle={this.toggle}
+          toggleMapClicked={this.toggleMapClicked}
           addExperienceClicked={addExperienceClicked}
           loggedInUser={loggedInUser}
+          deleteExperience={this.deleteExperience}
         />
       </>
     );

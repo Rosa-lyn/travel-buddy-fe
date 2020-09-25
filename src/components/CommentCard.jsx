@@ -1,5 +1,6 @@
 import React from "react";
 import LikeHandler from "./LikeHandler";
+import '../styles/style.css';
 
 const CommentCard = ({
   loggedInUser,
@@ -25,7 +26,6 @@ const CommentCard = ({
           delete
         </button>
       </label>
-
       <LikeHandler likes={likes} comment_id={comment_id} />
     </li>
   );

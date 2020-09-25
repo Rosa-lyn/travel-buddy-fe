@@ -3,6 +3,7 @@ import { navigate } from "@reach/router";
 import Page from "../styles/Page.js";
 
 import {
+  OuterFormContainer,
   FormContainer,
   FormInput,
   FormTitle,
@@ -11,7 +12,7 @@ import {
   FormLabel,
   FormInnnerContainer,
   CloseButton,
-  FormFont,
+  // FormFont,
   LogoType,
 } from "../styles/SignUpFormStyles.js";
 
@@ -23,14 +24,18 @@ class SignUpForm extends Component {
     return (
       <Page>
         <LogoType>travel buddy</LogoType>
-        <FormContainer>
-          {/* div */}
-          <FormInnnerContainer>
+        <OuterFormContainer>
+          <FormContainer>
             {/* div */}
-            <CloseButton to="/">x</CloseButton>
-            <FormTitle>sign up</FormTitle>
-            <p>it's quick and easy</p>
-            <FormFont>
+
+
+            <FormInnnerContainer>
+              {/* div */}
+              <CloseButton to="/">x</CloseButton>
+              <FormTitle>Sign Up</FormTitle>
+              <p>it's quick and easy</p>
+              {/* <FormFont> */}
+
               {/* form */}
               <FormInput type="text" placeholder="First name"></FormInput>
               <FormInput type="text" placeholder="Surname"></FormInput>
@@ -46,9 +51,10 @@ class SignUpForm extends Component {
               <ButtonContainer>
                 <Button type="submit" value="login" />
               </ButtonContainer>
-            </FormFont>
-          </FormInnnerContainer>
-        </FormContainer>
+              {/* </FormFont> */}
+            </FormInnnerContainer>
+          </FormContainer>
+        </OuterFormContainer>
       </Page>
     );
   }
