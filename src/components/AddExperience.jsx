@@ -9,12 +9,13 @@ import {
   FormInput,
   FormTitle,
   FormTextarea,
-  Button,
   ButtonContainer,
   FormLabel,
   FormInnnerContainer,
   CloseButton,
   FormFont,
+  PostButton,
+  // OuterContainer,
 } from "../styles/AddExperienceStyles";
 
 class AddExperience extends Component {
@@ -33,33 +34,15 @@ class AddExperience extends Component {
     this.setState({ title: e.target.value });
   };
 
-  // re: hashtags - body is set in state, then a
-  // function is needed in the backend to filter
-  // out hastags iand save them on a separate key
-
   handleBodyChange = (e) => {
     this.setState({ body: e.target.value });
   };
 
   handleSubmit = (e) => {
-    // this adds the image to the postgres database and redirects us to the single experience page
     e.preventDefault();
-    const { experience_id, image_URL, image_desc } = this.state;
-    api.postImage(experience_id, image_URL, image_desc).then((postedImage) => {
-      console.log(postedImage);
-      navigate(`/experience/${experience_id}`);
-    });
-  };
-
-  confirmExperience = (e) => {
-    e.preventDefault();
-    // this method adds the experience to experiences in the postgres database
-    // this has to be done before adding images so we can assign the image an experience_id
     const { title, body } = this.state;
-    const { loggedInUser } = this.props;
-    // const tags = separatesHashtags(body);
-    // console.log(tags);
     const {
+      loggedInUser,
       newExperience: { location_lat, location_long },
     } = this.props;
     this.state.body &&
@@ -69,25 +52,64 @@ class AddExperience extends Component {
           const { experience_id } = postedExperience;
           this.setState({ experience_id });
         })
-        .catch((err) => {
-          this.setState({ err: err.response.data.msg, isLoading: false });
+        .then(() => {
+          // get all the tags from the db
+          return api.getAllTags();
+        })
+        .then((tagObjects) => {
+          // get only the tag text
+          const tagsFromDataBase = tagObjects.map((tagObject) => {
+            return tagObject.tag_text;
+          });
+          //get the hashtags off the body
+          const tagsFromBody = separatesHashtags(body);
+          // filter tags and check if they are already in alltags
+          const tagsToAdd = tagsFromBody.filter((tagFromBody) => {
+            return !tagsFromDataBase.includes(tagFromBody);
+          });
+          console.log(tagsToAdd, "tagsToAdd");
+          //if they aren't post them to the tags table
+          const promises = [];
+          tagsToAdd.forEach((tagToAdd) => {
+            promises.push(api.postNewTag(tagToAdd));
+          });
+          return Promise.all(promises);
+        })
+        .then(() => {
+          // we need the tag ids of all the tags on the new exp so get all the tags from the tags table
+          // filter the returned ones to only have the ones from tags array
+          // loop through all the tags from the database and insert them into the tag_experience junction table
+        })
+        .then(() => {
+          const { experience_id, image_URL, image_desc } = this.state;
+          return api.postImage(experience_id, image_URL, image_desc);
+        })
+        .then((postedImage) => {
+          navigate(`/experience/${postedImage.experience_id}`);
         });
+    // .catch((err) => {
+    //   this.setState({ err: err.response.data.msg, isLoading: false });
+    // });
   };
 
   setImageURL = (image_URL) => {
-    // this is invoked in FileUpload
     this.setState({ image_URL });
   };
 
   render() {
+    const { image_URL } = this.state;
+    const { toggle } = this.props;
     return (
+      // <OuterContainer>
       <FormContainer>
         {/* div */}
 
         <FormInnnerContainer>
           {/* div */}
 
-          <CloseButton to="/">x</CloseButton>
+          <CloseButton to="/" onClick={toggle}>
+            x
+          </CloseButton>
           <FormTitle>add your experience</FormTitle>
 
           <FormFont onSubmit={this.handleSubmit}>
@@ -116,17 +138,16 @@ class AddExperience extends Component {
               cols="40"
               required
             />
-            <button onClick={this.confirmExperience}>confirm</button>
-            <FileUpload setImageURL={this.setImageURL} />
+            <FileUpload setImageURL={this.setImageURL} image_URL={image_URL} />
             <ButtonContainer>
               {/* div */}
 
-              {/* <AddImageButton to="/addimage">add image</AddImageButton> */}
-              <Button type="submit" value="post" />
+              <PostButton type="submit" value="submit" />
             </ButtonContainer>
           </FormFont>
         </FormInnnerContainer>
       </FormContainer>
+      // </OuterContainer>
     );
   }
 }

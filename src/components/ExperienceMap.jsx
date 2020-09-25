@@ -37,6 +37,7 @@ const ExperienceMap = (props) => {
         <AddExperience
           newExperience={newExperience}
           loggedInUser={loggedInUser}
+          toggle={toggle}
         />
       ) : (
         <Map
@@ -47,7 +48,7 @@ const ExperienceMap = (props) => {
         >
           <TileLayer
             attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            url="https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png"
           />
           {experiences.map((experience) => {
             const {
@@ -76,6 +77,7 @@ const ExperienceMap = (props) => {
               </Marker>
             );
           })}
+
           {/* this marker will only show when the map is clicked */}
           {newExperience !== null && (
             <Marker

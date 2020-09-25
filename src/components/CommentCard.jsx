@@ -1,5 +1,6 @@
 import React from "react";
 import LikeHandler from "./LikeHandler";
+import '../styles/style.css';
 
 const CommentCard = ({
   loggedInUser,

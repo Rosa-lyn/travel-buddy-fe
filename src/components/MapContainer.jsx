@@ -89,10 +89,12 @@ class MapContainer extends Component {
     const { loggedInUser } = this.props;
     return (
       <>
-        <OuterContainer>
-          <Search />
-          <FindLocation getUserLocation={this.getUserLocation} />
-        </OuterContainer>
+        {!addExperienceClicked && (
+          <OuterContainer>
+            <Search />
+            <FindLocation getUserLocation={this.getUserLocation} />
+          </OuterContainer>
+        )}
 
         <ExperienceMap
           center={center}

@@ -15,39 +15,43 @@ const Experience = (props) => {
   const { loggedIn } = props;
   const date = new Date(+created_at);
   return (
-    <div className="outer-container">
-      <div className="inner-container">
-        <h1>{title}</h1>
+    // <div className="outer-container">
+    <div className="experience-inner-container">
+      <h1>{title}</h1>
+      <div className="image-container">
+        {props.images.map((image) => (
+          // <div className="single-image">
+          <img
+            className="experience-image"
+            src={image.image_URL}
+            alt={image.image_desc}
+            key={image.image_id}
+          ></img>
+          // </div>
+        ))}
         <p>{body}</p>
-        <div className="image-container">
-          {props.images.map((image) => (
-            <img
-              className="experience-image"
-              src={image.image_URL}
-              alt={image.image_desc}
-              key={image.image_id}
-            ></img>
-          ))}
-        </div>
-        <p>
-          {username} on {date.toLocaleString()}
-        </p>
-        <p>
-          <LikeHandler likes={likes} experience_id={experience_id} />
-        </p>
+      </div>
+      <p className="user-date">
+        {username} on {date.toLocaleString()}
+        {/* </p> */}
+        {/* <p> */}
+        <LikeHandler likes={likes} experience_id={experience_id} />
         {loggedIn === username && (
           <button
             onClick={() =>
               api
                 .deleteExperience(experience_id)
-                .then((deletedExperience) => console.log(deletedExperience))
+                .then((deletedExperience) =>
+                  console.log("deleted:", deletedExperience)
+                )
             }
           >
             delete
           </button>
         )}
-      </div>
+      </p>
     </div>
+    // </div >
   );
 };
 
