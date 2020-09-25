@@ -1,23 +1,44 @@
 import React, { Component } from "react";
-import { InfoContainer, InfoTextContainer } from "../styles/headerStyles";
+import {
+  InfoContainer,
+  InfoTextContainer,
+  InfoWrapper,
+  InfoClose,
+  InfoTextContainerh4,
+  InfoTextContainerh5,
+} from "../styles/PopupStyling.js";
+import SignUpButton from "./SignUpButton";
 
 class InfoPopup extends Component {
   handleClick = () => {
-    this.props.toggle();
+    this.props.togglePop();
   };
   render() {
     return (
       <InfoContainer>
-        <InfoTextContainer>
-          <span className="InfoClose" onClick={this.handleClick}>
-            &times;{" "}
-          </span>
-          <h4>Travelbuddy</h4>
-          <p>
-            User generated content giving hints and tips on the best secret
-            experiences on your travels
-          </p>
-        </InfoTextContainer>
+        <InfoWrapper>
+          <InfoTextContainer>
+            <InfoClose onClick={this.handleClick}>&times; </InfoClose>
+            <InfoTextContainerh4>travel buddy</InfoTextContainerh4>
+            <InfoTextContainerh5>
+              A place where adventures come to life.
+            </InfoTextContainerh5>
+            <p>
+              {" "}
+              Explore the hidden gems of travel, brought to you by your fellow
+              travelers.{" "}
+            </p>
+            <p>
+              Plan new trips, discover secret spots, and view locals' top tips
+              to curate a truly authentic travel experience.{" "}
+            </p>
+            <p>
+              Why not share your experiences and create a record of your travels
+              for all to enjoy?
+            </p>
+            <SignUpButton />
+          </InfoTextContainer>
+        </InfoWrapper>
       </InfoContainer>
     );
   }
