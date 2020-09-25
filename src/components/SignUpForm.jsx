@@ -3,6 +3,7 @@ import { navigate } from "@reach/router";
 import Page from "../styles/Page.js";
 
 import {
+  OuterFormContainer,
   FormContainer,
   FormInput,
   FormTitle,
@@ -23,32 +24,34 @@ class SignUpForm extends Component {
     return (
       <Page>
         <LogoType>travel buddy</LogoType>
-        <FormContainer>
-          {/* div */}
-          <FormInnnerContainer>
+        <OuterFormContainer>
+          <FormContainer>
             {/* div */}
-            <CloseButton to="/">x</CloseButton>
-            <FormTitle>Sign Up</FormTitle>
-            <p>It's quick and easy.</p>
-            {/* <FormFont> */}
-            {/* form */}
-            <FormInput type="text" placeholder="First name"></FormInput>
-            <FormInput type="text" placeholder="Surname"></FormInput>
-            <FormInput
-              type="text"
-              placeholder="Mobile number or email address"
-            ></FormInput>
-            <FormLabel htmlFor="password">
-              Create Password (must be at least 8 characters):
+            <FormInnnerContainer>
+              {/* div */}
+              <CloseButton to="/">x</CloseButton>
+              <FormTitle>Sign Up</FormTitle>
+              <p>It's quick and easy.</p>
+              {/* <FormFont> */}
+              {/* form */}
+              <FormInput type="text" placeholder="First name"></FormInput>
+              <FormInput type="text" placeholder="Surname"></FormInput>
+              <FormInput
+                type="text"
+                placeholder="Mobile number or email address"
+              ></FormInput>
+              <FormLabel htmlFor="password">
+                Create Password (must be at least 8 characters):
               </FormLabel>
-            <FormInput type="password" placeholder="password" />
+              <FormInput type="password" placeholder="password" />
 
-            <ButtonContainer>
-              <Button type="submit" value="login" />
-            </ButtonContainer>
-            {/* </FormFont> */}
-          </FormInnnerContainer>
-        </FormContainer>
+              <ButtonContainer>
+                <Button type="submit" value="login" />
+              </ButtonContainer>
+              {/* </FormFont> */}
+            </FormInnnerContainer>
+          </FormContainer>
+        </OuterFormContainer>
       </Page>
     );
   }
