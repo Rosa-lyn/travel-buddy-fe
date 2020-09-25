@@ -18,16 +18,13 @@ export const OuterFormContainer = styled.div `
 
 //the travel buddy logo
 export const LogoType = styled.h1 `
-  
   display: flex;
   flex-direction: column;
-
   margin: 0;
   position: absolute;
   top: 100px;
   left: 50%;
   transform: translate(-50%, -50%);
-  
   font-family: "Coiny",cursive;
   font-size: 30px;
   font-weight: 200;
@@ -78,9 +75,9 @@ color: rgb(63, 63, 63);
 margin: 0;
 `;
 
-export const FormFont = styled.form `
-  font-family: helvetica;
-`
+// export const FormFont = styled.form `
+//   font-family: helvetica;
+// `
 
 export const FormInput = styled.input `
   background-color: #C5C5C5;
