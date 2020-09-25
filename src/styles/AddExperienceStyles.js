@@ -13,7 +13,7 @@ export const OuterFormContainer = styled.div `
   margin: 0;
   position: absolute;
   display: flex;
-  top: 50%;
+  top: 300px;
   left: 50%;
   transform: translate(-50%, 100%);
 `;
@@ -22,7 +22,7 @@ export const FormContainer = styled.div`
 
   display: flex;
   flex-direction: column;
-  width: 90vw;
+  width: 88vw;
   border: rgb(248, 166, 248) solid 1px;
   border-radius: .3rem;
   position: absolute;
@@ -41,22 +41,20 @@ export const FormContainer = styled.div`
     top: 30%; 
   }
 
-  left: 50%;
+  /* left: 50%;
   -ms-transform: translate(-50%, 0);
-  transform: translate(-50%, 0);
+  transform: translate(-50%, 0); */
 
-  /* justify-content: center;
-  width: 86vw;
-  display: flex;
-  flex-direction: column;
+  /* justify-content: center; */
+  /* width: 86vw;
   border:  solid 1px rgb(248, 166, 248);
-  border-radius: .3rem;
+  border-radius: .3rem; */
   margin: 50px 0 0 0;
   position: absolute;
   top: 50%;
   left: 50%;
   -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%); */
+  transform: translate(-50%, -50%);
 }
 `;
 
