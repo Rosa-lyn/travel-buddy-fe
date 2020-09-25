@@ -72,8 +72,12 @@ class MapContainer extends Component {
         ...currentState,
         addExperienceClicked: !currentState.addExperienceClicked,
         newPinLocation: {
-          location_lat: currentState.newExperience.location_lat,
-          location_long: currentState.newExperience.location_long,
+          location_lat: currentState.newExperience
+            ? currentState.newExperience.location_lat
+            : null,
+          location_long: currentState.newExperience
+            ? currentState.newExperience.location_long
+            : null,
         },
       };
     });
