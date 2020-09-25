@@ -1,12 +1,51 @@
 import styled from "styled-components";
 import { Link } from "@reach/router";
+import {
+  device
+} from "./@MediaRules.js"
 
 // export const OuterContainer = styled.body`
 //   position: relative;
 // `;
 
+export const OuterFormContainer = styled.div `
+  width: 88vw;
+  margin: 0;
+  position: absolute;
+  display: flex;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 100%);
+`;
+
 export const FormContainer = styled.div`
-  justify-content: center;
+
+  display: flex;
+  flex-direction: column;
+  width: 90vw;
+  border: rgb(248, 166, 248) solid 1px;
+  border-radius: .3rem;
+  position: absolute;
+  margin: 16vh 0 0 0;
+
+  /* display: flex;
+  flex-direction: column;
+  width: 90vw;
+  border: #BB6BD9 solid 1px;
+  border-radius: .3rem; */
+
+  @media ${device.tablet} {
+  margin-top: 0px;
+  }
+  @media ${device.mobileM} {
+    top: 30%; 
+  }
+
+  left: 50%;
+  -ms-transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
+
+  /* justify-content: center;
   width: 86vw;
   display: flex;
   flex-direction: column;
@@ -17,17 +56,17 @@ export const FormContainer = styled.div`
   top: 50%;
   left: 50%;
   -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); */
 }
 `;
 
 export const FormInnnerContainer = styled.div`
-text-align: left;
-width: 80vw;
-display: flex;
-flex-direction: column;
-border: none;
-margin: auto;
+  text-align: left;
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+  border: none;
+  margin: auto;
 `;
 
 export const FormLabel = styled.label`
