@@ -22,7 +22,7 @@ export const SearchFindMeContainer = styled.div` display: grid;
 grid-column-gap: .5rem;
 grid-template-columns: 7fr 1fr;
 height: 40px;
-width: 70vw;
+width: 80vw;
 `;
 
 //the search form
@@ -34,7 +34,7 @@ font-weight: 600;
 color: #002352;
 background-color: lightgray;
 height: 1.5rem;
-width: 65vw;
+width: 72vw;
 border-radius: 3px;
 grid-column: 1/2;
 border: none;
