@@ -13,7 +13,7 @@ export const OuterFormContainer = styled.div `
   display: flex;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, 100%);
+  transform: translate(-50%, 50%);
 `;
 
 //the travel buddy logo
@@ -34,19 +34,26 @@ export const LogoType = styled.h1 `
 `;
 
 export const FormContainer = styled.div `
+
   display: flex;
   flex-direction: column;
   width: 90vw;
   border: rgb(248, 166, 248) solid 1px;
   border-radius: .3rem;
-  position: absolute;
-  margin: 28vh 0 0 0;
+
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* width: 90vw; */
+  /* border: rgb(248, 166, 248) solid 1px; */
+  /* border-radius: .3rem; */
+  /* position: absolute;
+  margin: 28vh 0 0 0; */
   /* top: 300px; */
-  /* margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, 100%); */
+  /* margin: 0; */
+  /* position: absolute; */
+  /* top: 50%; */
+  /* left: 50%; */
+  /* transform: translate(-50%, 100%); */
 
   @media ${device.tablet} {
   margin-top: 0px;
