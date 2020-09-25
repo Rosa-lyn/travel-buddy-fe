@@ -1,16 +1,16 @@
+/* body */
+body {
+  position: relative;
+}
+
 /* ExperienceScreen styles */
 .experience-comments-container {
-  /* justify-content: center; */
-  width: 90vw;
-  height: auto;
-  /* display: flex; */
-  /* flex-direction: column; */
+  width: 88vw;
+  margin: 0;
   position: absolute;
-  top: 54%;
+  top: 20px;
   left: 50%;
-  padding: 10px; 
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, 0);
 }
 
 /* experience styles */
@@ -31,14 +31,14 @@
 }
 
 .experience-inner-container {
-  width: 80vw;
+  width: 82vw;
   display: flex;
   flex-direction: column;
-  margin: auto;
+  /* margin: auto; */
   border: rgb(248, 166, 248) solid 1px;
   border-radius: .3rem;
-  padding: 13px;
-  margin: 20px 0 0 0;
+  padding: 10px;
+  margin: 0;
 }
 
 h1 {
@@ -63,16 +63,15 @@ p {
 
 .image-container {
   display: block;
-  /* grid-template-columns: repeat(3, 1fr);
-  grid-gap: 10px; */
   margin: 8px 0 5px 0;
 }
 
 .experience-image {
-  width: 255px;
-  height: 255px;
+  width: 261px;
+  height: 261px;
   object-fit: cover;
   margin: 0 0 5px 0;
+  padding: 0 10px 0 0;
 }
 
 .like-button {
@@ -84,16 +83,20 @@ p {
   width: 25px;
 }
 
+.experience-user-details-container {
+  display: flex;
+}
+
 /* CommentsList styles */
 
 .comments-inner-container {
-  width: 80vw;
+  width: 82vw;
   display: flex;
   flex-direction: column;
-  margin: auto;
+  /* margin: auto; */
   border: rgb(248, 166, 248) solid 1px;
   border-radius: .3rem;
-  padding: 13px;
+  padding: 10px;
   margin: 20px 0 0 0;
 }
 
@@ -110,6 +113,10 @@ p {
 .author-date {
   font-size: 10px;
   font-weight: 600;
+}
+
+p {
+  margin: 0 0 10px 0;
 }
 
 /* AddComment styles */
