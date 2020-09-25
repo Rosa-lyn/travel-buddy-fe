@@ -71,19 +71,20 @@ margin-bottom: 5px;
 margin-right: 5px;
 margin-left: 5px;
 
+
 ::placeholder,
 ::-webkit-input-placeholder {
   font-family: inherit;
   font-size: .8rem;
   font-weight: 200;
-  color: white;
+  color: black;
   padding: 0 0 0 .2rem;
 }
 :-ms-input-placeholder {
   font-family: inherit;
   font-size: .8rem;
   font-weight: 200;
-  color: white;
+  color: black;
   padding: 0 0 0 .2rem;
 }
 `;

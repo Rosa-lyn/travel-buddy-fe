@@ -28,8 +28,8 @@ class SignUpForm extends Component {
           <FormInnnerContainer>
             {/* div */}
             <CloseButton to="/">x</CloseButton>
-            <FormTitle>Sign Up</FormTitle>
-            <p>It's quick and easy.</p>
+            <FormTitle>sign up</FormTitle>
+            <p>it's quick and easy</p>
             <FormFont>
               {/* form */}
               <FormInput type="text" placeholder="First name"></FormInput>
@@ -39,7 +39,7 @@ class SignUpForm extends Component {
                 placeholder="Mobile number or email address"
               ></FormInput>
               <FormLabel htmlFor="password">
-                Create Password (must be at least 8 characters):
+                create Password (must be at least 8 characters)
               </FormLabel>
               <FormInput type="password" placeholder="password" />
 
