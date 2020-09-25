@@ -6,28 +6,46 @@ import {
   device
 } from "./@MediaRules.js"
 
+export const OuterFormContainer = styled.div `
+  width: 88vw;
+  margin: 0;
+  position: absolute;
+  display: flex;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 100%);
+`;
+
+//the travel buddy logo
+export const LogoType = styled.h1 `
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "Coiny",cursive;
+  font-size: 30px;
+  font-weight: 200;
+  line-height: 25px;
+  width: 100px;
+  color: #002352;
+`;
+
 export const FormContainer = styled.div `
-justify-content: center;
-width: 90vw;
-display: flex;
-flex-direction: column;
-border-width: 1px;
-border: #BB6BD9 solid 1px;
-border-radius: .3rem;
-margin-top: 40px;
-position: absolute;
-top: 40%;
-left: 50%;
--ms-transform: translate(-50%, -50%);
-transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  width: 90vw;
+  border: rgb(248, 166, 248) solid 1px;
+  border-radius: .3rem;
 
-@media ${device.tablet} {
- margin-top: 0px;
-}
-@media ${device.mobileM} {
-  top: 30%;
-}
-
+  @media ${device.tablet} {
+  margin-top: 0px;
+  }
+  @media ${device.mobileM} {
+    top: 30%; 
+  }
 `;
 
 export const FormInnnerContainer = styled.div `
@@ -43,33 +61,31 @@ export const FormLabel = styled.label `
 display: block;
 text-align: left;
 font-family: helvetica;
-font-size: .8rem;
+font-size: .7rem;
 font-weight: 200;
 color: rgb(63, 63, 63);
-margin: .6rem .0 .2rem 0.4rem;
+margin: 8px 0 5px 0;
 `;
 
 export const FormTitle = styled.h1 `
 font-family: helvetica;
-font-size: 1.3rem;
+font-size: 1.1rem;
 font-weight: 200;
 color: rgb(63, 63, 63);
+margin: 0;
 `;
 
-export const FormFont = styled.form `
-  font-family: helvetica;
-`
+// export const FormFont = styled.form `
+//   font-family: helvetica;
+// `
 
 export const FormInput = styled.input `
-background-color: #C5C5C5;
-height: 1.5rem;
-width: 79vw;
-border-style: none;
-border-radius: .3rem;
-margin-top: 5px;
-margin-bottom: 5px;
-margin-right: 5px;
-margin-left: 5px;
+  background-color: #C5C5C5;
+  height: 1.5rem;
+  width: 79vw;
+  border-style: none;
+  border-radius: .3rem;
+  margin: 0 5px 5px 0;
 
 
 ::placeholder,
@@ -77,14 +93,18 @@ margin-left: 5px;
   font-family: inherit;
   font-size: .8rem;
   font-weight: 200;
+
   color: black;
+
   padding: 0 0 0 .2rem;
 }
 :-ms-input-placeholder {
   font-family: inherit;
   font-size: .8rem;
   font-weight: 200;
+
   color: black;
+
   padding: 0 0 0 .2rem;
 }
 `;
@@ -102,14 +122,14 @@ border-radius: 0.3rem;
   font-family: helvetica;
   font-size: .8rem;
   font-weight: 200;
-  color: white;
+  color: #002352;
   padding: .2rem .1rem 0 .2rem;
 }
   :-ms-textarea-placeholder {
   font-family: helvetica;
   font-size: .8rem;
   font-weight: 200;
-  color: white;
+  color: #002352;
   padding: 0 0 0 .2rem;
 }
 `;
@@ -133,8 +153,7 @@ export const ButtonContainer = styled.div `
   margin-bottom: 1.5rem;
 `
 
-export const CloseButton = styled(Link)
-`
+export const CloseButton = styled(Link)`
   font-family: helvetica;
   font-size: .8rem;
   font-weight: 200;
@@ -143,17 +162,3 @@ export const CloseButton = styled(Link)
   margin: .6rem 0 0 0;
   color: rgb(63, 63, 63);
 `
-
-
-
-//the travel buddy logo
-export const LogoType = styled.h1 ` font-family: "Coiny",cursive;
-  font-size: 30px;
-  font-weight: 200;
-  line-height: 25px; 
-  margin: 0 auto;
-   margin-top: 40px;
-  padding: 0;
-  width: 100px;
-  
-`;

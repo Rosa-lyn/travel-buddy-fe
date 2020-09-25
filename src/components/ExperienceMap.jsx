@@ -2,14 +2,20 @@ import React from "react";
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 import { Link } from "@reach/router";
 import AddExperience from "./AddExperience";
-import L from 'leaflet';
-import userLocationURL from '../img/pin.svg';
-import '../styles/style.css';
+import L from "leaflet";
+import userLocationURL from "../img/pin.svg";
+import "../styles/style.css";
 
 const myIcon = L.icon({
   iconUrl: userLocationURL,
-  iconSize: [25, 41]
+  iconSize: [25, 41],
 });
+
+const showMarker = (ref) => {
+  if (ref) {
+    ref.leafletElement.openPopup();
+  }
+};
 
 const ExperienceMap = (props) => {
   const {
@@ -20,18 +26,22 @@ const ExperienceMap = (props) => {
     closePopup,
     addExperience,
     newExperience,
+    newPinLocation,
     addExperienceClicked,
-    toggle,
+    toggleMapClicked,
     loggedInUser,
+    deleteExperience,
   } = props;
   return (
     <>
       {addExperienceClicked ? (
         <AddExperience
-          newExperience={newExperience}
+          newPinLocation={newPinLocation}
           loggedInUser={loggedInUser}
+          toggleMapClicked={toggleMapClicked}
         />
       ) : (
+
           <Map
             className="Map"
             center={center}
@@ -40,7 +50,7 @@ const ExperienceMap = (props) => {
           >
             <TileLayer
               attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              url="https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png"
             />
             {experiences.map((experience) => {
               const {
@@ -83,10 +93,11 @@ const ExperienceMap = (props) => {
                 onClick={zoomToExperience}
                 icon={myIcon}
                 className="marker"
+                ref={showMarker}
               >
-                <Popup className="custom-popup">
+                <Popup className="custom-popup" onClose={deleteExperience}>
                   <p>Do you want to add your experience here?</p>
-                  <button onClick={toggle}>yes</button>
+                  <button onClick={toggleMapClicked}>yes</button>
                 </Popup>
               </Marker>
             )}

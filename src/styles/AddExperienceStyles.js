@@ -1,39 +1,79 @@
 import styled from "styled-components";
 import { Link } from "@reach/router";
+import {
+  device
+} from "./@MediaRules.js"
 
+// export const OuterContainer = styled.body`
+//   position: relative;
+// `;
+
+export const OuterFormContainer = styled.div `
+  width: 88vw;
+  margin: 0;
+  position: absolute;
+  display: flex;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 100%);
+`;
 
 export const FormContainer = styled.div`
-justify-content: center;
-width: 90vw;
-display: flex;
-flex-direction: column;
-border-width: 1px;
-border: #BB6BD9 solid 1px;
-border-radius: .3rem;
 
-margin: 0;
-position: absolute;
-top: 50%;
-left: 50%;
--ms-transform: translate(-50%, -50%);
-transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  width: 90vw;
+  border: rgb(248, 166, 248) solid 1px;
+  border-radius: .3rem;
+  position: absolute;
+  margin: 16vh 0 0 0;
+
+  /* display: flex;
+  flex-direction: column;
+  width: 90vw;
+  border: #BB6BD9 solid 1px;
+  border-radius: .3rem; */
+
+  @media ${device.tablet} {
+  margin-top: 0px;
+  }
+  @media ${device.mobileM} {
+    top: 30%; 
+  }
+
+  left: 50%;
+  -ms-transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
+
+  /* justify-content: center;
+  width: 86vw;
+  display: flex;
+  flex-direction: column;
+  border:  solid 1px rgb(248, 166, 248);
+  border-radius: .3rem;
+  margin: 50px 0 0 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); */
 }
 `;
 
 export const FormInnnerContainer = styled.div`
-text-align: left;
-width: 80vw;
-display: flex;
-flex-direction: column;
-border: none;
-margin: auto;
+  text-align: left;
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+  border: none;
+  margin: auto;
 `;
 
 export const FormLabel = styled.label`
 display: block;
 text-align: left;
 font-family: helvetica;
-font-size: .8rem;
+font-size: .7rem;
 font-weight: 200;
 color: rgb(63, 63, 63);
 margin: .6rem 0 .2rem 0;
@@ -41,9 +81,10 @@ margin: .6rem 0 .2rem 0;
 
 export const FormTitle = styled.h1`
 font-family: helvetica;
-font-size: 1.3rem;
+font-size: 1.1rem;
 font-weight: 200;
 color: rgb(63, 63, 63);
+margin: 0;
 `;
 
 export const FormFont = styled.form`
@@ -62,14 +103,14 @@ border-radius: 0.3rem;
   font-family: inherit;
   font-size: .8rem;
   font-weight: 200;
-  color: white;
+  color: #000;
   padding: 0 0 0 .2rem;
 }
 : -ms-input-placeholder {
   font-family: inherit;
   font-size: .8rem;
   font-weight: 200;
-  color: white;
+  color: #000;
   padding: 0 0 0 .2rem;
 }
 `;
@@ -83,17 +124,17 @@ border-radius: 0.3rem;
 
 :: placeholder,
   :: -webkit-textarea-placeholder {
-  font-family: helvetica;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: .8rem;
   font-weight: 200;
-  color: white;
+  color: #000;
   padding: .2rem .1rem 0 .2rem;
 }
   : -ms-textarea-placeholder {
-  font-family: helvetica;
+  font-family: Arial, Helvetica, sans-serif;  
   font-size: .8rem;
   font-weight: 200;
-  color: white;
+  color: #000;
   padding: 0 0 0 .2rem;
 }
 `;
@@ -109,6 +150,18 @@ export const Button = styled.input`
   height: 1.2rem;
   width: 4.5rem; 
   `;
+
+export const PostButton = styled.input`
+  background-color: #BB6BD9;
+  font-family: helvetica;
+  font-size: .8rem;
+  font-weight: 200;
+  color: white;
+  border: none;
+  border-radius: .2rem;
+  height: 1.4rem;
+  width: 5rem; 
+`;
 
 export const ButtonContainer = styled.div`
   display: flex;
@@ -129,16 +182,17 @@ export const CloseButton = styled(Link)`
 //FileUpload styles
 
 export const AddImageButton = styled.input`
-  background-color: #BB6BD9;
+  background-color: lightgray;
   font-family: helvetica;
-  font-size: .7rem;
-  font-weight: 200;
-  color: white;
-  border: none;
+  font-size: .8rem;
+  font-weight: 400;
+  background-color: #f5f5f5;
+  color: #1c1c1c;
+  border: 1px solid #707070;
   border-radius: .2rem;
-  height: 1.2rem;
-  line-height: 1.2rem;
-  width: 4.5rem;
+  height: 1.3rem;
+  line-height: 1.1rem;
+  width: 5rem;
   text-decoration: none;
   text-align: center;
   justify-content: center;
@@ -149,7 +203,7 @@ export const FileUploadLabel = styled.label`
 display: block;
 text-align: left;
 font-family: helvetica;
-font-size: .8rem;
+font-size: .7rem;
 font-weight: 200;
 color: rgb(63, 63, 63);
 margin: .6rem 0 .2rem 0;
@@ -167,8 +221,8 @@ margin: .6rem 0 .2rem 0;
 
 export const FileUploadInput = styled.input`
 background-color: #C5C5C5;
-height: 1.5rem;
-width: 79vw;
+height: 1.3rem;
+width: 80vw;
 border-style: none;
 border-radius: 0.3rem;
 margin: 0 0 10px 0;
