@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import * as api from "../utils/api";
 import FileUpload from "./FileUpload";
-import separatesHashtags from "../utils/utils";
+
 import { navigate } from "@reach/router";
 import Page from "../styles/Page.js";
 
