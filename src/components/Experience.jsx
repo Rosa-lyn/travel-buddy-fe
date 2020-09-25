@@ -1,6 +1,7 @@
 import React from "react";
 import LikeHandler from "./LikeHandler.jsx";
 import "../styles/style.css";
+import * as api from "../utils/api";
 
 const Experience = (props) => {
   const {
@@ -11,6 +12,7 @@ const Experience = (props) => {
     experience_id,
     likes,
   } = props.experience;
+  const { loggedIn } = props;
   const date = new Date(+created_at);
   return (
     // <div className="outer-container">
@@ -34,8 +36,21 @@ const Experience = (props) => {
         {/* </p> */}
         {/* <p> */}
         <LikeHandler likes={likes} experience_id={experience_id} />
+        {loggedIn === username && (
+          <button
+            onClick={() =>
+              api
+                .deleteExperience(experience_id)
+                .then((deletedExperience) =>
+                  console.log("deleted:", deletedExperience)
+                )
+            }
+          >
+            delete
+          </button>
+        )}
       </p>
-    </div >
+    </div>
     // </div >
   );
 };
