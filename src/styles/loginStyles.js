@@ -7,13 +7,13 @@ import {
 } from "./@MediaRules.js"
 
 export const OuterFormContainer = styled.div `
-  width: 88vw;
+  width: 100vw;
   margin: 0;
-  position: absolute;
+  position: relative;
   display: flex;
-  top: 50%;
+  top: 40px;
   left: 50%;
-  transform: translate(-50%, 100%);
+  transform: translate(-50%, 50%);
 `;
 
 //the travel buddy logo
@@ -39,12 +39,22 @@ export const FormContainer = styled.div `
   width: 90vw;
   border: rgb(248, 166, 248) solid 1px;
   border-radius: .3rem;
+  margin: 0;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 0);
 
-  @media ${device.tablet} {
-  margin-top: 0px;
+  @media ${device.tablet} { 
+    max-width: 530px;
   }
-  @media ${device.mobileM} {
-    top: 30%; 
+
+  @media ${device.laptop} { 
+    max-width: 600px;
+  }
+
+  @media ${device.desktop} {
+    max-width: 600px;
   }
 `;
 
@@ -55,16 +65,28 @@ display: flex;
 flex-direction: column;
 border: none;
 margin: auto;
+
+@media ${device.tablet} { 
+    max-width: 500px;
+  }
+
+  @media ${device.laptop} { 
+    max-width: 565px;
+  }
+
+  @media ${device.desktop} {
+    max-width: 565px;
+  }
 `;
 
 export const FormLabel = styled.label `
-display: block;
-text-align: left;
-font-family: helvetica;
-font-size: .7rem;
-font-weight: 200;
-color: rgb(63, 63, 63);
-margin: 8px 0 5px 0;
+  display: block;
+  text-align: left;
+  font-family: helvetica;
+  font-size: .7rem;
+  font-weight: 200;
+  color: rgb(63, 63, 63);
+  margin: 15px 0 0 0;
 `;
 
 export const FormTitle = styled.h1 `
@@ -75,17 +97,13 @@ color: rgb(63, 63, 63);
 margin: 0;
 `;
 
-// export const FormFont = styled.form `
-//   font-family: helvetica;
-// `
-
 export const FormInput = styled.input `
   background-color: #C5C5C5;
   height: 1.5rem;
   width: 79vw;
   border-style: none;
   border-radius: .3rem;
-  margin: 0 5px 5px 0;
+  margin: 9px 5px 5px 0;
 
 ::placeholder,
 ::-webkit-input-placeholder {
@@ -102,6 +120,18 @@ export const FormInput = styled.input `
   color: #002352;
   padding: 0 0 0 .2rem;
 }
+
+@media ${device.tablet} { 
+    max-width: 500px;
+  }
+
+  @media ${device.laptop} { 
+    max-width: 565px;
+  }
+
+  @media ${device.desktop} {
+    max-width: 565px;
+  }
 `;
 
 export const FormTextarea = styled.textarea `
