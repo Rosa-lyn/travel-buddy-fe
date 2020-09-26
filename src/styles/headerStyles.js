@@ -2,6 +2,9 @@ import styled from "styled-components";
 import {
   Link
 } from "@reach/router";
+import {
+  device
+} from "./@MediaRules.js"
 
 //centres the control panel
 
@@ -14,21 +17,41 @@ export const OuterContainer = styled.body`
 
 //the control panel containing the controls
 export const Container = styled.header ` display: block;
-  width: 80vw;
+  width: 65vw;
   height: 45px;
   padding: 17px;
   align-items: center;
   border: 1px solid rgb(248, 166, 248);
   border-radius: 3px;
   margin-top: 30px;
+
+  @media ${device.laptop} { 
+    max-width: 565px;
+  }
+
+  @media ${device.desktop} {
+    max-width: 565px;
+  }
 `;
 
 export const InnerContainer = styled.div` 
-  width: 75vw;
+  /* width: 49vw; */
   height: 45px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+@media ${device.tablet} { 
+    max-width: 530px;
+  }
+
+  @media ${device.laptop} { 
+    max-width: 600px;
+  }
+
+  @media ${device.desktop} {
+    max-width: 600px;
+  }
 `;
 
 //first flexbox contains login button
@@ -79,8 +102,8 @@ export const LogoType = styled.h1 `
 export const LoginInfoSignupContainer = styled.div ` 
 display: flex;
 flex-direction: column;
-justify-content: space-between;
-align-content: space-space-between;
+justify-content: flex-end;
+align-content: space-between;
 width: 55px;
 height: 50px;
 `;

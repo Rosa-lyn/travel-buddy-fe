@@ -1,5 +1,7 @@
 import styled from "styled-components";
-
+import {
+  device
+} from "./@MediaRules.js"
 //centres the search panel and find location button
 export const OuterContainer = styled.body` 
   height: 20px;
@@ -7,7 +9,15 @@ export const OuterContainer = styled.body`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 60px 0 25px 0;  
+  margin: 60px auto 25px auto; 
+  
+  @media ${device.laptop} { 
+    max-width: 565px;
+  }
+
+  @media ${device.desktop} {
+    max-width: 565px;
+  } 
 `;
 
 //centres the search form and search button
@@ -15,10 +25,19 @@ export const SearchElements = styled.form`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media ${device.laptop} { 
+    max-width: 565px;
+  }
+
+  @media ${device.desktop} {
+    max-width: 565px;
+  } 
 `;
 
 //this contains the search input & findme button
-export const SearchFindMeContainer = styled.div` display: grid;
+export const SearchFindMeContainer = styled.div` 
+display: grid;
 grid-column-gap: .5rem;
 grid-template-columns: 7fr 1fr;
 height: 40px;
@@ -63,6 +82,14 @@ justify-self: start;
 	color: black;
 	padding: 0 0 0 .3rem;
 }
+
+@media ${device.laptop} { 
+    max-width: 565px;
+  }
+
+  @media ${device.desktop} {
+    max-width: 565px;
+  } 
 `;
 
 export const SearchButton = styled.button`
