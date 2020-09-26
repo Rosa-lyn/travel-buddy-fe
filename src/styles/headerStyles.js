@@ -102,7 +102,7 @@ export const LogoType = styled.h1 `
 export const LoginInfoSignupContainer = styled.div ` 
 display: flex;
 flex-direction: column;
-justify-content: flex-end;
+justify-content: space-between;
 align-content: space-between;
 width: 55px;
 height: 50px;
