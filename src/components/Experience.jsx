@@ -40,12 +40,9 @@ const Experience = (props) => {
               // </div>
             ))}
         </div>
-        <p>{body}</p>
         <div className="experience-user-details-container">
           <p className="user-date">
             {username} on {date.toLocaleString()}
-            {/* </p> */}
-            {/* <p> */}
           </p>
           <LikeHandler likes={likes} experience_id={experience_id} />
           {loggedIn === username && (
