@@ -1,16 +1,21 @@
 import styled from "styled-components";
-import { Link } from "@reach/router";
-import { device } from "./@MediaRules.js";
+import {
+  Link
+} from "@reach/router";
+import {
+  device
+} from "./@MediaRules.js"
 
-export const OuterFormContainer = styled.div`
-  width: 88vw;
+export const OuterFormContainer = styled.div `
+  width: 100vw;
   margin: 0;
   position: relative;
   display: flex;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, 100%);
+  transform: translate(-50%, 50%);
 `;
+
 
 //the travel buddy logo
 export const LogoType = styled.h1`
@@ -34,46 +39,65 @@ export const FormContainer = styled.div`
   flex-direction: column;
   width: 90vw;
   border: rgb(248, 166, 248) solid 1px;
-  border-radius: 0.3rem;
-  position: absolute;
-  margin: 28vh 0 0 0;
-  /* top: 300px; */
-  /* margin: 0;
-  position: absolute;
+
+  border-radius: .3rem;
+  margin: 0;
+  position: relative;
+
   top: 50%;
   left: 50%;
-  transform: translate(-50%, 100%); */
+  transform: translate(-50%, 0);
 
-  @media ${device.tablet} {
-    margin-top: 0px;
+
+  @media ${device.tablet} { 
+    max-width: 530px;
   }
-  @media ${device.mobileM} {
-    top: 30%;
+
+  @media ${device.laptop} { 
+    max-width: 600px;
+  }
+
+  @media ${device.desktop} {
+    max-width: 600px;
   }
 `;
 
-export const FormInnnerContainer = styled.div`
-  text-align: left;
-  width: 80vw;
-  display: flex;
-  flex-direction: column;
-  border: none;
-  margin: auto;
+export const FormInnnerContainer = styled.div `
+text-align: left;
+width: 80vw;
+display: flex;
+flex-direction: column;
+border: none;
+margin: auto;
+
+@media ${device.tablet} { 
+    max-width: 500px;
+  }
+
+  @media ${device.laptop} { 
+    max-width: 565px;
+  }
+
+  @media ${device.desktop} {
+    max-width: 565px;
+  }
 `;
 
-export const FormLabel = styled.label`
+export const FormLabel = styled.label `
   display: block;
   text-align: left;
   font-family: helvetica;
-  font-size: 0.7rem;
+  font-size: .7rem;
   font-weight: 200;
   color: rgb(63, 63, 63);
   margin: 15px 0 0 0;
 `;
 
-export const FormTitle = styled.h1`
+
+export const FormTitle = styled.h1 `
   font-family: helvetica;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
+
   font-weight: 200;
   color: rgb(63, 63, 63);
   margin: 0;
@@ -96,53 +120,37 @@ export const FormInput = styled.input`
   height: 1.5rem;
   width: 79vw;
   border-style: none;
-  border-radius: 0.3rem;
-  margin: 12px 5px 5px 0;
+  border-radius: .3rem;
+  margin: 9px 5px 5px 0;
 
-  ::placeholder,
-  ::-webkit-input-placeholder {
-    font-family: inherit;
-    font-size: 0.8rem;
-    font-weight: 200;
+::placeholder,
+::-webkit-input-placeholder {
+  font-family: inherit;
+  font-size: .8rem;
+  font-weight: 200;
+  color: #002352;
+  padding: 0 0 0 .2rem;
+}
+:-ms-input-placeholder {
+  font-family: inherit;
+  font-size: .8rem;
+  font-weight: 200;
+  color: #002352;
+  padding: 0 0 0 .2rem;
+}
 
-    color: black;
-
-    padding: 0 0 0 0.2rem;
+@media ${device.tablet} { 
+    max-width: 500px;
   }
-  :-ms-input-placeholder {
-    font-family: inherit;
-    font-size: 0.8rem;
-    font-weight: 200;
 
-    color: black;
+  @media ${device.laptop} { 
+    max-width: 565px;
+  }
 
-    padding: 0 0 0 0.2rem;
+  @media ${device.desktop} {
+    max-width: 565px;
   }
 `;
-
-// export const FormTextarea = styled.textarea `
-// background-color: #C5C5C5;
-// height: 1.5rem;
-// width: 79vw;
-// border-style: none;
-// border-radius: 0.3rem;
-
-// ::placeholder,
-//   ::-webkit-textarea-placeholder {
-//   font-family: helvetica;
-//   font-size: .8rem;
-//   font-weight: 200;
-//   color: white;
-//   padding: .2rem .1rem 0 .2rem;
-// }
-//   :-ms-textarea-placeholder {
-//   font-family: helvetica;
-//   font-size: .8rem;
-//   font-weight: 200;
-//   color: white;
-//   padding: 0 0 0 .2rem;
-// }
-// `;
 
 export const Button = styled.input`
   background-color: #bb6bd9;

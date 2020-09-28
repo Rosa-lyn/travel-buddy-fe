@@ -17,51 +17,51 @@ const Experience = (props) => {
   const date = new Date(+created_at);
   const { tags } = props;
   return (
-    // <div className="outer-container">
-    <div className="experience-inner-container">
-      <h1>{title}</h1>
-      <p>{body}</p>
-      {tags.map((tag) => {
-        return (
-          <p key={tag.tag_id} className="user-date">
-            {tag.tag_text}
-          </p>
-        );
-      })}
 
-      <div className="image-container">
-        {props.images.map((image) => (
-          // <div className="single-image">
-          <img
-            className="experience-image"
-            src={image.image_URL}
-            alt={image.image_desc}
-            key={image.image_id}
-          ></img>
-          // </div>
-        ))}
-      </div>
-      <p>{body}</p>
-      <div className="experience-user-details-container">
-        <p className="user-date">
-          {username} on {date.toLocaleString()}
-          {/* </p> */}
-          {/* <p> */}
-        </p>
-        <LikeHandler likes={likes} experience_id={experience_id} />
-        {loggedIn === username && (
-          <button
-            onClick={() =>
-              api.deleteExperience(experience_id).then((deletedExperience) => {
-                console.log("deleted:", deletedExperience);
-                return navigate("/");
-              })
-            }
-          >
-            delete
-          </button>
-        )}
-      </div>
+    <div className="outer-container">
+      <div className="experience-inner-container">
+        <h1>{title}</h1>
+        <p>{body}</p>
+        {tags.map((tag) => {
+          return <p className="user-date">{tag.tag_text}</p>;
+        })}
+
+        <div className="image-container">
+          {props.images.map((image) => (
+            // <div className="single-image">
+            <img
+              className="experience-image"
+              src={image.image_URL}
+              alt={image.image_desc}
+              key={image.image_id}
+            ></img>
+            // </div>
+          ))}
+        </div>
+        <p>{body}</p>
+        <div className="experience-user-details-container">
+          <p className="user-date">
+            {username} on {date.toLocaleString()}
+            {/* </p> */}
+            {/* <p> */}
+          </p>
+          <LikeHandler likes={likes} experience_id={experience_id} />
+          {loggedIn === username && (
+            <button
+              onClick={() =>
+                api
+                  .deleteExperience(experience_id)
+                  .then((deletedExperience) =>
+                    console.log("deleted:", deletedExperience)
+                  )
+              }
+            >
+              delete
+            </button>
+          )}
+        </div>
+      </div >
+
     </div>
   );
 };

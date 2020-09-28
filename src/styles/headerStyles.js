@@ -1,5 +1,11 @@
 import styled from "styled-components";
-import { Link } from "@reach/router";
+
+import {
+  Link
+} from "@reach/router";
+import {
+  device
+} from "./@MediaRules.js"
 
 //centres the control panel
 
@@ -11,23 +17,45 @@ export const OuterContainer = styled.div`
 `;
 
 //the control panel containing the controls
-export const Container = styled.header`
-  display: block;
-  width: 80vw;
+
+export const Container = styled.header ` display: block;
+  width: 65vw;
+
   height: 45px;
   padding: 17px;
   align-items: center;
   border: 1px solid rgb(248, 166, 248);
   border-radius: 3px;
   margin-top: 30px;
+
+  @media ${device.laptop} { 
+    max-width: 565px;
+  }
+
+  @media ${device.desktop} {
+    max-width: 565px;
+  }
 `;
 
-export const InnerContainer = styled.div`
-  width: 75vw;
+export const InnerContainer = styled.div` 
+  /* width: 49vw; */
+
   height: 45px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+@media ${device.tablet} { 
+    max-width: 530px;
+  }
+
+  @media ${device.laptop} { 
+    max-width: 600px;
+  }
+
+  @media ${device.desktop} {
+    max-width: 600px;
+  }
 `;
 
 //first flexbox contains login button
@@ -75,13 +103,14 @@ export const LogoType = styled.h1`
 `;
 
 //this sub-contains the login, info and signup link
-export const LoginInfoSignupContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-content: space-space-between;
-  width: 55px;
-  height: 50px;
+
+export const LoginInfoSignupContainer = styled.div ` 
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+align-content: space-between;
+width: 55px;
+height: 50px;
 `;
 
 //this sub-contains the info and signup link

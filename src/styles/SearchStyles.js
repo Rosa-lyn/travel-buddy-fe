@@ -1,5 +1,7 @@
 import styled from "styled-components";
-
+import {
+  device
+} from "./@MediaRules.js"
 //centres the search panel and find location button
 export const OuterContainer = styled.div`
   height: 20px;
@@ -7,7 +9,17 @@ export const OuterContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 60px 0 25px 0;
+
+  margin: 60px auto 25px auto; 
+  
+  @media ${device.laptop} { 
+    max-width: 565px;
+  }
+
+  @media ${device.desktop} {
+    max-width: 565px;
+  } 
+
 `;
 
 //centres the search form and search button
@@ -15,15 +27,25 @@ export const SearchElements = styled.form`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media ${device.laptop} { 
+    max-width: 565px;
+  }
+
+  @media ${device.desktop} {
+    max-width: 565px;
+  } 
 `;
 
 //this contains the search input & findme button
-export const SearchFindMeContainer = styled.div`
-  display: grid;
-  grid-column-gap: 0.5rem;
-  grid-template-columns: 7fr 1fr;
-  height: 40px;
-  width: 80vw;
+
+export const SearchFindMeContainer = styled.div` 
+display: grid;
+grid-column-gap: .5rem;
+grid-template-columns: 7fr 1fr;
+height: 40px;
+width: 80vw;
+
 `;
 
 //the search form
@@ -50,20 +72,29 @@ export const FormInput = styled.input`
     padding: 0 0 0 0.3rem;
   }
 
-  :-ms-input-placeholder  {
-    font-family: inherit;
-    font-size: 0.5rem;
-    font-weight: 200;
-    color: black;
-    padding: 0 0 0 0.3rem;
+: -ms-input-placeholder {
+	font-family: inherit;
+	font-size: .5rem;
+	font-weight: 200;
+	color: black;
+	padding: 0 0 0 .3rem;
+}
+:: -moz-input-placeholder {
+	font-family: inherit;
+	font-size: .5rem;
+	font-weight: 200;
+	color: black;
+	padding: 0 0 0 .3rem;
+}
+
+@media ${device.laptop} { 
+    max-width: 565px;
   }
-  :: -moz-input-placeholder {
-    font-family: inherit;
-    font-size: 0.5rem;
-    font-weight: 200;
-    color: black;
-    padding: 0 0 0 0.3rem;
-  }
+
+  @media ${device.desktop} {
+    max-width: 565px;
+  } 
+
 `;
 
 export const SearchButton = styled.button`
