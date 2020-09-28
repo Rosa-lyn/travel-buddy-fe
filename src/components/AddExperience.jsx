@@ -26,7 +26,7 @@ class AddExperience extends Component {
     title: "",
     body: "",
     image_URL: null,
-    image_desc: "img description",
+    image_desc: "",
     experience_id: null,
     // tags: [],
     err: "",
@@ -111,10 +111,13 @@ class AddExperience extends Component {
         })
         .then(() => {
           const { experience_id, image_URL, image_desc } = this.state;
-          return api.postImage(experience_id, image_URL, image_desc);
+          if (image_URL !== null) {
+            return api.postImage(experience_id, image_URL, image_desc);
+          }
         })
-        .then((postedImage) => {
-          navigate(`/experience/${postedImage.experience_id}`);
+        .then(() => {
+          const { experience_id } = this.state;
+          navigate(`/experience/${experience_id}`);
         })
         .catch((err) => {
           console.log(err);

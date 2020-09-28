@@ -17,7 +17,6 @@ const Experience = (props) => {
   const date = new Date(+created_at);
   const { tags } = props;
   return (
-
     <div className="outer-container">
       <div className="experience-inner-container">
         <h1>{title}</h1>
@@ -27,16 +26,17 @@ const Experience = (props) => {
         })}
 
         <div className="image-container">
-          {props.images.map((image) => (
-            // <div className="single-image">
-            <img
-              className="experience-image"
-              src={image.image_URL}
-              alt={image.image_desc}
-              key={image.image_id}
-            ></img>
-            // </div>
-          ))}
+          {props.images.length > 0 &&
+            props.images.map((image) => (
+              // <div className="single-image">
+              <img
+                className="experience-image"
+                src={image.image_URL}
+                alt={image.image_desc}
+                key={image.image_id}
+              ></img>
+              // </div>
+            ))}
         </div>
         <p>{body}</p>
         <div className="experience-user-details-container">
@@ -60,8 +60,7 @@ const Experience = (props) => {
             </button>
           )}
         </div>
-      </div >
-
+      </div>
     </div>
   );
 };
