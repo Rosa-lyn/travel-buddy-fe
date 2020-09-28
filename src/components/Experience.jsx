@@ -2,6 +2,7 @@ import React from "react";
 import LikeHandler from "./LikeHandler.jsx";
 import "../styles/style.css";
 import * as api from "../utils/api";
+import { CloseButton } from "../styles/AddExperienceStyles";
 
 const Experience = (props) => {
   const {
@@ -17,6 +18,7 @@ const Experience = (props) => {
   return (
     <div className="outer-container">
       <div className="experience-inner-container">
+        <CloseButton to="/">x</CloseButton>
         <h1>{title}</h1>
         <p>{body}</p>
         {tags.map((tag) => {
