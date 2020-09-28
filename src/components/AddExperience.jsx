@@ -51,7 +51,6 @@ class AddExperience extends Component {
       loggedInUser,
       newPinLocation: { location_lat, location_long },
     } = this.props;
-    console.log(location_lat, location_long);
     this.state.body &&
       api
         .postExperience(title, body, loggedInUser, location_lat, location_long)
