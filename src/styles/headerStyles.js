@@ -1,5 +1,4 @@
 import styled from "styled-components";
-
 import {
   Link
 } from "@reach/router";
@@ -19,8 +18,7 @@ export const OuterContainer = styled.div`
 //the control panel containing the controls
 
 export const Container = styled.header ` display: block;
-  width: 75vw;
-
+  width: 90vw;
   height: 45px;
   padding: 17px;
   align-items: center;
@@ -28,19 +26,30 @@ export const Container = styled.header ` display: block;
   border-radius: 3px;
   margin-top: 30px;
 
+  @media ${device.tablet} { 
+    max-width: 498px;
+  }
+
   @media ${device.laptop} { 
+    max-width: 568px;
+  }
+
+  @media ${device.desktop} {
+    max-width: 600px;
+  }
+
+  /* @media ${device.laptop} { 
     max-width: 565px;
   }
 
   @media ${device.desktop} {
     max-width: 565px;
-  }
+  } */
 `;
 
 export const InnerContainer = styled.div` 
-  /* width: 49vw; */
-
   height: 45px;
+  /* width: 60vw; */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -109,7 +118,7 @@ display: flex;
 flex-direction: column;
 justify-content: space-between;
 align-content: space-between;
-width: 55px;
+width:55px;
 height: 50px;
 `;
 
