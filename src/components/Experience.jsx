@@ -12,9 +12,8 @@ const Experience = (props) => {
     experience_id,
     likes,
   } = props.experience;
-  const { loggedIn } = props;
+  const { loggedIn, tags, removeExperience } = props;
   const date = new Date(+created_at);
-  const { tags } = props;
   return (
     <div className="outer-container">
       <div className="experience-inner-container">
@@ -54,9 +53,10 @@ const Experience = (props) => {
               onClick={() =>
                 api
                   .deleteExperience(experience_id)
-                  .then((deletedExperience) =>
-                    console.log("deleted:", deletedExperience)
-                  )
+                  .then((deletedExperience) => {
+                    console.log("deleted:", deletedExperience);
+                    removeExperience();
+                  })
               }
             >
               delete
