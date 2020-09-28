@@ -19,7 +19,7 @@ export const OuterContainer = styled.div`
 //the control panel containing the controls
 
 export const Container = styled.header ` display: block;
-  width: 65vw;
+  width: 75vw;
 
   height: 45px;
   padding: 17px;
