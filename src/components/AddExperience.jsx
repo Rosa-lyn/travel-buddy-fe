@@ -1,19 +1,14 @@
 import React, { Component } from "react";
 import * as api from "../utils/api";
 import { storage } from "../firebase/firebase_config";
-
-// import FileUpload from "./FileUpload";
 import separatesHashtags from "../utils/utils";
-
 import { navigate } from "@reach/router";
+
 import Page from "../styles/Page.js";
 import {
-  // AddImageButton,
   FileUploadLabel,
-  // FileStatus,
   FileUploadInput,
 } from "../styles/AddExperienceStyles";
-
 import {
   OuterFormContainer,
   FormContainer,
@@ -26,7 +21,6 @@ import {
   CloseButton,
   FormFont,
   PostButton,
-  // OuterContainer,
 } from "../styles/AddExperienceStyles";
 
 class AddExperience extends Component {
@@ -36,7 +30,6 @@ class AddExperience extends Component {
     image_URL: null,
     image_desc: "",
     experience_id: null,
-    // tags: [],
     selectedFile: null,
     err: "",
     isLoading: true,
@@ -45,7 +38,6 @@ class AddExperience extends Component {
   handleTitleChange = (e) => {
     this.setState({
       title: e.target.value,
-      // image_desc: e.target.value
     });
   };
 
