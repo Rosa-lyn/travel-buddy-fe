@@ -17,10 +17,8 @@ class MapContainer extends Component {
   };
 
   getUserLocation = (event) => {
-    console.log(event);
     navigator.geolocation.getCurrentPosition(
       (res) => {
-        console.log(res);
         const { coords } = res;
         const lat = coords.latitude;
         const lng = coords.longitude;

@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 import * as api from "../utils/api";
-import FileUpload from "./FileUpload";
+import { storage } from "../firebase/firebase_config";
 import separatesHashtags from "../utils/utils";
-
 import { navigate } from "@reach/router";
-import Page from "../styles/Page.js";
 
+import Page from "../styles/Page.js";
+import {
+  FileUploadLabel,
+  FileUploadInput,
+} from "../styles/AddExperienceStyles";
 import {
   OuterFormContainer,
   FormContainer,
@@ -18,7 +21,6 @@ import {
   CloseButton,
   FormFont,
   PostButton,
-  // OuterContainer,
 } from "../styles/AddExperienceStyles";
 
 class AddExperience extends Component {
@@ -26,9 +28,9 @@ class AddExperience extends Component {
     title: "",
     body: "",
     image_URL: null,
-    image_desc: "img description",
+    image_desc: "",
     experience_id: null,
-    // tags: [],
+    selectedFile: null,
     err: "",
     isLoading: true,
   };
@@ -36,7 +38,6 @@ class AddExperience extends Component {
   handleTitleChange = (e) => {
     this.setState({
       title: e.target.value,
-      // image_desc: e.target.value
     });
   };
 
@@ -46,12 +47,25 @@ class AddExperience extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const { title, body } = this.state;
+    const { title, body, selectedFile } = this.state;
     const {
       loggedInUser,
       newPinLocation: { location_lat, location_long },
     } = this.props;
-    console.log(location_lat, location_long);
+
+    // create storage reference
+    const storageRef = storage.ref(`${selectedFile.name}`);
+
+    // upload file
+    const uploadTask = storageRef.put(selectedFile);
+
+    // get the image uri and image from firebase
+    uploadTask.on("state_changed", console.log, console.error, () => {
+      storageRef.getDownloadURL().then((uploadedFileURL) => {
+        this.setImageURL(uploadedFileURL);
+      });
+    });
+
     this.state.body &&
       api
         .postExperience(title, body, loggedInUser, location_lat, location_long)
@@ -111,10 +125,13 @@ class AddExperience extends Component {
         })
         .then(() => {
           const { experience_id, image_URL, image_desc } = this.state;
-          return api.postImage(experience_id, image_URL, image_desc);
+          if (image_URL !== null) {
+            return api.postImage(experience_id, image_URL, image_desc);
+          }
         })
-        .then((postedImage) => {
-          navigate(`/experience/${postedImage.experience_id}`);
+        .then(() => {
+          const { experience_id } = this.state;
+          navigate(`/experience/${experience_id}`);
         })
         .catch((err) => {
           console.log(err);
@@ -122,12 +139,15 @@ class AddExperience extends Component {
         });
   };
 
+  chooseFile = (event) => {
+    const selectedFile = event.target.files[0];
+    this.setState({ selectedFile });
+  };
   setImageURL = (image_URL) => {
     this.setState({ image_URL });
   };
 
   render() {
-    const { image_URL } = this.state;
     const { toggleMapClicked } = this.props;
     return (
       <Page>
@@ -169,9 +189,15 @@ class AddExperience extends Component {
                   cols="40"
                   required
                 />
-                <FileUpload
-                  setImageURL={this.setImageURL}
-                  image_URL={image_URL}
+                <FileUploadLabel htmlFor="myfile">
+                  add your image:
+                </FileUploadLabel>
+
+                <FileUploadInput
+                  type="file"
+                  id="myfile"
+                  name="myfile"
+                  onChange={this.chooseFile}
                 />
                 <ButtonContainer>
                   {/* div */}
