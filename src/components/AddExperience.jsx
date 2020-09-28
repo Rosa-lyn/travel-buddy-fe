@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import * as api from "../utils/api";
 import FileUpload from "./FileUpload";
 import separatesHashtags from "../utils/utils";
+
 import { navigate } from "@reach/router";
 import Page from "../styles/Page.js";
 
@@ -64,7 +65,9 @@ class AddExperience extends Component {
         })
         .then((allTagObjects) => {
           //get the hashtags off the body
-          const tagsFromBody = separatesHashtags(body); //["#tag", "#from", "#body",]
+          let tagsFromBody = separatesHashtags(body); //["#tag", "#from", "#body",]
+
+          if (tagsFromBody === null) tagsFromBody = ["#newexperience"];
 
           //filter the tag objects so we only have ones that are already in the db. this is so we can get those ids and won't need to make a second getAllTags() request
           const filteredtagObjects = allTagObjects.filter((tagObject) => {
@@ -114,6 +117,7 @@ class AddExperience extends Component {
           navigate(`/experience/${postedImage.experience_id}`);
         })
         .catch((err) => {
+          console.log(err);
           this.setState({ err: err.response.data.msg, isLoading: false });
         });
   };
@@ -124,7 +128,7 @@ class AddExperience extends Component {
 
   render() {
     const { image_URL } = this.state;
-    const { toggle } = this.props;
+    const { toggleMapClicked } = this.props;
     return (
       <Page>
         <OuterFormContainer>
@@ -134,9 +138,9 @@ class AddExperience extends Component {
             <FormInnnerContainer>
               {/* div */}
 
-              <CloseButton to="/" onClick={toggle}>
+              <CloseButton to="/" onClick={toggleMapClicked}>
                 x
-          </CloseButton>
+              </CloseButton>
               <FormTitle>add your experience</FormTitle>
 
               <FormFont onSubmit={this.handleSubmit}>
@@ -154,7 +158,7 @@ class AddExperience extends Component {
                 ></FormInput>
                 <FormLabel htmlFor="addExperience">
                   describe your experience
-            </FormLabel>
+                </FormLabel>
                 <FormTextarea
                   onChange={this.handleBodyChange}
                   type="textarea"
@@ -165,7 +169,10 @@ class AddExperience extends Component {
                   cols="40"
                   required
                 />
-                <FileUpload setImageURL={this.setImageURL} image_URL={image_URL} />
+                <FileUpload
+                  setImageURL={this.setImageURL}
+                  image_URL={image_URL}
+                />
                 <ButtonContainer>
                   {/* div */}
 

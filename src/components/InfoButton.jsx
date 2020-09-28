@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import InfoPopup from "./InfoPopup";
-import { IButton } from "../styles/headerStyles";
+import { IButton } from "../styles/PopupStyling.js";
 
 class InfoButton extends Component {
   state = {
@@ -17,7 +17,7 @@ class InfoButton extends Component {
         <div className="btn" onClick={this.togglePop}>
           <IButton>i</IButton>
         </div>
-        {this.state.seen ? <InfoPopup toggle={this.togglePop} /> : null}
+        {this.state.seen ? <InfoPopup togglePop={this.togglePop} /> : null}
       </div>
     );
   }

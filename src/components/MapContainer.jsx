@@ -13,11 +13,15 @@ class MapContainer extends Component {
     newExperience: null,
     addExperienceClicked: false,
     newPinLocation: null,
+    usersCurrentLocation: null,
   };
 
   getUserLocation = (event) => {
+    console.log(event);
     navigator.geolocation.getCurrentPosition(
-      ({ coords }) => {
+      (res) => {
+        console.log(res);
+        const { coords } = res;
         const lat = coords.latitude;
         const lng = coords.longitude;
         console.log("getCurrentPosition Success " + lat + lng);
@@ -72,8 +76,12 @@ class MapContainer extends Component {
         ...currentState,
         addExperienceClicked: !currentState.addExperienceClicked,
         newPinLocation: {
-          location_lat: currentState.newExperience.location_lat,
-          location_long: currentState.newExperience.location_long,
+          location_lat: currentState.newExperience
+            ? currentState.newExperience.location_lat
+            : null,
+          location_long: currentState.newExperience
+            ? currentState.newExperience.location_long
+            : null,
         },
       };
     });

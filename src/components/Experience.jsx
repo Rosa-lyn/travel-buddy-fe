@@ -2,6 +2,7 @@ import React from "react";
 import LikeHandler from "./LikeHandler.jsx";
 import "../styles/style.css";
 import * as api from "../utils/api";
+import { navigate } from "@reach/router";
 
 const Experience = (props) => {
   const {
@@ -15,8 +16,8 @@ const Experience = (props) => {
   const { loggedIn } = props;
   const date = new Date(+created_at);
   const { tags } = props;
-  console.log(tags);
   return (
+
     <div className="outer-container">
       <div className="experience-inner-container">
         <h1>{title}</h1>
@@ -60,6 +61,7 @@ const Experience = (props) => {
           )}
         </div>
       </div >
+
     </div>
   );
 };

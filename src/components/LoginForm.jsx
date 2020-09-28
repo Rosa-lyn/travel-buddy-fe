@@ -22,20 +22,25 @@ const LoginForm = () => {
       <OuterFormContainer>
         <FormContainer>
           {/* div */}
+
           <FormInnnerContainer>
             {/* div */}
             <CloseButton to="/">x</CloseButton>
             <FormTitle>Login</FormTitle>
             {/* <FormFont> */}
+
             {/* form */}
-            <FormLabel htmlFor="username">Username:</FormLabel>
+            <FormLabel htmlFor="username">username</FormLabel>
             {/* label */}
             <FormInput
               type="text"
               placeholder="enter your username"
             ></FormInput>
-            <FormLabel htmlFor="password">Password:</FormLabel>
-            <FormInput type="password" placeholder="password" />
+
+            <FormLabel htmlFor="password">password</FormLabel>
+            <FormInput type="password" placeholder="enter your password" />
+
+
             <ButtonContainer>
               <Button type="submit" value="login" />
             </ButtonContainer>
