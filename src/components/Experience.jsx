@@ -22,7 +22,11 @@ const Experience = (props) => {
         <h1>{title}</h1>
         <p>{body}</p>
         {tags.map((tag) => {
-          return <p className="user-date">{tag.tag_text}</p>;
+          return (
+            <p key={tag.tag_id} className="user-date">
+              {tag.tag_text}
+            </p>
+          );
         })}
 
         <div className="image-container">
