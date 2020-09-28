@@ -1,3 +1,57 @@
+@media only screen and (max-width: 768px) {
+  .experience-comments-container {
+    max-width: 530px;
+  }
+  .outer-container {
+    max-width: 530px;
+  }
+  .experience-inner-container {
+    max-width: 530px;
+  }
+  .comments-inner-container {
+    max-width: 530px;
+  }
+  .comment-adder {
+    max-width: 530px;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .experience-comments-container {
+    max-width: 600px;
+  }
+  .outer-container {
+    max-width: 600px;
+  }
+  .experience-inner-container {
+    max-width: 600px;
+  }
+  .comments-inner-container {
+    max-width: 600px;
+  }
+  .comment-adder {
+    max-width: 600px;
+  }
+}
+
+@media only screen and (max-width: 2560px) {
+  .experience-comments-container {
+    max-width: 600px;
+  }
+  .outer-container {
+    max-width: 600px;
+  }
+  .experience-inner-container {
+    max-width: 600px;
+  }
+  .comments-inner-container {
+    max-width: 600px;
+  }
+  .comment-adder {
+    max-width: 600px;
+  }
+}
+
 /* body */
 body {
   position: relative;
@@ -10,7 +64,6 @@ body {
   position: absolute;
   left: 50%;
   transform: translate(-50%, 0);
-  padding: 10px;
   -ms-transform: translate(-50%, 0);
   transform: translate(-50%, 0);
 }
@@ -18,27 +71,27 @@ body {
 /* experience styles */
 .outer-container {
   justify-content: center;
-  width: 90vw;
-  height: auto;
-  display: flex;
-  flex-direction: column;
+  margin: 0 0 15px 0;
+
   border: 1px solid rgb(248, 166, 248);
-  border-radius: .3rem;
+  border-radius: 0.3rem;
+  width: 84vw;
+  /* margin: 10px 0 ; */
   position: relative;
   left: 50%;
+  transform: translate(-50%, 0);
+  padding: 10px;
   -ms-transform: translate(-50%, 0);
   transform: translate(-50%, 0);
-  margin-bottom: 10px;
+
 }
 
 .experience-inner-container {
   width: 82vw;
   display: flex;
   flex-direction: column;
-  border: 1px solid rgb(248, 166, 248) solid 1px;
+  /* border: 1px solid rgb(248, 166, 248) solid 1px; */
   border-radius: 0.3rem;
-  padding: 13px;
-  margin: 20px 0 0 0;
 }
 
 h1 {
@@ -63,7 +116,8 @@ p {
 
 .image-container {
   display: block;
-  margin: 8px 0 5px 0;
+  margin: 10px auto;
+
 }
 
 .experience-image {
@@ -92,12 +146,12 @@ p {
 .comments-inner-container {
   border: 1px solid rgb(248, 166, 248);
   border-radius: 0.3rem;
-  width: 88vw;
+  width: 84vw;
   /* margin: 10px 0 ; */
   position: relative;
   left: 50%;
   transform: translate(-50%, 0);
-  padding: 13px;
+  padding: 10px;
   -ms-transform: translate(-50%, 0);
   transform: translate(-50%, 0);
 }
@@ -212,7 +266,29 @@ li {
   height: 30px;
 }
 
+.error-container {
+  width: 90vw;
+  margin: 15px 0;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  padding: 10px;
+  -ms-transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
+}
+
 .error {
+  width: 90vw;
+  margin: 15px 0;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  padding: 10px;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, 100%);
+}
+
+.error-info {
   width: 200px;
   margin: 0 auto;
   display: flex;
