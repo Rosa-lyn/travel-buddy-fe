@@ -2,7 +2,6 @@ import React from "react";
 import LikeHandler from "./LikeHandler.jsx";
 import "../styles/style.css";
 import * as api from "../utils/api";
-import { navigate } from "@reach/router";
 
 const Experience = (props) => {
   const {
