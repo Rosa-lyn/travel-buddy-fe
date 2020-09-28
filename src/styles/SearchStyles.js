@@ -12,6 +12,10 @@ export const OuterContainer = styled.div`
 
   margin: 60px auto 25px auto; 
   
+  @media ${device.tablet} { 
+    max-width: 530px;
+  }
+  
   @media ${device.laptop} { 
     max-width: 565px;
   }
