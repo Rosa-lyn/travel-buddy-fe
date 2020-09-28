@@ -51,12 +51,9 @@ const Experience = (props) => {
           {loggedIn === username && (
             <button
               onClick={() =>
-                api
-                  .deleteExperience(experience_id)
-                  .then((deletedExperience) => {
-                    console.log("deleted:", deletedExperience);
-                    removeExperience();
-                  })
+                api.deleteExperience(experience_id).then(() => {
+                  removeExperience();
+                })
               }
             >
               delete
