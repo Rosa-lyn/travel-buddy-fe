@@ -54,12 +54,12 @@ class FileUpload extends Component {
           />
 
           {/* input */}
-          <AddImageButton
+          {/* <AddImageButton
             type="button"
             value="add image"
             onClick={this.uploadImageToFirebase}
             disabled={image_URL}
-          />
+          /> */}
         </>
         <section>
           {selectedFile && image_URL === null && (
