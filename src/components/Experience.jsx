@@ -13,7 +13,7 @@ const Experience = (props) => {
     experience_id,
     likes,
   } = props.experience;
-  const { loggedIn, tags, removeExperience } = props;
+  const { loggedInUser, tags, removeExperience } = props;
   const date = new Date(+created_at);
   return (
     <div className="outer-container">
@@ -32,14 +32,12 @@ const Experience = (props) => {
         <div className="image-container">
           {props.images.length > 0 &&
             props.images.map((image) => (
-              // <div className="single-image">
               <img
                 className="experience-image"
                 src={image.image_URL}
                 alt={image.image_desc}
                 key={image.image_id}
               ></img>
-              // </div>
             ))}
         </div>
         <div className="experience-user-details-container">
@@ -47,7 +45,7 @@ const Experience = (props) => {
             {username} on {date.toLocaleString()}
           </p>
           <LikeHandler likes={likes} experience_id={experience_id} />
-          {loggedIn === username && (
+          {loggedInUser === username && (
             <button
               onClick={() =>
                 api.deleteExperience(experience_id).then(() => {

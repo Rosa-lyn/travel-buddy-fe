@@ -14,7 +14,6 @@ class ExperienceScreen extends Component {
     images: [],
     tags: [],
     isLoading: true,
-    loggedIn: "burt1943",
     err: null,
     isDeleted: false,
   };
@@ -65,7 +64,7 @@ class ExperienceScreen extends Component {
               experience={experience}
               images={images}
               tags={tags}
-              loggedIn={this.state.loggedIn}
+              loggedInUser={loggedInUser}
               removeExperience={this.removeExperience}
             />
             <CommentsList
