@@ -2,7 +2,7 @@
 
 Welcome to Travel Buddy, a React app where users can explore the hidden gems of travel, submitted by fellow travellers.
 
-You can find the hosted GraphQL API used by the React app here: https://nc-news-ab.herokuapp.com/api/
+You can find the hosted GraphQL API used by the React app here: https://travel-buddy-2020.herokuapp.com/graphql
 
 This was part of a two-week, four-person group final project at the [Northcoders bootcamp](https://northcoders.com/). It uses the following technologies:
 
